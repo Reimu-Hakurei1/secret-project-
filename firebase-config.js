@@ -7,7 +7,7 @@ const firebaseConfig = {
     messagingSenderId: "638734124692",
     appId: "1:638734124692:web:15870de99a5d53c56c5681",
     measurementId: "G-Y88HB33T00"
-  };
+};
 
 console.log('🚀 Initializing Firebase...');
 
@@ -21,35 +21,36 @@ try {
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
         console.log('✅ Firebase app initialized');
+    } else {
+        firebase.app();
     }
     
-    // Initialize services
-    const auth = firebase.auth();
+    // Initialize Firestore only (no auth needed)
     const db = firebase.firestore();
     
-    // Set persistence
-    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-        .then(() => console.log('✅ Auth persistence enabled'))
-        .catch(error => console.warn('⚠️ Auth persistence failed:', error));
+    // Disable persistence to avoid multi-tab issues
+    const dbSettings = {
+        experimentalForceLongPolling: true // Helps with some network issues
+    };
     
-    // Export services
-    window.firebaseAuth = auth;
+    // Export services immediately
     window.firebaseDb = db;
     window.firebaseReady = true;
     
-    console.log('🎯 Firebase fully initialized');
+    console.log('🎯 Firebase Firestore initialized successfully');
     
 } catch (error) {
     console.error('❌ Firebase initialization failed:', error);
     window.firebaseReady = false;
+    window.firebaseError = error;
 }
 
 // Utility function to check Firebase status
 window.checkFirebaseStatus = function() {
     return {
         ready: window.firebaseReady,
-        auth: !!window.firebaseAuth,
         firestore: !!window.firebaseDb,
-        config: firebaseConfig
+        config: firebaseConfig,
+        error: window.firebaseError
     };
 };
