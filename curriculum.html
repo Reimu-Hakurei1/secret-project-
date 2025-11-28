@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title data-i18n="curriculum_title">หลักสูตรของฉัน - STIU Student Portal</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body class="bg-light">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-graduation-cap me-2"></i>
+        STIU Student Portal
+      </a>
+      
+      <div class="navbar-nav ms-auto align-items-center">
+        <div class="language-switcher">
+          <button id="lang-th" class="lang-btn active" data-lang="th">ไทย</button>
+          <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        
+        <div class="dropdown user-dropdown ms-3">
+          <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
+            <div class="avatar-sm">
+              <i class="fas fa-user"></i>
+            </div>
+            <span id="userName">ผู้ใช้</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="index.html">
+                <i class="fas fa-tachometer-alt"></i>
+                <span data-i18n="dashboard">แดชบอร์ด</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="profile.html">
+                <i class="fas fa-user-cog"></i>
+                <span data-i18n="profile_settings">ตั้งค่าโปรไฟล์</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <button class="dropdown-item text-danger" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span data-i18n="logout">ออกจากระบบ</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <!-- Progress Summary -->
+<div class="row mb-4">
+  <div class="col-12">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white py-3">
+        <h4 class="card-title mb-0 text-white">
+          <i class="fas fa-tasks me-2"></i>
+          <span data-i18n="progress_summary" class="text-white">สรุปความคืบหน้าหลักสูตร</span>
+        </h4>
+      </div>
+          <div class="card-body">
+            <div class="row text-center">
+              <div class="col-xl-3 col-md-6 mb-3">
+                <div class="stat-item">
+                  <h3 class="text-primary mb-1" id="totalCredits">160</h3>
+                  <p class="text-muted mb-0" data-i18n="total_credits">หน่วยกิตทั้งหมด</p>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-6 mb-3">
+                <div class="stat-item">
+                  <h3 class="text-success mb-1" id="completedCredits">0</h3>
+                  <p class="text-muted mb-0" data-i18n="completed_credits">หน่วยกิตที่สำเร็จ</p>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-6 mb-3">
+                <div class="stat-item">
+                  <h3 class="text-warning mb-1" id="remainingCredits">160</h3>
+                  <p class="text-muted mb-0" data-i18n="remaining_credits">หน่วยกิตที่เหลือ</p>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-6 mb-3">
+                <div class="stat-item">
+                  <h3 class="text-info mb-1" id="completionPercentage">0%</h3>
+                  <p class="text-muted mb-0" data-i18n="completion_rate">อัตราความสำเร็จ</p>
+                </div>
+              </div>
+            </div>
+            <div class="progress mt-3" style="height: 12px;">
+              <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                   role="progressbar" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Curriculum Sections -->
+    <div class="row g-4">
+      <!-- General Education -->
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-white py-3">
+            <h5 class="card-title mb-0 text-dark">
+              <i class="fas fa-graduation-cap me-2 text-primary"></i>
+              <span data-i18n="general_education">การศึกษาทั่วไป</span>
+              <small class="text-muted">(40 <span data-i18n="credits_unit">หน่วยกิต</span>)</small>
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Section Description -->
+            <div class="section-description">
+              <p data-i18n="general_education_desc"></p>
+            </div>
+
+            <!-- Humanities -->
+            <div class="mb-4">
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-palette me-2"></i>
+                <span data-i18n="humanities">มนุษยศาสตร์</span>
+                <small class="text-muted">(<span data-i18n="choose_subjects">เลือก 4 วิชา</span>)</small>
+              </h6>
+              <div class="row g-3" id="humanities-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+
+            <!-- Social Sciences -->
+            <div class="mb-4">
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-users me-2"></i>
+                <span data-i18n="social_sciences">สังคมศาสตร์</span>
+                <small class="text-muted">(<span data-i18n="choose_subjects">เลือก 2 วิชา</span>)</small>
+              </h6>
+              <div class="row g-3" id="social-sciences-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="mb-4">
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-language me-2"></i>
+                <span data-i18n="languages">ภาษา</span>
+                <small class="text-muted">(<span data-i18n="required_subjects">3 วิชาบังคับ</span>)</small>
+              </h6>
+              <div class="row g-3" id="language-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+
+            <!-- Science & Mathematics -->
+            <div class="mb-4">
+              <h6 class="text-primary mb-3">
+                <i class="fas fa-calculator me-2"></i>
+                <span data-i18n="science_math">วิทยาศาสตร์และคณิตศาสตร์</span>
+                <small class="text-muted">(<span data-i18n="choose_subjects">เลือก 4 วิชา</span>)</small>
+              </h6>
+              <div class="row g-3" id="science-math-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Courses -->
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-white py-3">
+            <h5 class="card-title mb-0 text-dark">
+              <i class="fas fa-laptop-code me-2 text-info"></i>
+              <span data-i18n="professional_courses">วิชาชีพ</span>
+              <small class="text-muted">(100 <span data-i18n="credits_unit">หน่วยกิต</span>)</small>
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Section Description -->
+            <div class="section-description">
+              <p data-i18n="professional_courses_desc"></p>
+            </div>
+
+            <!-- Core Courses -->
+            <div class="mb-4">
+              <h6 class="text-info mb-3">
+                <i class="fas fa-cube me-2"></i>
+                <span data-i18n="core_courses">วิชาพื้นฐาน</span>
+                <small class="text-muted">(<span data-i18n="required_subjects">4 วิชา</span>)</small>
+              </h6>
+              <div class="row g-3" id="core-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+
+            <!-- Major Requirements -->
+            <div class="mb-4">
+              <h6 class="text-info mb-3">
+                <i class="fas fa-book me-2"></i>
+                <span data-i18n="major_requirements">วิชาบังคับสาขา</span>
+                <small class="text-muted">(<span data-i18n="required_subjects">16 วิชา</span>)</small>
+              </h6>
+              <div class="row g-3" id="major-requirements-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+
+            <!-- Major Electives -->
+            <div class="mb-4">
+              <h6 class="text-info mb-3">
+                <i class="fas fa-list me-2"></i>
+                <span data-i18n="major_electives">วิชาเลือกสาขา</span>
+                <small class="text-muted">(<span data-i18n="select_subjects">เลือก 5 วิชา</span>)</small>
+              </h6>
+              <!-- Major Electives Description -->
+              <div class="track-description">
+                <p data-i18n="major_electives_desc"></p>
+              </div>
+              <div class="row g-3" id="major-electives-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Specialization Tracks - Now in separate rows -->
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-white py-3">
+            <h5 class="card-title mb-0 text-dark">
+              <i class="fas fa-road me-2 text-warning"></i>
+              <span data-i18n="specialization_tracks">สาขาเฉพาะ</span>
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Software Engineering Track - Full Width -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <div class="card h-100 border-primary track-card">
+                  <div class="card-header bg-primary text-white py-2">
+                    <h6 class="mb-0">
+                      <i class="fas fa-code me-2"></i>
+                      <span data-i18n="software_track">วิศวกรรมซอฟต์แวร์</span>
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="row g-3" id="software-track-courses">
+                      <!-- Courses will be populated here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- E-Commerce Technology Track - Full Width -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <div class="card h-100 border-info track-card">
+                  <div class="card-header bg-info text-white py-2">
+                    <h6 class="mb-0">
+                      <i class="fas fa-shopping-cart me-2"></i>
+                      <span data-i18n="ecommerce_track">เทคโนโลยีอีคอมเมิร์ซ</span>
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="row g-3" id="ecommerce-track-courses">
+                      <!-- Courses will be populated here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Science Track - Full Width -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <div class="card h-100 border-success track-card">
+                  <div class="card-header bg-success text-white py-2">
+                    <h6 class="mb-0">
+                      <i class="fas fa-chart-line me-2"></i>
+                      <span data-i18n="data_science_track">วิทยาศาสตร์ข้อมูล</span>
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="row g-3" id="data-science-track-courses">
+                      <!-- Courses will be populated here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Network Security Track - Full Width -->
+            <div class="row mb-4">
+              <div class="col-12">
+                <div class="card h-100 border-danger track-card">
+                  <div class="card-header bg-danger text-white py-2">
+                    <h6 class="mb-0">
+                      <i class="fas fa-shield-alt me-2"></i>
+                      <span data-i18n="network_track">เครือข่ายและความปลอดภัย</span>
+                    </h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="row g-3" id="network-track-courses">
+                      <!-- Courses will be populated here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Requirements -->
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-white py-3">
+            <h5 class="card-title mb-0 text-dark">
+              <i class="fas fa-clipboard-list me-2 text-secondary"></i>
+              <span data-i18n="other_requirements">ข้อกำหนดอื่นๆ</span>
+              <small class="text-muted">(20 <span data-i18n="credits_unit">หน่วยกิต</span>)</small>
+            </h5>
+          </div>
+          <div class="card-body">
+            <!-- Free Electives -->
+            <div class="mb-4">
+              <h6 class="text-secondary mb-3">
+                <i class="fas fa-star me-2"></i>
+                <span data-i18n="free_electives">วิชาเลือกเสรี</span>
+                <small class="text-muted">(<span data-i18n="select_subjects">2 วิชา</span>)</small>
+              </h6>
+              <!-- Free Electives Description -->
+              <div class="track-description">
+                <p data-i18n="free_electives_desc"></p>
+              </div>
+              <div class="row g-3" id="free-electives-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+
+            <!-- Internship -->
+            <div class="mb-4">
+              <h6 class="text-secondary mb-3">
+                <i class="fas fa-briefcase me-2"></i>
+                <span data-i18n="internship">การฝึกงาน</span>
+                <small class="text-muted">(12 <span data-i18n="credits_unit">หน่วยกิต</span>)</small>
+              </h6>
+              <!-- Internship Description -->
+              <div class="track-description">
+                <p data-i18n="internship_desc"></p>
+              </div>
+              <div class="row g-3" id="internship-courses">
+                <!-- Courses will be populated here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Save Button -->
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <button id="saveProgressBtn" class="btn btn-primary btn-lg px-5">
+          <i class="fas fa-save me-2"></i>
+          <span data-i18n="save_progress">บันทึกความคืบหน้า</span>
+        </button>
+        <div id="saveSuccess" class="alert alert-success mt-3" style="display: none;">
+          <i class="fas fa-check-circle me-2"></i>
+          <span data-i18n="save_success">บันทึกข้อมูลสำเร็จแล้ว!</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Loading Spinner -->
+  <div class="loading-spinner" id="loadingSpinner">
+    <div class="spinner-content">
+      <div class="spinner-border text-primary mb-3" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <h5 data-i18n="loading_curriculum">กำลังโหลดหลักสูตร...</h5>
+      <p class="text-muted" data-i18n="please_wait">กรุณารอสักครู่</p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Firebase Configuration -->
+  <script src="firebase-config.js"></script>
+  <!-- Curriculum Script -->
+  <script src="curriculum.js"></script>
+</body>
+</html>

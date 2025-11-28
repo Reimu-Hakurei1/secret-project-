@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>สมัครสมาชิกและเลือกหลักสูตร - STIU Student Portal</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body class="bg-light">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-graduation-cap me-2"></i>
+        STIU Student Portal
+      </a>
+      
+      <div class="navbar-nav ms-auto align-items-center">
+        <div class="language-switcher">
+          <button id="lang-th" class="lang-btn active" data-lang="th">ไทย</button>
+          <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <!-- Progress Steps -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="steps">
+              <div class="step active" id="step1">
+                <div class="step-number">1</div>
+                <div class="step-label">ข้อมูลส่วนตัว</div>
+              </div>
+              <div class="step" id="step2">
+                <div class="step-number">2</div>
+                <div class="step-label">เลือกหลักสูตร</div>
+              </div>
+              <div class="step" id="step3">
+                <div class="step-number">3</div>
+                <div class="step-label">สำเร็จ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1: Registration Form -->
+    <div class="row justify-content-center" id="step1-content">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white py-3">
+            <h4 class="card-title mb-0 text-center">
+              <i class="fas fa-user-plus me-2"></i>
+              <span class="text-white">สมัครสมาชิก</span>
+            </h4>
+          </div>
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <div class="avatar-lg mb-3">
+                <i class="fas fa-user-circle"></i>
+              </div>
+              <p class="text-muted">กรอกข้อมูลให้ถูกต้องเพื่อยืนยันตัวตน</p>
+            </div>
+
+            <form id="signupForm" novalidate>
+              <div class="row g-3">
+                <!-- First Name & Last Name -->
+                <div class="col-md-6">
+                  <label for="fname" class="form-label fw-semibold">ชื่อ</label>
+                  <input id="fname" name="firstname" type="text" class="form-control" placeholder="กรุณากรอกชื่อ" required>
+                  <div class="field-error text-danger small mt-1" id="fname-error" style="display: none;">กรุณากรอกชื่อ</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="lname" class="form-label fw-semibold">นามสกุล</label>
+                  <input id="lname" name="lastname" type="text" class="form-control" placeholder="กรุณากรอกนามสกุล" required>
+                  <div class="field-error text-danger small mt-1" id="lname-error" style="display: none;">กรุณากรอกนามสกุล</div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-12">
+                  <label for="email" class="form-label fw-semibold">อีเมล</label>
+                  <input id="email" name="email" type="email" class="form-control" placeholder="กรุณากรอกอีเมล" required>
+                  <div class="field-error text-danger small mt-1" id="email-error" style="display: none;">กรุณากรอกอีเมลที่ถูกต้อง</div>
+                </div>
+
+                <!-- Password & Confirm Password -->
+                <div class="col-md-6">
+                  <label for="password" class="form-label fw-semibold">รหัสผ่าน</label>
+                  <input id="password" name="password" type="password" class="form-control" placeholder="กรุณากรอกรหัสผ่าน" required minlength="8">
+                  <div class="form-text">
+                    <small>รหัสผ่านต้องมี: ตัวพิมพ์ใหญ่, ตัวพิมพ์เล็ก, ตัวเลข, และอักขระพิเศษ</small>
+                  </div>
+                  <div class="password-requirements mt-2">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input requirement-checkbox" type="checkbox" id="req-uppercase" disabled>
+                      <label class="form-check-label small requirement-label" for="req-uppercase">ตัวพิมพ์ใหญ่</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input requirement-checkbox" type="checkbox" id="req-lowercase" disabled>
+                      <label class="form-check-label small requirement-label" for="req-lowercase">ตัวพิมพ์เล็ก</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input requirement-checkbox" type="checkbox" id="req-number" disabled>
+                      <label class="form-check-label small requirement-label" for="req-number">ตัวเลข</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input requirement-checkbox" type="checkbox" id="req-special" disabled>
+                      <label class="form-check-label small requirement-label" for="req-special">อักขระพิเศษ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input requirement-checkbox" type="checkbox" id="req-length" disabled>
+                      <label class="form-check-label small requirement-label" for="req-length">อย่างน้อย 8 ตัวอักษร</label>
+                    </div>
+                  </div>
+                  <div class="field-error text-danger small mt-1" id="password-error" style="display: none;">กรุณากรอกรหัสผ่านให้ตรงตามข้อกำหนด</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="confirmPassword" class="form-label fw-semibold">ยืนยันรหัสผ่าน</label>
+                  <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="กรุณากรอกรหัสผ่านอีกครั้ง" required>
+                  <div class="field-error text-danger small mt-1" id="confirmPassword-error" style="display: none;">รหัสผ่านไม่ตรงกัน</div>
+                  <div id="password-match" class="small mt-1" style="display: none;"></div>
+                </div>
+
+                <!-- Student ID -->
+                <div class="col-12">
+                  <label for="studentId" class="form-label fw-semibold">รหัสนักศึกษา</label>
+                  <input id="studentId" name="studentId" type="text" class="form-control" placeholder="กรุณากรอกรหัสนักศึกษา" required>
+                  <div class="field-error text-danger small mt-1" id="studentId-error" style="display: none;">กรุณากรอกรหัสนักศึกษา</div>
+                </div>
+
+                <!-- Country -->
+                <div class="col-12">
+                  <label for="country" class="form-label fw-semibold">ประเทศ</label>
+                  <select id="country" name="country" class="form-select" required>
+                    <option value="">เลือกประเทศ</option>
+                    <option value="thailand">ไทย</option>
+                    <option value="myanmar">เมียนมา</option>
+                    <option value="other">อื่นๆ</option>
+                  </select>
+                  <div class="field-error text-danger small mt-1" id="country-error" style="display: none;">กรุณาเลือกประเทศ</div>
+                </div>
+
+                <!-- Other Country Input (hidden by default) -->
+                <div class="col-12" id="otherCountryContainer" style="display: none;">
+                  <label for="otherCountry" class="form-label fw-semibold">ระบุประเทศ</label>
+                  <input id="otherCountry" name="otherCountry" type="text" class="form-control" placeholder="กรุณาระบุประเทศ">
+                  <div class="field-error text-danger small mt-1" id="otherCountry-error" style="display: none;">กรุณาระบุประเทศ</div>
+                </div>
+
+                <!-- Track -->
+                <div class="col-12">
+                  <label for="track" class="form-label fw-semibold">เลือกสาขาวิชา</label>
+                  <select id="track" name="track" class="form-select" required>
+                    <option value="">เลือกสาขาวิชา</option>
+                    <option value="software">วิศวกรรมซอฟต์แวร์</option>
+                    <option value="ecommerce">เทคโนโลยีอีคอมเมิร์ซ</option>
+                    <option value="data">วิทยาศาสตร์ข้อมูล</option>
+                    <option value="network">เครือข่ายและความปลอดภัย</option>
+                  </select>
+                  <div class="field-error text-danger small mt-1" id="track-error" style="display: none;">กรุณาเลือกสาขาวิชา</div>
+                </div>
+
+                <!-- Year & Term -->
+                <div class="col-md-6">
+                  <label for="year" class="form-label fw-semibold">ชั้นปี</label>
+                  <select id="year" name="year" class="form-select" required>
+                    <option value="">เลือกชั้นปี</option>
+                    <option value="1">ปี 1</option>
+                    <option value="2">ปี 2</option>
+                    <option value="3">ปี 3</option>
+                    <option value="4">ปี 4</option>
+                  </select>
+                  <div class="field-error text-danger small mt-1" id="year-error" style="display: none;">กรุณาเลือกชั้นปี</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="term" class="form-label fw-semibold">ภาคเรียน</label>
+                  <select id="term" name="term" class="form-select" required>
+                    <option value="">เลือกภาคเรียน</option>
+                    <option value="1">ภาคเรียนที่ 1</option>
+                    <option value="2">ภาคเรียนที่ 2</option>
+                    <option value="3">ภาคเรียนที่ 3</option>
+                  </select>
+                  <div class="field-error text-danger small mt-1" id="term-error" style="display: none;">กรุณาเลือกภาคเรียน</div>
+                </div>
+
+                <!-- Agreement -->
+                <div class="col-12">
+                  <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
+                    <label class="form-check-label" for="agree">
+                      <span>ฉันยอมรับ</span> 
+                      <a href="#" class="text-decoration-none" id="terms-link">ข้อกำหนดและเงื่อนไข</a> 
+                      <span>และ</span> 
+                      <a href="#" class="text-decoration-none" id="privacy-link">นโยบายความเป็นส่วนตัว</a>
+                    </label>
+                  </div>
+                  <div class="field-error text-danger small mt-1" id="agree-error" style="display: none;">กรุณายอมรับข้อกำหนดและเงื่อนไข</div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="col-12 mt-4">
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                      <i class="fas fa-user-plus me-2"></i>
+                      <span>สมัครสมาชิกและเลือกหลักสูตร</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Login Link -->
+                <div class="col-12 text-center mt-4">
+                  <p class="text-muted mb-2">มีบัญชีอยู่แล้ว?</p>
+                  <a href="login.html" class="btn btn-outline-secondary">
+                    <i class="fas fa-sign-in-alt me-2"></i>
+                    <span>เข้าสู่ระบบ</span>
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Course Selection -->
+    <div class="row justify-content-center" id="step2-content" style="display: none;">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-success text-white py-3">
+            <h4 class="card-title mb-0 text-center">
+              <i class="fas fa-graduation-cap me-2"></i>
+              <span class="text-white">เลือกหลักสูตรสาขาเฉพาะ</span>
+            </h4>
+          </div>
+          <div class="card-body p-4 p-md-5">
+            <div class="text-center mb-4">
+              <div class="avatar-lg mb-3">
+                <i class="fas fa-book"></i>
+              </div>
+              <h5 id="track-title" class="text-primary mb-2"></h5>
+              <p class="text-muted">เลือกวิชาที่คุณต้องการศึกษาในสาขานี้</p>
+            </div>
+
+            <!-- Course Selection -->
+            <div id="course-selection">
+              <!-- Courses will be populated here -->
+            </div>
+
+            <!-- Buttons -->
+            <div class="row mt-4">
+              <div class="col-6">
+                <button type="button" class="btn btn-outline-secondary btn-lg w-100" id="backToStep1">
+                  <i class="fas fa-arrow-left me-2"></i>
+                  ย้อนกลับ
+                </button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-success btn-lg w-100" id="saveCoursesBtn">
+                  <i class="fas fa-save me-2"></i>
+                  บันทึกและเสร็จสิ้น
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div class="row justify-content-center" id="step3-content" style="display: none;">
+      <div class="col-12 col-lg-6 col-xl-5">
+        <div class="card shadow-sm">
+          <div class="card-header bg-info text-white py-3">
+            <h4 class="card-title mb-0 text-center">
+              <i class="fas fa-check-circle me-2"></i>
+              <span class="text-white">สมัครสมาชิกสำเร็จ!</span>
+            </h4>
+          </div>
+          <div class="card-body p-4 p-md-5 text-center">
+            <div class="success-icon mb-4">
+              <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+            </div>
+            <h5 class="text-success mb-3">การสมัครสมาชิกเสร็จสมบูรณ์</h5>
+            <p class="text-muted mb-4">บัญชีและหลักสูตรของคุณถูกบันทึกเรียบร้อยแล้ว</p>
+            
+            <div class="user-info mb-4 p-3 bg-light rounded">
+              <h6 id="success-track" class="text-primary mb-2"></h6>
+              <p class="mb-1" id="success-name"></p>
+              <p class="mb-1" id="success-email"></p>
+              <p class="mb-0" id="success-studentid"></p>
+            </div>
+
+            <div class="d-grid gap-2">
+              <a href="login.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-sign-in-alt me-2"></i>
+                เข้าสู่ระบบ
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <div class="alert alert-danger text-center" id="errorMessage" style="display: none;">
+          <div class="d-flex align-items-center justify-content-center mb-2">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <h5 class="mb-0">เกิดข้อผิดพลาด!</h5>
+          </div>
+          <p class="mb-0" id="error-text"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Loading Spinner -->
+  <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+    <div class="spinner-content">
+      <div class="spinner-border text-primary mb-3" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <h5 id="loading-text">กำลังสมัครสมาชิก...</h5>
+      <p class="text-muted">กรุณารอสักครู่</p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Firebase Configuration -->
+  <script src="firebase-config.js"></script>
+  <!-- Main Script -->
+  <script src="register-curriculum.js"></script>
+</body>
+</html>

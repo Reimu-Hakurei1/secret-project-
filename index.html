@@ -3,152 +3,338 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Registration Form - แบบฟอร์มสมัครสมาชิก</title>
+  <title data-i18n="dashboard_title">แดชบอร์ด - STIU Student Portal</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
+  <style>
+    .loading-spinner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .spinner-content {
+      text-align: center;
+    }
+    .lang-btn {
+      border: none;
+      background: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .stat-card {
+      transition: transform 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+    }
+    .avatar-sm {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #0d6efd;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body class="bg-light">
-  <div class="language-switcher">
-    <button id="lang-th" class="lang-btn active" data-lang="th">ไทย</button>
-    <button id="lang-en" class="lang-btn" data-lang="en">English</button>
-  </div>
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-10 col-xl-8">
-        <div class="card shadow-lg border-0">
-          <div class="card-body p-4 p-md-5">
-            <div class="text-center mb-4">
-              <h2 class="fw-bold text-primary mb-2" data-i18n="form_title">กรอกข้อมูล</h2>
-              <p class="text-muted" data-i18n="form_subtitle">กรอกข้อมูลให้ถูกต้องเพื่อยืนยันตัวตน</p>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-graduation-cap me-2"></i>
+        <span data-i18n="portal_name">STIU Student Portal</span>
+      </a>
+      
+      <div class="navbar-nav ms-auto align-items-center">
+        <div class="language-switcher me-3">
+          <button id="lang-th" class="lang-btn active" data-lang="th">ไทย</button>
+          <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        
+        <!-- User Profile Dropdown -->
+        <div class="dropdown user-dropdown">
+          <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
+            <div class="avatar-sm bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2">
+              <i class="fas fa-user"></i>
             </div>
+            <span id="userName" class="text-dark" data-i18n="user">ผู้ใช้</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li>
+              <a class="dropdown-item" href="profile.html">
+                <i class="fas fa-user-cog me-2"></i>
+                <span data-i18n="profile_settings">ตั้งค่าโปรไฟล์</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="curriculum.html">
+                <i class="fas fa-book me-2"></i>
+                <span data-i18n="my_curriculum">หลักสูตรของฉัน</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <button class="dropdown-item text-danger" id="logoutBtn">
+                <i class="fas fa-sign-out-alt me-2"></i>
+                <span data-i18n="logout">ออกจากระบบ</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-            <form id="signupForm" novalidate>
-              <div class="row g-3">
-                <!-- First Name & Last Name -->
-                <div class="col-md-6">
-                  <label for="fname" class="form-label fw-semibold" data-i18n="first_name">ชื่อ</label>
-                  <input id="fname" name="firstname" type="text" class="form-control form-control-lg" 
-                         data-i18n-placeholder="first_name_placeholder" required>
-                  <div class="field-error text-danger small mt-1" id="fname-error" data-i18n="first_name_error">กรุณากรอกชื่อ</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="lname" class="form-label fw-semibold" data-i18n="last_name">นามสกุล</label>
-                  <input id="lname" name="lastname" type="text" class="form-control form-control-lg" 
-                         data-i18n-placeholder="last_name_placeholder" required>
-                  <div class="field-error text-danger small mt-1" id="lname-error" data-i18n="last_name_error">กรุณากรอกนามสกุล</div>
-                </div>
+  <!-- Main Content -->
+  <main class="container-fluid py-4">
+    <!-- Page Header -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h1 class="h2 mb-2 text-dark" data-i18n="dashboard_title">แดชบอร์ด</h1>
+            <p class="text-muted mb-0" data-i18n="welcome">ภาพรวมระบบจัดการนักศึกษา</p>
+          </div>
+          <div class="text-end">
+            <div class="text-muted small" id="currentTime"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                <!-- Email -->
-                <div class="col-12">
-                  <label for="email" class="form-label fw-semibold" data-i18n="email">อีเมล</label>
-                  <input id="email" name="email" type="email" class="form-control form-control-lg" 
-                         data-i18n-placeholder="email_placeholder" required>
-                  <div class="field-error text-danger small mt-1" id="email-error" data-i18n="email_error">กรุณากรอกอีเมลที่ถูกต้อง</div>
-                </div>
-
-                <!-- Student ID -->
-                <div class="col-12">
-                  <label for="studentId" class="form-label fw-semibold" data-i18n="student_id">รหัสนักศึกษา</label>
-                  <input id="studentId" name="studentId" type="text" class="form-control form-control-lg" 
-                         data-i18n-placeholder="student_id_placeholder" required>
-                  <div class="field-error text-danger small mt-1" id="studentId-error" data-i18n="student_id_error">กรุณากรอกรหัสนักศึกษา</div>
-                </div>
-
-                <!-- Country -->
-                <div class="col-12">
-                  <label for="country" class="form-label fw-semibold" data-i18n="country">ประเทศ</label>
-                  <select id="country" name="country" class="form-select form-select-lg" required>
-                    <option value="" data-i18n="select_country">เลือกประเทศ</option>
-                    <option value="thailand" data-i18n="thailand">ไทย</option>
-                    <option value="myanmar" data-i18n="myanmar">เมียนมา</option>
-                    <option value="other" data-i18n="other">อื่นๆ</option>
-                  </select>
-                  <div class="field-error text-danger small mt-1" id="country-error" data-i18n="country_error">กรุณาเลือกประเทศ</div>
-                </div>
-
-                <!-- Track -->
-                <div class="col-12">
-                  <label for="track" class="form-label fw-semibold" data-i18n="track_label">เลือกสาขาวิชา</label>
-                  <select id="track" name="track" class="form-select form-select-lg" required>
-                    <option value="" data-i18n="select_track">เลือกสาขาวิชา</option>
-                    <option value="software" data-i18n="track_software">วิศวกรรมซอฟต์แวร์</option>
-                    <option value="data" data-i18n="track_data">วิทยาศาสตร์ข้อมูล</option>
-                    <option value="network" data-i18n="track_network">เครือข่ายและความปลอดภัย</option>
-                  </select>
-                  <div class="field-error text-danger small mt-1" id="track-error" data-i18n="track_error">กรุณาเลือกสาขาวิชา</div>
-                </div>
-
-                <!-- Year & Term -->
-                <div class="col-md-6">
-                  <label for="year" class="form-label fw-semibold" data-i18n="year_label">ชั้นปี</label>
-                  <select id="year" name="year" class="form-select form-select-lg" required>
-                    <option value="" data-i18n="select_year">เลือกชั้นปี</option>
-                    <option value="1" data-i18n="year1">ปี 1</option>
-                    <option value="2" data-i18n="year2">ปี 2</option>
-                    <option value="3" data-i18n="year3">ปี 3</option>
-                    <option value="4" data-i18n="year4">ปี 4</option>
-                  </select>
-                  <div class="field-error text-danger small mt-1" id="year-error" data-i18n="year_error">กรุณาเลือกชั้นปี</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="term" class="form-label fw-semibold" data-i18n="term_label">ภาคเรียน</label>
-                  <select id="term" name="term" class="form-select form-select-lg" required>
-                    <option value="" data-i18n="select_term">เลือกภาคเรียน</option>
-                    <option value="1" data-i18n="term1">ภาคเรียนที่ 1</option>
-                    <option value="2" data-i18n="term2">ภาคเรียนที่ 2</option>
-                    <option value="3" data-i18n="term3">ภาคเรียนที่ 3</option>
-                  </select>
-                  <div class="field-error text-danger small mt-1" id="term-error" data-i18n="term_error">กรุณาเลือกภาคเรียน</div>
-                </div>
-
-                <!-- Agreement -->
-                <div class="col-12">
-                  <div class="form-check mt-3">
-                    <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
-                    <label class="form-check-label" for="agree">
-                      <span data-i18n="agree_text">ฉันยอมรับ</span> 
-                      <a href="#" class="text-decoration-none" id="terms-link" data-i18n="terms_link">ข้อกำหนดและเงื่อนไข</a> 
-                      <span data-i18n="and_text">และ</span> 
-                      <a href="#" class="text-decoration-none" id="privacy-link" data-i18n="privacy_link">นโยบายความเป็นส่วนตัว</a>
-                    </label>
-                  </div>
-                  <div class="field-error text-danger small mt-1" id="agree-error" data-i18n="agree_error">กรุณายอมรับข้อกำหนดและเงื่อนไข</div>
-                </div>
-
-                <!-- Buttons -->
-                <div class="col-12 mt-4">
-                  <div class="d-grid gap-2 d-md-flex">
-                    <button type="submit" class="btn btn-primary btn-lg flex-fill" id="submitBtn" data-i18n="submit_btn">
-                     ส่งแล้ว!
-                    </button>
-                    <button type="button" class="btn btn-outline-primary btn-lg flex-fill" id="resetBtn" data-i18n="reset_btn">
-                      ล้างแบบฟอร์ม
-                    </button>
-                  </div>
-                </div>
+    <!-- Statistics Cards -->
+    <div class="row g-3 mb-4">
+      <!-- Total Users -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stat-card h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-muted mb-2" data-i18n="total_users">ผู้ใช้ทั้งหมด</h6>
+                <h2 class="text-primary mb-0" id="totalUsers">0</h2>
+                <small class="text-success">
+                  <i class="fas fa-arrow-up me-1"></i>
+                  <span id="userGrowth">0</span>
+                  <span data-i18n="from_last_month">จากเดือนที่แล้ว</span>
+                </small>
               </div>
-            </form>
-
-            <!-- Success Message -->
-            <div class="alert alert-success mt-4 text-center" id="successMessage" style="display: none;">
-              <h4 class="alert-heading" data-i18n="success_title">ส่งแล้ว!</h4>
-              <p class="mb-2" data-i18n="success_message">เราได้ส่งอีเมลยืนยันไปยังที่อยู่อีเมลของคุณแล้ว กรุณาตรวจสอบอีเมลเพื่อยืนยันบัญชี</p>
-            </div>
-
-            <!-- Error Message -->
-            <div class="alert alert-danger mt-4 text-center" id="errorMessage" style="display: none;">
-              <h4 class="alert-heading" data-i18n="error_title">เกิดข้อผิดพลาด!</h4>
-              <p class="mb-2" id="error-text"></p>
+              <div class="text-primary opacity-25">
+                <i class="fas fa-users fa-2x"></i>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- E-Commerce Technology -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stat-card h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-muted mb-2" data-i18n="ecommerce_technology">เทคโนโลยีอีคอมเมิร์ซ</h6>
+                <h2 class="text-info mb-0" id="ecommerceCount">0</h2>
+                <small class="text-muted">
+                  <span id="ecommercePercent">0%</span>
+                  <span data-i18n="of_total">ของทั้งหมด</span>
+                </small>
+              </div>
+              <div class="text-info opacity-25">
+                <i class="fas fa-shopping-cart fa-2x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Software Engineering -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stat-card h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-muted mb-2" data-i18n="software_engineers">วิศวกรรมซอฟต์แวร์</h6>
+                <h2 class="text-success mb-0" id="softwareCount">0</h2>
+                <small class="text-muted">
+                  <span id="softwarePercent">0%</span>
+                  <span data-i18n="of_total">ของทั้งหมด</span>
+                </small>
+              </div>
+              <div class="text-success opacity-25">
+                <i class="fas fa-laptop-code fa-2x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Science -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stat-card h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-muted mb-2" data-i18n="data_science">วิทยาศาสตร์ข้อมูล</h6>
+                <h2 class="text-warning mb-0" id="dataCount">0</h2>
+                <small class="text-muted">
+                  <span id="dataPercent">0%</span>
+                  <span data-i18n="of_total">ของทั้งหมด</span>
+                </small>
+              </div>
+              <div class="text-warning opacity-25">
+                <i class="fas fa-chart-bar fa-2x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Network Security -->
+      <div class="col-xl-3 col-md-6">
+        <div class="card stat-card h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-muted mb-2" data-i18n="network_security">เครือข่ายและความปลอดภัย</h6>
+                <h2 class="text-danger mb-0" id="networkCount">0</h2>
+                <small class="text-muted">
+                  <span id="networkPercent">0%</span>
+                  <span data-i18n="of_total">ของทั้งหมด</span>
+                </small>
+              </div>
+              <div class="text-danger opacity-25">
+                <i class="fas fa-shield-alt fa-2x"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row g-3">
+      <!-- Track Distribution -->
+      <div class="col-xl-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white border-bottom-0 py-3">
+            <h5 class="card-title mb-0 text-dark" data-i18n="track_distribution">การกระจายตัวตามสาขาวิชา</h5>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="trackChart" height="250"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Country Distribution -->
+      <div class="col-xl-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-white border-bottom-0 py-3">
+            <h5 class="card-title mb-0 text-dark" data-i18n="country_distribution">การกระจายตัวตามประเทศ</h5>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="countryChart" height="250"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Registrations -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-white border-bottom-0 py-3 d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0 text-dark" data-i18n="recent_registrations">ผู้ใช้ที่ลงทะเบียนล่าสุด</h5>
+            <button class="btn btn-sm btn-outline-primary" id="refreshUsers">
+              <i class="fas fa-sync-alt me-1"></i>
+              <span data-i18n="refresh">รีเฟรช</span>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th data-i18n="name">ชื่อ-นามสกุล</th>
+                    <th data-i18n="student_id">รหัสนักศึกษา</th>
+                    <th data-i18n="track">สาขาวิชา</th>
+                    <th data-i18n="country">ประเทศ</th>
+                    <th data-i18n="registration_date">วันที่ลงทะเบียน</th>
+                  </tr>
+                </thead>
+                <tbody id="recentUsersTableBody">
+                  <tr>
+                    <td colspan="5" class="text-center text-muted py-4">
+                      <i class="fas fa-spinner fa-spin me-2"></i>
+                      <span data-i18n="loading">กำลังโหลดข้อมูล...</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer bg-white border-top mt-5">
+    <div class="container-fluid py-3">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <span class="text-muted">&copy; 2025 <span data-i18n="portal_name">STIU Student Portal</span>. <span data-i18n="all_rights_reserved">All rights reserved.</span></span>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <span class="text-muted" data-i18n="version">Version 1.0.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Loading Spinner -->
+  <div class="loading-spinner" id="loadingSpinner">
+    <div class="spinner-content">
+      <div class="spinner-border text-primary mb-3" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <h5 data-i18n="loading_dashboard">กำลังโหลดแดชบอร์ด...</h5>
+      <p class="text-muted" data-i18n="please_wait">กรุณารอสักครู่</p>
     </div>
   </div>
 
@@ -156,7 +342,43 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Firebase Configuration -->
   <script src="firebase-config.js"></script>
-  <!-- Main Script -->
-  <script src="script.js"></script>
+  <!-- Dashboard Script -->
+  <script src="dashboard.js"></script>
+
+  <!-- Authentication Check Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🔐 Starting authentication check...');
+      
+      const checkFirebaseAuth = setInterval(() => {
+        if (window.firebaseAuth) {
+          clearInterval(checkFirebaseAuth);
+          console.log('✅ Firebase Auth is ready, checking user status...');
+          
+          firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+              console.log('🚫 User not authenticated, redirecting to login page...');
+              window.location.href = 'login.html';
+            } else {
+              console.log('✅ User authenticated:', user.email);
+              // Initialize dashboard if the function exists
+              if (typeof initializeDashboard === 'function') {
+                initializeDashboard();
+              }
+            }
+          });
+        }
+      }, 100);
+
+      // Timeout after 10 seconds if Firebase doesn't load
+      setTimeout(() => {
+        clearInterval(checkFirebaseAuth);
+        if (!window.firebaseAuth) {
+          console.error('❌ Firebase auth not available after 10 seconds, redirecting to login...');
+          window.location.href = 'login.html';
+        }
+      }, 10000);
+    });
+  </script>
 </body>
 </html>
