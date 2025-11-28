@@ -17,54 +17,141 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   
   <style>
-    .loading-spinner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
+    /* Enhanced Table Styles */
+    .recent-users-table {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    .spinner-content {
-      text-align: center;
+    
+    .recent-users-table .table {
+      margin-bottom: 0;
     }
-    .lang-btn {
-      border: none;
-      background: none;
-      padding: 5px 10px;
-      border-radius: 4px;
+    
+    .recent-users-table thead th {
+      background-color: #f8f9fa;
+      border-bottom: 2px solid #dee2e6;
+      font-weight: 600;
+      color: #495057;
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .recent-users-table tbody tr {
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .recent-users-table tbody tr:hover {
+      background-color: #f8f9ff !important;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 3px solid #4e73df;
       cursor: pointer;
     }
-    .lang-btn.active {
-      background-color: rgba(255, 255, 255, 0.2);
+    
+    .recent-users-table tbody td {
+      padding: 16px;
+      vertical-align: middle;
+      border-color: #f1f3f4;
+      transition: all 0.3s ease;
     }
-    .stat-card {
-      transition: transform 0.2s;
+    
+    .recent-users-table tbody tr:hover td {
+      padding-left: 20px;
     }
-    .stat-card:hover {
-      transform: translateY(-2px);
-    }
-    .avatar-sm {
-      width: 32px;
-      height: 32px;
+    
+    .user-avatar {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background-color: #0d6efd;
-      color: white;
+      background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-right: 12px;
     }
-    .fade-in {
-      animation: fadeIn 0.5s ease-in;
+    
+    .user-name {
+      font-weight: 500;
+      color: #2d3748;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    
+    .user-email {
+      font-size: 0.875rem;
+      color: #718096;
+    }
+    
+    .track-badge {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .country-flag {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 8px;
+      object-fit: cover;
+    }
+    
+    .registration-date {
+      font-size: 0.875rem;
+      color: #718096;
+    }
+    
+    .table-loading {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    .empty-state {
+      padding: 3rem 1rem;
+      text-align: center;
+      color: #6c757d;
+    }
+    
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    
+    /* Enhanced refresh button */
+    .refresh-btn {
+      transition: all 0.3s ease;
+      border: 1px solid #4e73df;
+    }
+    
+    .refresh-btn:hover {
+      background-color: #4e73df;
+      color: white;
+    }
+    
+    .refresh-btn:active {
+      transform: scale(0.95);
+    }
+    
+    /* Card header enhancement */
+    .card-header-custom {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-bottom: 1px solid #dee2e6;
+      padding: 1rem 1.5rem;
     }
   </style>
 </head>
@@ -74,40 +161,39 @@
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
         <i class="fas fa-graduation-cap me-2"></i>
-        <span data-i18n="portal_name">STIU Student Portal</span>
+        STIU Student Portal
       </a>
       
       <div class="navbar-nav ms-auto align-items-center">
-        <div class="language-switcher me-3">
+        <div class="language-switcher">
           <button id="lang-th" class="lang-btn active" data-lang="th">ไทย</button>
           <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
         </div>
         
-        <!-- User Profile Dropdown -->
-        <div class="dropdown user-dropdown">
+        <div class="dropdown user-dropdown ms-3">
           <button class="btn btn-light dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
-            <div class="avatar-sm bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2">
+            <div class="avatar-sm">
               <i class="fas fa-user"></i>
             </div>
-            <span id="userName" class="text-dark" data-i18n="user">ผู้ใช้</span>
+            <span id="userName">ผู้ใช้</span>
           </button>
-          <ul class="dropdown-menu dropdown-menu-end shadow">
+          <ul class="dropdown-menu dropdown-menu-end">
             <li>
               <a class="dropdown-item" href="profile.html">
-                <i class="fas fa-user-cog me-2"></i>
+                <i class="fas fa-user-cog"></i>
                 <span data-i18n="profile_settings">ตั้งค่าโปรไฟล์</span>
               </a>
             </li>
             <li>
               <a class="dropdown-item" href="curriculum.html">
-                <i class="fas fa-book me-2"></i>
+                <i class="fas fa-book"></i>
                 <span data-i18n="my_curriculum">หลักสูตรของฉัน</span>
               </a>
             </li>
             <li><hr class="dropdown-divider"></li>
             <li>
               <button class="dropdown-item text-danger" id="logoutBtn">
-                <i class="fas fa-sign-out-alt me-2"></i>
+                <i class="fas fa-sign-out-alt"></i>
                 <span data-i18n="logout">ออกจากระบบ</span>
               </button>
             </li>
@@ -118,19 +204,12 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="container-fluid py-4">
+  <main class="container my-4">
     <!-- Page Header -->
     <div class="row mb-4">
       <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <h1 class="h2 mb-2 text-dark" data-i18n="dashboard_title">แดชบอร์ด</h1>
-            <p class="text-muted mb-0" data-i18n="welcome">ภาพรวมระบบจัดการนักศึกษา</p>
-          </div>
-          <div class="text-end">
-            <div class="text-muted small" id="currentTime"></div>
-          </div>
-        </div>
+        <h1 class="h2 mb-2 text-dark" data-i18n="dashboard_title">แดชบอร์ด</h1>
+        <p class="text-muted" data-i18n="welcome">ภาพรวมระบบจัดการนักศึกษา</p>
       </div>
     </div>
 
@@ -138,190 +217,143 @@
     <div class="row g-3 mb-4">
       <!-- Total Users -->
       <div class="col-xl-3 col-md-6">
-        <div class="card stat-card h-100">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="card-title text-muted mb-2" data-i18n="total_users">ผู้ใช้ทั้งหมด</h6>
-                <h2 class="text-primary mb-0" id="totalUsers">0</h2>
-                <small class="text-success">
-                  <i class="fas fa-arrow-up me-1"></i>
-                  <span id="userGrowth">0</span>
-                  <span data-i18n="from_last_month">จากเดือนที่แล้ว</span>
-                </small>
-              </div>
-              <div class="text-primary opacity-25">
-                <i class="fas fa-users fa-2x"></i>
-              </div>
+        <div class="card stat-card border-left-primary shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-primary">
+              <i class="fas fa-users"></i>
             </div>
+            <div class="stat-number text-primary" id="totalUsers">0</div>
+            <div class="stat-label" data-i18n="total_users">ผู้ใช้ทั้งหมด</div>
           </div>
         </div>
       </div>
-
+      
       <!-- E-Commerce Technology -->
       <div class="col-xl-3 col-md-6">
-        <div class="card stat-card h-100">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="card-title text-muted mb-2" data-i18n="ecommerce_technology">เทคโนโลยีอีคอมเมิร์ซ</h6>
-                <h2 class="text-info mb-0" id="ecommerceCount">0</h2>
-                <small class="text-muted">
-                  <span id="ecommercePercent">0%</span>
-                  <span data-i18n="of_total">ของทั้งหมด</span>
-                </small>
-              </div>
-              <div class="text-info opacity-25">
-                <i class="fas fa-shopping-cart fa-2x"></i>
-              </div>
+        <div class="card stat-card border-left-info shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-info">
+              <i class="fas fa-shopping-cart"></i>
             </div>
+            <div class="stat-number text-info" id="ecommerceCount">0</div>
+            <div class="stat-label" data-i18n="ecommerce_technology">เทคโนโลยีอีคอมเมิร์ซ</div>
           </div>
         </div>
       </div>
-
+      
       <!-- Software Engineering -->
       <div class="col-xl-3 col-md-6">
-        <div class="card stat-card h-100">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="card-title text-muted mb-2" data-i18n="software_engineers">วิศวกรรมซอฟต์แวร์</h6>
-                <h2 class="text-success mb-0" id="softwareCount">0</h2>
-                <small class="text-muted">
-                  <span id="softwarePercent">0%</span>
-                  <span data-i18n="of_total">ของทั้งหมด</span>
-                </small>
-              </div>
-              <div class="text-success opacity-25">
-                <i class="fas fa-laptop-code fa-2x"></i>
-              </div>
+        <div class="card stat-card border-left-success shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-success">
+              <i class="fas fa-laptop-code"></i>
             </div>
+            <div class="stat-number text-success" id="softwareCount">0</div>
+            <div class="stat-label" data-i18n="software_engineers">วิศวกรรมซอฟต์แวร์</div>
           </div>
         </div>
       </div>
-
+      
       <!-- Data Science -->
       <div class="col-xl-3 col-md-6">
-        <div class="card stat-card h-100">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="card-title text-muted mb-2" data-i18n="data_science">วิทยาศาสตร์ข้อมูล</h6>
-                <h2 class="text-warning mb-0" id="dataCount">0</h2>
-                <small class="text-muted">
-                  <span id="dataPercent">0%</span>
-                  <span data-i18n="of_total">ของทั้งหมด</span>
-                </small>
-              </div>
-              <div class="text-warning opacity-25">
-                <i class="fas fa-chart-bar fa-2x"></i>
-              </div>
+        <div class="card stat-card border-left-warning shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-warning">
+              <i class="fas fa-chart-bar"></i>
             </div>
+            <div class="stat-number text-warning" id="dataCount">0</div>
+            <div class="stat-label" data-i18n="data_science">วิทยาศาสตร์ข้อมูล</div>
           </div>
         </div>
       </div>
-
+      
       <!-- Network Security -->
       <div class="col-xl-3 col-md-6">
-        <div class="card stat-card h-100">
+        <div class="card stat-card border-left-danger shadow-sm h-100">
+          <div class="card-body text-center">
+            <div class="stat-icon text-danger">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="stat-number text-danger" id="networkCount">0</div>
+            <div class="stat-label" data-i18n="network_security">เครือข่ายและความปลอดภัย</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="row g-3 mb-4">
+      <div class="col-xl-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0" data-i18n="track_distribution">การกระจายตัวตามสาขาวิชา</h5>
+          </div>
           <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <h6 class="card-title text-muted mb-2" data-i18n="network_security">เครือข่ายและความปลอดภัย</h6>
-                <h2 class="text-danger mb-0" id="networkCount">0</h2>
-                <small class="text-muted">
-                  <span id="networkPercent">0%</span>
-                  <span data-i18n="of_total">ของทั้งหมด</span>
-                </small>
-              </div>
-              <div class="text-danger opacity-25">
-                <i class="fas fa-shield-alt fa-2x"></i>
-              </div>
+            <div class="chart-container">
+              <canvas id="trackChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0" data-i18n="country_distribution">การกระจายตัวตามประเทศ</h5>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="countryChart"></canvas>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Charts Row -->
-    <div class="row g-3">
-      <!-- Track Distribution -->
-      <div class="col-xl-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-header bg-white border-bottom-0 py-3">
-            <h5 class="card-title mb-0 text-dark" data-i18n="track_distribution">การกระจายตัวตามสาขาวิชา</h5>
-          </div>
-          <div class="card-body">
-            <div class="chart-container">
-              <canvas id="trackChart" height="250"></canvas>
-            </div>
-          </div>
-        </div>
+    <!-- Recent Users -->
+    <div class="card shadow-sm recent-users-table">
+      <div class="card-header card-header-custom d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0 text-dark" data-i18n="recent_registrations">ผู้ใช้ที่ลงทะเบียนล่าสุด</h5>
+        <button class="btn btn-sm refresh-btn" id="refreshUsers">
+          <i class="fas fa-sync-alt me-1"></i>
+          <span data-i18n="refresh">รีเฟรช</span>
+        </button>
       </div>
-
-      <!-- Country Distribution -->
-      <div class="col-xl-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-header bg-white border-bottom-0 py-3">
-            <h5 class="card-title mb-0 text-dark" data-i18n="country_distribution">การกระจายตัวตามประเทศ</h5>
-          </div>
-          <div class="card-body">
-            <div class="chart-container">
-              <canvas id="countryChart" height="250"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recent Registrations -->
-    <div class="row mt-4">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-header bg-white border-bottom-0 py-3 d-flex justify-content-between align-items-center">
-            <h5 class="card-title mb-0 text-dark" data-i18n="recent_registrations">ผู้ใช้ที่ลงทะเบียนล่าสุด</h5>
-            <button class="btn btn-sm btn-outline-primary" id="refreshUsers">
-              <i class="fas fa-sync-alt me-1"></i>
-              <span data-i18n="refresh">รีเฟรช</span>
-            </button>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-hover mb-0">
-                <thead>
-                  <tr>
-                    <th data-i18n="name">ชื่อ-นามสกุล</th>
-                    <th data-i18n="student_id">รหัสนักศึกษา</th>
-                    <th data-i18n="track">สาขาวิชา</th>
-                    <th data-i18n="country">ประเทศ</th>
-                    <th data-i18n="registration_date">วันที่ลงทะเบียน</th>
-                  </tr>
-                </thead>
-                <tbody id="recentUsersTableBody">
-                  <tr>
-                    <td colspan="5" class="text-center text-muted py-4">
-                      <i class="fas fa-spinner fa-spin me-2"></i>
-                      <span data-i18n="loading">กำลังโหลดข้อมูล...</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th data-i18n="name">ชื่อ-นามสกุล</th>
+                <th data-i18n="student_id">รหัสนักศึกษา</th>
+                <th data-i18n="track">สาขาวิชา</th>
+                <th data-i18n="country">ประเทศ</th>
+                <th data-i18n="registration_date">วันที่ลงทะเบียน</th>
+              </tr>
+            </thead>
+            <tbody id="recentUsersTableBody">
+              <tr>
+                <td colspan="5" class="text-center text-muted py-4">
+                  <i class="fas fa-spinner fa-spin me-2"></i>
+                  <span data-i18n="loading_data">กำลังโหลดข้อมูล...</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="footer bg-white border-top mt-5">
-    <div class="container-fluid py-3">
+  <footer class="footer">
+    <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
-          <span class="text-muted">&copy; 2025 <span data-i18n="portal_name">STIU Student Portal</span>. <span data-i18n="all_rights_reserved">All rights reserved.</span></span>
+          <span class="text-muted">&copy; 2025 STIU Student Portal. All rights reserved.</span>
         </div>
         <div class="col-md-6 text-center text-md-end">
-          <span class="text-muted" data-i18n="version">Version 1.0.0</span>
+          <span class="text-muted">Version 3.2.3</span>
         </div>
       </div>
     </div>
@@ -330,9 +362,7 @@
   <!-- Loading Spinner -->
   <div class="loading-spinner" id="loadingSpinner">
     <div class="spinner-content">
-      <div class="spinner-border text-primary mb-3" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
+      <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;"></div>
       <h5 data-i18n="loading_dashboard">กำลังโหลดแดชบอร์ด...</h5>
       <p class="text-muted" data-i18n="please_wait">กรุณารอสักครู่</p>
     </div>

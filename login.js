@@ -85,6 +85,9 @@ function switchLanguage(lang) {
     }
   });
   
+  // Update page title
+  updatePageTitle(lang);
+  
   // Update all elements with data-i18n attribute
   document.querySelectorAll('[data-i18n]').forEach(element => {
     const key = element.getAttribute('data-i18n');
@@ -100,6 +103,14 @@ function switchLanguage(lang) {
       element.setAttribute('placeholder', loginTranslations[lang][key]);
     }
   });
+}
+
+function updatePageTitle(lang) {
+  const titleElement = document.querySelector('title');
+  const key = 'login_title';
+  if (loginTranslations[lang] && loginTranslations[lang][key]) {
+    titleElement.textContent = loginTranslations[lang][key] + ' - STIU Student Portal';
+  }
 }
 
 function setupEventListeners() {

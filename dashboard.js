@@ -34,7 +34,11 @@ const dashboardTranslations = {
     "no_data": "ไม่มีข้อมูล",
     "try_again": "ลองอีกครั้ง",
     "error": "เกิดข้อผิดพลาด",
-    "number_of_users": "จำนวนผู้ใช้"
+    "number_of_users": "จำนวนผู้ใช้",
+    "saving": "กำลังบันทึก...",
+    "loading_data": "กำลังโหลดข้อมูล...",
+    "no_users_found": "ไม่พบข้อมูลผู้ใช้",
+    "view_profile": "ดูโปรไฟล์"
   },
   en: {
     "dashboard_title": "Dashboard",
@@ -68,7 +72,11 @@ const dashboardTranslations = {
     "no_data": "No data available",
     "try_again": "Try Again",
     "error": "Error",
-    "number_of_users": "Number of Users"
+    "number_of_users": "Number of Users",
+    "saving": "Saving...",
+    "loading_data": "Loading data...",
+    "no_users_found": "No users found",
+    "view_profile": "View Profile"
   }
 };
 
@@ -465,9 +473,10 @@ function updateRecentUsersTable(users) {
   if (recentUsers.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="5" class="text-center text-muted py-4">
-          <i class="fas fa-users me-2"></i>
-          ${dashboardTranslations[currentLang].no_data}
+        <td colspan="5" class="empty-state">
+          <i class="fas fa-users"></i>
+          <h6 class="text-muted">${dashboardTranslations[currentLang].no_users_found}</h6>
+          <small class="text-muted">${dashboardTranslations[currentLang].no_data}</small>
         </td>
       </tr>
     `;
@@ -476,7 +485,15 @@ function updateRecentUsersTable(users) {
   
   recentUsers.forEach(user => {
     const row = document.createElement('tr');
-    row.className = 'fade-in';
+    row.className = 'user-row';
+    row.style.cursor = 'pointer';
+    
+    // Add click event to view user profile
+    row.addEventListener('click', function() {
+      console.log('👤 Viewing user profile:', user.id);
+      // You can implement user profile view here
+      alert(`${dashboardTranslations[currentLang].view_profile}: ${user.firstName} ${user.lastName}`);
+    });
     
     let trackDisplay = '';
     let trackBadgeClass = 'bg-primary';
@@ -505,14 +522,45 @@ function updateRecentUsersTable(users) {
     }
     
     const regDate = new Date(user.registrationDate);
-    const formattedDate = regDate.toLocaleDateString(currentLang === 'th' ? 'th-TH' : 'en-US');
+    const formattedDate = regDate.toLocaleDateString(currentLang === 'th' ? 'th-TH' : 'en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+    
+    // Get user initials for avatar
+    const initials = (user.firstName?.charAt(0) || '') + (user.lastName?.charAt(0) || '');
     
     row.innerHTML = `
-      <td>${user.firstName} ${user.lastName}</td>
-      <td><strong>${user.studentId}</strong></td>
-      <td><span class="badge ${trackBadgeClass}">${trackDisplay}</span></td>
-      <td>${countryDisplay}</td>
-      <td><small class="text-muted">${formattedDate}</small></td>
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="user-avatar">
+            ${initials || '<i class="fas fa-user"></i>'}
+          </div>
+          <div>
+            <div class="user-name">${user.firstName} ${user.lastName}</div>
+            <div class="user-email">${user.email}</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <strong class="text-primary">${user.studentId || 'N/A'}</strong>
+      </td>
+      <td>
+        <span class="badge track-badge ${trackBadgeClass}">${trackDisplay}</span>
+      </td>
+      <td>
+        <div class="d-flex align-items-center">
+          <span>${countryDisplay}</span>
+        </div>
+      </td>
+      <td>
+        <div class="registration-date">${formattedDate}</div>
+        <small class="text-muted">${regDate.toLocaleTimeString(currentLang === 'th' ? 'th-TH' : 'en-US', { 
+          hour: '2-digit', 
+          minute: '2-digit' 
+        })}</small>
+      </td>
     `;
     
     tbody.appendChild(row);
@@ -536,13 +584,14 @@ function hideLoadingSpinner() {
 function showError(message) {
   const spinner = document.getElementById('loadingSpinner');
   if (spinner) {
+    const translations = dashboardTranslations[currentLang];
     spinner.innerHTML = `
       <div class="text-center">
         <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
-        <h5 class="text-danger">${dashboardTranslations[currentLang].error}</h5>
+        <h5 class="text-danger">${translations.error}</h5>
         <p class="text-muted">${message}</p>
         <button class="btn btn-primary mt-2" onclick="location.reload()">
-          ${dashboardTranslations[currentLang].try_again}
+          ${translations.try_again}
         </button>
       </div>
     `;
@@ -552,7 +601,22 @@ function showError(message) {
 async function refreshData() {
   try {
     console.log('🔄 Refreshing dashboard data...');
-    await loadDashboardData();
+    
+    // Show loading state in refresh button
+    const refreshBtn = document.getElementById('refreshUsers');
+    if (refreshBtn) {
+      const originalHtml = refreshBtn.innerHTML;
+      refreshBtn.disabled = true;
+      refreshBtn.innerHTML = `<i class="fas fa-spinner fa-spin me-1"></i>${dashboardTranslations[currentLang].loading}`;
+      
+      await loadDashboardData();
+      
+      // Restore button state
+      refreshBtn.disabled = false;
+      refreshBtn.innerHTML = originalHtml;
+    } else {
+      await loadDashboardData();
+    }
   } catch (error) {
     console.error('❌ Error refreshing data:', error);
   }

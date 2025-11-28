@@ -259,11 +259,12 @@ const translations = {
   }
 };
 
-// Track course data
+// Track course data - Updated with correct credits and year numbers from PDF
 const trackData = {
   software: [
     { code: "ITE220", name: "Web Development II", credits: 4, year: 3, prerequisite: "ITE222" },
     { code: "ITE343", name: "Mobile Application Development", credits: 4, year: 3, prerequisite: "ITE222" },
+    { code: "ITE365", name: "Software Quality Management", credits: 4, year: 3, prerequisite: "" },
     { code: "ITE367", name: "Software Architecture and Modelling", credits: 4, year: 3, prerequisite: "ITE321" },
     { code: "ITE368", name: "Software Testing and Maintenance", credits: 4, year: 3, prerequisite: "ITE222" }
   ],
@@ -401,20 +402,32 @@ function updateAllText() {
   // Update page title
   document.title = langData.page_title;
   
-  // Update step labels
-  updateStepLabels(langData);
+  // Update all elements with data-i18n attribute
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (langData[key]) {
+      element.textContent = langData[key];
+    }
+  });
   
-  // Update form labels and placeholders
-  updateFormText(langData);
+  // Update all elements with data-i18n-placeholder attribute
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    if (langData[key]) {
+      element.placeholder = langData[key];
+    }
+  });
   
-  // Update buttons text
-  updateButtonsText(langData);
+  // Update all elements with data-i18n-title attribute
+  document.querySelectorAll('[data-i18n-title]').forEach(element => {
+    const key = element.getAttribute('data-i18n-title');
+    if (langData[key]) {
+      element.title = langData[key];
+    }
+  });
   
-  // Update loading text
-  updateLoadingText(langData);
-  
-  // Update error text
-  updateErrorText(langData);
+  // Update select options
+  updateAllSelectOptions(langData);
   
   // Update dynamic content if on step 2 or 3
   if (currentStep === 2) {
@@ -426,186 +439,36 @@ function updateAllText() {
   console.log('✅ All text updated for language:', currentLang);
 }
 
-function updateStepLabels(langData) {
-  const step1Label = document.querySelector('#step1 .step-label');
-  const step2Label = document.querySelector('#step2 .step-label');
-  const step3Label = document.querySelector('#step3 .step-label');
+function updateAllSelectOptions(langData) {
+  // Update all select dropdowns
+  const selects = ['country', 'track', 'year', 'term'];
   
-  if (step1Label) step1Label.textContent = langData.step1_label;
-  if (step2Label) step2Label.textContent = langData.step2_label;
-  if (step3Label) step3Label.textContent = langData.step3_label;
-}
-
-function updateFormText(langData) {
-  // Update form titles
-  const formTitle = document.querySelector('.card-header h4 span');
-  if (formTitle) formTitle.textContent = langData.form_title;
-  
-  const formSubtitle = document.querySelector('.text-muted');
-  if (formSubtitle && (formSubtitle.textContent.includes('กรอกข้อมูล') || formSubtitle.textContent.includes('Fill in'))) {
-    formSubtitle.textContent = langData.form_subtitle;
-  }
-  
-  // Update avatar alt text
-  const avatarIcons = document.querySelectorAll('.avatar-lg i');
-  avatarIcons.forEach(icon => {
-    if (icon.classList.contains('fa-user-circle')) {
-      icon.setAttribute('title', langData.avatar_user);
-    } else if (icon.classList.contains('fa-book')) {
-      icon.setAttribute('title', langData.avatar_book);
-    }
+  selects.forEach(selectId => {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    
+    const options = select.querySelectorAll('option');
+    options.forEach(option => {
+      const key = option.getAttribute('data-i18n');
+      if (key && langData[key]) {
+        option.textContent = langData[key];
+      }
+    });
   });
-  
-  // Update labels
-  const labels = {
-    'fname': langData.first_name,
-    'lname': langData.last_name,
-    'email': langData.email,
-    'password': langData.password,
-    'confirmPassword': langData.confirm_password,
-    'studentId': langData.student_id,
-    'country': langData.country,
-    'track': langData.track_label,
-    'year': langData.year_label,
-    'term': langData.term_label
-  };
-  
-  Object.keys(labels).forEach(id => {
-    const label = document.querySelector(`label[for="${id}"]`);
-    if (label) label.textContent = labels[id];
-  });
-  
-  // Update placeholders
-  const placeholders = {
-    'fname': langData.first_name_placeholder,
-    'lname': langData.last_name_placeholder,
-    'email': langData.email_placeholder,
-    'password': langData.password_placeholder,
-    'confirmPassword': langData.confirm_password_placeholder,
-    'studentId': langData.student_id_placeholder,
-    'otherCountry': langData.other_country_placeholder
-  };
-  
-  Object.keys(placeholders).forEach(id => {
-    const input = document.getElementById(id);
-    if (input) input.placeholder = placeholders[id];
-  });
-  
-  // Update password requirements
-  const passwordText = document.querySelector('.form-text small');
-  if (passwordText) passwordText.textContent = langData.password_requirements;
-  
-  // Update requirement labels
-  const reqLabels = {
-    'req-uppercase': langData.req_uppercase,
-    'req-lowercase': langData.req_lowercase,
-    'req-number': langData.req_number,
-    'req-special': langData.req_special,
-    'req-length': langData.req_length
-  };
-  
-  Object.keys(reqLabels).forEach(id => {
-    const label = document.querySelector(`label[for="${id}"]`);
-    if (label) label.textContent = reqLabels[id];
-  });
-  
-  // Update agreement text
-  const agreeLabel = document.querySelector('label[for="agree"]');
-  if (agreeLabel) {
-    agreeLabel.innerHTML = `
-      <span>${langData.agree_text}</span> 
-      <a href="#" class="text-decoration-none" id="terms-link">${langData.terms_link}</a> 
-      <span>${langData.and_text}</span> 
-      <a href="#" class="text-decoration-none" id="privacy-link">${langData.privacy_link}</a>
-    `;
-  }
-  
-  // Update login section
-  const haveAccount = document.querySelector('.text-center .text-muted');
-  if (haveAccount) haveAccount.textContent = langData.have_account;
-  
-  // Update select options
-  updateSelectOptions('country', langData);
-  updateSelectOptions('track', langData);
-  updateSelectOptions('year', langData);
-  updateSelectOptions('term', langData);
-}
-
-function updateSelectOptions(selectId, langData) {
-  const select = document.getElementById(selectId);
-  if (!select) return;
-  
-  const options = select.querySelectorAll('option');
-  options.forEach(option => {
-    const value = option.value;
-    if (value && langData[value]) {
-      option.textContent = langData[value];
-    } else if (option.textContent.includes('เลือก') || option.textContent.includes('Select')) {
-      const selectKey = `select_${selectId}`;
-      option.textContent = langData[selectKey] || option.textContent;
-    }
-  });
-}
-
-function updateButtonsText(langData) {
-  // Update submit button
-  const submitBtn = document.getElementById('submitBtn');
-  if (submitBtn) {
-    submitBtn.innerHTML = `<i class="fas fa-user-plus me-2"></i>${langData.submit_btn}`;
-  }
-  
-  // Update back button
-  const backBtn = document.getElementById('backToStep1');
-  if (backBtn) {
-    backBtn.innerHTML = `<i class="fas fa-arrow-left me-2"></i>${langData.back_btn}`;
-  }
-  
-  // Update save courses button
-  const saveBtn = document.getElementById('saveCoursesBtn');
-  if (saveBtn) {
-    saveBtn.innerHTML = `<i class="fas fa-save me-2"></i>${langData.save_courses_btn}`;
-  }
-  
-  // Update login button
-  const loginBtn = document.querySelector('a[href="login.html"]');
-  if (loginBtn) {
-    loginBtn.innerHTML = `<i class="fas fa-sign-in-alt me-2"></i>${langData.login_link}`;
-  }
-}
-
-function updateLoadingText(langData) {
-  const loadingText = document.getElementById('loading-text');
-  const pleaseWait = document.querySelector('#loadingSpinner .text-muted');
-  
-  if (loadingText) {
-    loadingText.textContent = currentStep === 1 ? langData.loading_register : langData.loading_courses;
-  }
-  
-  if (pleaseWait) {
-    pleaseWait.textContent = langData.please_wait;
-  }
-}
-
-function updateErrorText(langData) {
-  const errorTitle = document.querySelector('#errorMessage h5');
-  if (errorTitle) {
-    errorTitle.textContent = langData.error_title;
-  }
 }
 
 function updateCourseSelectionText(langData) {
-  // Update course selection title
-  const courseTitle = document.querySelector('#step2-content .card-title span');
-  if (courseTitle) courseTitle.textContent = langData.course_selection_title;
-  
-  const courseSubtitle = document.querySelector('#step2-content .text-muted');
-  if (courseSubtitle) courseSubtitle.textContent = langData.course_selection_subtitle;
-  
   // Update track title
   const track = userData.track;
   const trackTitle = document.getElementById('track-title');
   if (trackTitle && trackNames[currentLang][track]) {
     trackTitle.textContent = trackNames[currentLang][track];
+  }
+  
+  // Update course instruction text
+  const courseInstruction = document.querySelector('#course-selection .text-muted');
+  if (courseInstruction) {
+    courseInstruction.textContent = langData.select_courses_instruction;
   }
   
   // Update course cards if they exist
@@ -634,16 +497,6 @@ function updateCourseSelectionText(langData) {
 }
 
 function updateSuccessText(langData) {
-  // Update success title
-  const successTitle = document.querySelector('#step3-content .card-title span');
-  if (successTitle) successTitle.textContent = langData.success_title;
-  
-  const successMessage = document.querySelector('#step3-content .text-success');
-  if (successMessage) successMessage.textContent = langData.success_message;
-  
-  const successDescription = document.querySelector('#step3-content .text-muted');
-  if (successDescription) successDescription.textContent = langData.success_description;
-  
   // Update user info
   const successTrack = document.getElementById('success-track');
   const successName = document.getElementById('success-name');
@@ -1134,7 +987,7 @@ function renderCourseSelection() {
   let coursesHTML = `
     <div class="row g-3">
       <div class="col-12">
-        <p class="text-muted mb-3">${translations[currentLang].select_courses_instruction}</p>
+        <p class="text-muted mb-3 text-center" data-i18n="select_courses_instruction">${translations[currentLang].select_courses_instruction}</p>
       </div>
   `;
   
@@ -1416,6 +1269,31 @@ style.textContent = `
   #step3-content .btn {
     width: auto !important;
     min-width: 200px;
+  }
+  
+  .avatar-lg {
+    font-size: 4rem;
+  }
+  
+  .loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .spinner-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
   
   @keyframes bounce {

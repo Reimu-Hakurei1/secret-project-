@@ -37,9 +37,6 @@ const curriculumTranslations = {
     "course_not_started": "ยังไม่เริ่มศึกษา",
     "credits": "หน่วยกิต",
     "year": "ปี",
-    "choose_subjects": "เลือกวิชา",
-    "required_subjects": "วิชาบังคับ",
-    "select_subjects": "เลือกวิชา",
     "credits_unit": "หน่วยกิต",
     "prerequisite": "วิชาบังคับก่อน",
     "please_wait": "กรุณารอสักครู่",
@@ -86,9 +83,6 @@ const curriculumTranslations = {
     "course_not_started": "Not Started",
     "credits": "credits",
     "year": "Year",
-    "choose_subjects": "Choose Subjects",
-    "required_subjects": "Required Subjects",
-    "select_subjects": "Select Subjects",
     "credits_unit": "credits",
     "prerequisite": "Prerequisite",
     "please_wait": "Please wait a moment",
@@ -499,16 +493,16 @@ function renderCurriculum() {
 }
 
 function renderGeneralEducation() {
-  renderCourseSection('humanities-courses', curriculumData.generalEducation.humanities, 'choose_subjects');
-  renderCourseSection('social-sciences-courses', curriculumData.generalEducation.socialSciences, 'choose_subjects');
-  renderCourseSection('language-courses', curriculumData.generalEducation.languages, 'required_subjects');
-  renderCourseSection('science-math-courses', curriculumData.generalEducation.scienceMath, 'choose_subjects');
+  renderCourseSection('humanities-courses', curriculumData.generalEducation.humanities);
+  renderCourseSection('social-sciences-courses', curriculumData.generalEducation.socialSciences);
+  renderCourseSection('language-courses', curriculumData.generalEducation.languages);
+  renderCourseSection('science-math-courses', curriculumData.generalEducation.scienceMath);
 }
 
 function renderProfessionalCourses() {
-  renderCourseSection('core-courses', curriculumData.professionalCourses.core, 'required_subjects');
-  renderCourseSection('major-requirements-courses', curriculumData.professionalCourses.majorRequirements, 'required_subjects');
-  renderCourseSection('major-electives-courses', curriculumData.professionalCourses.majorElectives, 'select_subjects');
+  renderCourseSection('core-courses', curriculumData.professionalCourses.core);
+  renderCourseSection('major-requirements-courses', curriculumData.professionalCourses.majorRequirements);
+  renderCourseSection('major-electives-courses', curriculumData.professionalCourses.majorElectives);
 }
 
 function renderSpecializationTracks() {
@@ -520,11 +514,11 @@ function renderSpecializationTracks() {
 }
 
 function renderOtherRequirements() {
-  renderCourseSection('free-electives-courses', curriculumData.otherRequirements.freeElectives, 'select_subjects');
-  renderCourseSection('internship-courses', curriculumData.otherRequirements.internship, 'required_subjects');
+  renderCourseSection('free-electives-courses', curriculumData.otherRequirements.freeElectives);
+  renderCourseSection('internship-courses', curriculumData.otherRequirements.internship);
 }
 
-function renderCourseSection(containerId, courses, subjectType) {
+function renderCourseSection(containerId, courses) {
   const container = document.getElementById(containerId);
   if (!container) {
     console.log(`⚠️ Container #${containerId} not found`);
@@ -535,7 +529,7 @@ function renderCourseSection(containerId, courses, subjectType) {
   
   courses.forEach(course => {
     const isCompleted = userProgress[course.code] === true;
-    const courseElement = createCourseElement(course, isCompleted, subjectType);
+    const courseElement = createCourseElement(course, isCompleted);
     container.appendChild(courseElement);
   });
   
@@ -553,14 +547,14 @@ function renderTrackSection(containerId, courses) {
   
   courses.forEach(course => {
     const isCompleted = userProgress[course.code] === true;
-    const courseElement = createCourseElement(course, isCompleted, 'select_subjects');
+    const courseElement = createCourseElement(course, isCompleted);
     container.appendChild(courseElement);
   });
   
   console.log(`✅ Rendered ${courses.length} courses in track ${containerId}`);
 }
 
-function createCourseElement(course, isCompleted, subjectType) {
+function createCourseElement(course, isCompleted) {
   const col = document.createElement('div');
   col.className = 'col-md-6 col-lg-4 col-xl-3';
   
@@ -591,7 +585,6 @@ function createCourseElement(course, isCompleted, subjectType) {
                 ${statusText}
               </small>
             </div>
-            ${subjectType ? `<div class="mt-1"><small class="text-info"><i class="fas fa-info-circle me-1"></i>${curriculumTranslations[currentLang][subjectType]}</small></div>` : ''}
             ${course.prerequisite ? `<div class="mt-1"><small class="course-prerequisite text-warning" data-prerequisite="${course.prerequisite}"></small></div>` : ''}
           </label>
         </div>
