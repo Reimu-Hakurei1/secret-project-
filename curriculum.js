@@ -624,14 +624,45 @@ function updateProgressSummary() {
   const totalCredits = 160;
   let completedCredits = 0;
   
-  // Calculate completed credits from user progress
-  Object.values(curriculumData).forEach(category => {
-    Object.values(category).forEach(courses => {
-      courses.forEach(course => {
+  // Fixed: Properly iterate through all courses in the curriculum data structure
+  // General Education courses
+  Object.values(curriculumData.generalEducation).forEach(courses => {
+    courses.forEach(course => {
+      if (userProgress[course.code]) {
+        completedCredits += course.credits;
+      }
+    });
+  });
+  
+  // Professional Courses - Core, Major Requirements, Major Electives
+  Object.values(curriculumData.professionalCourses).forEach(courseGroup => {
+    // Check if it's an array (core, majorRequirements, majorElectives)
+    if (Array.isArray(courseGroup)) {
+      courseGroup.forEach(course => {
         if (userProgress[course.code]) {
           completedCredits += course.credits;
         }
       });
+    } else {
+      // It's an object with tracks (softwareTrack, ecommerceTrack, etc.)
+      Object.values(courseGroup).forEach(courses => {
+        if (Array.isArray(courses)) {
+          courses.forEach(course => {
+            if (userProgress[course.code]) {
+              completedCredits += course.credits;
+            }
+          });
+        }
+      });
+    }
+  });
+  
+  // Other Requirements - Free Electives and Internship
+  Object.values(curriculumData.otherRequirements).forEach(courses => {
+    courses.forEach(course => {
+      if (userProgress[course.code]) {
+        completedCredits += course.credits;
+      }
     });
   });
   
