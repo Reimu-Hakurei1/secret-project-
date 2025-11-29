@@ -96,8 +96,8 @@ const translations = {
     
     // Course selection
     "course_selection_title": "เลือกหลักสูตรสาขาเฉพาะ",
-    "course_selection_subtitle": "เลือกวิชาที่คุณต้องการศึกษาในสาขานี้",
-    "select_courses_instruction": "เลือกวิชาที่คุณต้องการศึกษา (เลือกได้ทั้งหมดหรือบางส่วน):",
+    "course_selection_subtitle": "เลือกวิชาที่คุณเคยเรียนมาแล้วในสาขานี้",
+    "select_courses_instruction": "เลือกวิชาที่เคยเรียนมาแล้ว",
     "credits": "หน่วยกิต",
     "year": "ปี",
     "prerequisite": "วิชาบังคับก่อน",
@@ -222,9 +222,9 @@ const translations = {
     "login_btn": "Login",
     
     // Course selection
-    "course_selection_title": "Select Specialization Track Courses",
-    "course_selection_subtitle": "Select the courses you want to study in this track",
-    "select_courses_instruction": "Select the courses you want to study (you can select all or some):",
+    "course_selection_title": "Select Specialized Program",
+    "course_selection_subtitle": "Select the courses you have previously taken in this program",
+    "select_courses_instruction": "Select the courses you have already taken",
     "credits": "credits",
     "year": "Year",
     "prerequisite": "Prerequisite",
