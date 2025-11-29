@@ -224,18 +224,31 @@ main {
   letter-spacing: 0.5px;
 }
 
-/* Progress Bars */
-.progress {
-  height: 12px;
-  border-radius: 10px;
-  background-color: #eaecf4;
-  overflow: hidden;
+/* Progress Bar — Solid Blue */
+#progressBar,
+.progress-bar-solid {
+  background-color: #0d6efd !important;   /* Bootstrap primary blue */
+  background-image: none !important;
+  box-shadow: none !important;
 }
 
-.progress-bar {
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--success) 0%, var(--success-dark) 100%);
-  transition: width 0.6s ease;
+/* Remove any overlays */
+#progressBar::before,
+.progress-bar-solid::before {
+  content: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+/* Prevent Bootstrap bg-* from overriding your color */
+#progressBar.bg-success,
+#progressBar.bg-warning,
+#progressBar.bg-danger,
+#progressBar.bg-info,
+#progressBar.bg-primary {
+  background-color: #0d6efd !important;
+  background-image: none !important;
+  box-shadow: none !important;
 }
 
 /* Charts */
