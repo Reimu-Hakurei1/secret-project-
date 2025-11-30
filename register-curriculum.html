@@ -93,7 +93,10 @@
                 <div class="col-12">
                   <label for="email" class="form-label fw-semibold" data-i18n="email">อีเมล</label>
                   <input id="email" name="email" type="email" class="form-control" data-i18n-placeholder="email_placeholder" required>
-                  <div class="field-error text-danger small mt-1" id="email-error" style="display: none;" data-i18n="email_error">กรุณากรอกอีเมลที่ถูกต้อง</div>
+                  <div class="form-text">
+                    <small data-i18n="email_requirements">ต้องใช้อีเมล @students.stamford.edu เท่านั้น</small>
+                  </div>
+                  <div class="field-error text-danger small mt-1" id="email-error" style="display: none;" data-i18n="email_error">กรุณากรอกอีเมล @students.stamford.edu ที่ถูกต้อง</div>
                 </div>
 
                 <!-- Password & Confirm Password -->
@@ -338,7 +341,7 @@
           <span class="text-muted">&copy; 2025 STIU Student Portal. All rights reserved.</span>
         </div>
         <div class="col-md-6 text-center text-md-end">
-          <span class="text-muted">Version 3.2.3</span>
+          <span class="text-muted">Version 3.3.3</span>
         </div>
       </div>
     </div>

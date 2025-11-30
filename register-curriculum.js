@@ -25,7 +25,8 @@ const translations = {
     
     "email": "อีเมล",
     "email_placeholder": "กรุณากรอกอีเมล",
-    "email_error": "กรุณากรอกอีเมลที่ถูกต้อง",
+    "email_error": "กรุณากรอกอีเมล @students.stamford.edu ที่ถูกต้อง",
+    "email_requirements": "ต้องใช้อีเมล @students.stamford.edu เท่านั้น",
     
     "password": "รหัสผ่าน",
     "password_placeholder": "กรุณากรอกรหัสผ่าน",
@@ -152,7 +153,8 @@ const translations = {
     
     "email": "Email",
     "email_placeholder": "Please enter your email",
-    "email_error": "Please enter a valid email",
+    "email_error": "Please enter a valid @students.stamford.edu email",
+    "email_requirements": "Only @students.stamford.edu emails are allowed",
     
     "password": "Password",
     "password_placeholder": "Please enter your password",
@@ -644,6 +646,12 @@ function setupEventListeners() {
     confirmPasswordField.addEventListener('input', validatePasswordMatch);
   }
 
+  // Email validation listener
+  const emailField = document.getElementById('email');
+  if (emailField) {
+    emailField.addEventListener('blur', validateStamfordEmail);
+  }
+
   // Terms and Privacy links
   document.addEventListener('click', function(e) {
     if (e.target.id === 'terms-link') {
@@ -677,6 +685,27 @@ function setupEventListeners() {
   }
   
   console.log('✅ Event listeners setup complete');
+}
+
+function validateStamfordEmail() {
+  const emailField = document.getElementById('email');
+  const email = emailField.value.trim();
+  
+  if (email === '') {
+    return true; // Let required validation handle empty field
+  }
+  
+  const isValidStamfordEmail = isValidStamfordEmailFormat(email);
+  
+  if (!isValidStamfordEmail) {
+    emailField.classList.add('is-invalid');
+    emailField.classList.remove('is-valid');
+    return false;
+  } else {
+    emailField.classList.add('is-valid');
+    emailField.classList.remove('is-invalid');
+    return true;
+  }
 }
 
 async function handleFormSubmit(e) {
@@ -730,9 +759,13 @@ function validateForm() {
     }
   });
   
-  // Validate email format
+  // Validate email format and Stamford domain
   const emailField = document.getElementById('email');
   if (emailField.value && !isValidEmail(emailField.value)) {
+    document.getElementById('email-error').style.display = 'block';
+    emailField.classList.add('is-invalid');
+    isValid = false;
+  } else if (emailField.value && !isValidStamfordEmailFormat(emailField.value)) {
     document.getElementById('email-error').style.display = 'block';
     emailField.classList.add('is-invalid');
     isValid = false;
@@ -788,6 +821,11 @@ async function submitRegistration() {
     
     // Validate email format again
     if (!isValidEmail(email)) {
+      throw new Error(translations[currentLang].email_error);
+    }
+    
+    // Validate Stamford email domain
+    if (!isValidStamfordEmailFormat(email)) {
       throw new Error(translations[currentLang].email_error);
     }
     
@@ -1148,6 +1186,11 @@ function hideLoadingSpinner() {
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+}
+
+function isValidStamfordEmailFormat(email) {
+  const stamfordEmailRegex = /^[a-zA-Z0-9._%+-]+@students\.stamford\.edu$/;
+  return stamfordEmailRegex.test(email);
 }
 
 function isStrongPassword(password) {
