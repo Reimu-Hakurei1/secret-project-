@@ -25,12 +25,6 @@ Instead, report it privately using one of the following:
 **📩 GitHub Security Advisories (Recommended):**  
 Go to the repository → *Security* tab → *Report a vulnerability*
 
-or
-
-**📧 Email:**  
-security@example.com  
-(Replace this email with your own if needed.)
-
 Please include:
 
 - A clear description of the issue  
