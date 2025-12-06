@@ -1475,7 +1475,10 @@ function updateCourseCardsLanguage() {
     if (prerequisiteElement) {
       const prerequisiteText = prerequisiteElement.getAttribute('data-prerequisite');
       if (prerequisiteText) {
-        prerequisiteElement.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i><strong>${curriculumTranslations[currentLang].prerequisite}:</strong> ${prerequisiteText}`;
+        // Insert trusted HTML markup
+        prerequisiteElement.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i><strong>${curriculumTranslations[currentLang].prerequisite}:</strong> `;
+        // Safely append untrusted prerequisiteText
+        prerequisiteElement.appendChild(document.createTextNode(prerequisiteText));
       }
     }
   });
