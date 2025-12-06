@@ -93,6 +93,26 @@
       background-color: #0d6efd;
       color: white;
     }
+    /* Forgot Password Modal Styles */
+    .modal-success-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #d1e7dd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: #0f5132;
+      font-size: 40px;
+    }
+    /* Fix for aria-hidden warning */
+    .modal.fade {
+      display: none;
+    }
+    .modal.fade.show {
+      display: block;
+    }
   </style>
 </head>
 <body class="bg-light">
@@ -156,8 +176,16 @@
                   <div class="field-error text-danger small mt-1" id="password-error" data-i18n="password_error" style="display: none;">Please enter your password</div>
                 </div>
 
+                <!-- Forgot Password Link -->
+                <div class="col-12 text-end">
+                  <a href="#" class="text-decoration-none small" id="forgotPasswordLink" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+                    <i class="fas fa-key me-1"></i>
+                    <span data-i18n="forgot_password">Forgot Password?</span>
+                  </a>
+                </div>
+
                 <!-- Login Button -->
-                <div class="col-12 mt-4">
+                <div class="col-12 mt-2">
                   <button type="submit" class="btn btn-primary btn-lg w-100 py-3" id="loginBtn">
                     <i class="fas fa-sign-in-alt me-2"></i>
                     <span data-i18n="login_btn">Login</span>
@@ -202,6 +230,57 @@
       </div>
     </div>
   </footer>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="forgotPasswordModalLabel" data-i18n="forgot_password_title">Reset Password</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div id="forgotPasswordForm">
+            <p class="text-muted mb-4" data-i18n="forgot_password_instructions">
+              Enter your email address and we'll send you a link to reset your password.
+            </p>
+            
+            <div class="mb-3">
+              <label for="resetEmail" class="form-label fw-semibold" data-i18n="email">Email</label>
+              <input type="email" class="form-control" id="resetEmail" 
+                     data-i18n-placeholder="email_placeholder" required>
+              <div class="field-error text-danger small mt-1" id="reset-email-error" style="display: none;"></div>
+            </div>
+            
+            <div class="alert alert-info mt-3">
+              <i class="fas fa-info-circle me-2"></i>
+              <small data-i18n="forgot_password_note">
+                You'll receive an email with instructions to reset your password. Check your spam folder if you don't see it.
+              </small>
+            </div>
+          </div>
+          
+          <!-- Success Message (hidden by default) -->
+          <div id="forgotPasswordSuccess" style="display: none;">
+            <div class="modal-success-icon">
+              <i class="fas fa-check"></i>
+            </div>
+            <h5 class="text-center mb-3" data-i18n="forgot_password_success_title">Email Sent!</h5>
+            <p class="text-center text-muted" id="successMessageText"></p>
+            <p class="text-center text-muted small" data-i18n="forgot_password_success_note">
+              Please check your email inbox (and spam folder) for the password reset link.
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" data-i18n="cancel">Cancel</button>
+          <button type="button" class="btn btn-primary" id="sendResetLinkBtn">
+            <span data-i18n="send_reset_link">Send Reset Link</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Loading Spinner -->
   <div class="loading-spinner" id="loadingSpinner" style="display: none;">
