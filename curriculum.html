@@ -13,6 +13,110 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  
+  <style>
+    /* Loading Spinner */
+    .loading-spinner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .spinner-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Custom styles for language dropdown */
+    .language-dropdown-scroll {
+      max-height: 300px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
+    .language-dropdown-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .language-dropdown-scroll::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
+    }
+    
+    .language-dropdown-scroll::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 3px;
+    }
+    
+    .language-dropdown-scroll::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    
+    .language-dropdown-menu {
+      min-width: 200px;
+      padding: 0;
+    }
+    
+    .language-dropdown-item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 8px 16px;
+    }
+    
+    .dropdown-item.active {
+      background-color: #0d6efd;
+      color: white;
+    }
+    
+    .footer {
+      background-color: #f8f9fa;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      border-top: 1px solid #dee2e6;
+    }
+    
+    /* Progress bar styles */
+    .progress-bar-solid {
+      background-color: #0d6efd;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+    
+    /* Course card styles */
+    .course-card {
+      transition: all 0.3s ease;
+      border-width: 2px;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .course-card.border-success {
+      background-color: rgba(25, 135, 84, 0.05);
+    }
+    
+    .track-card {
+      border-width: 2px;
+    }
+    
+    .track-card .card-header {
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body class="bg-light">
   <!-- Navigation -->
@@ -24,9 +128,17 @@
       </a>
       
       <div class="navbar-nav ms-auto align-items-center">
-        <div class="language-switcher">
-          <button id="lang-th" class="lang-btn active" data-lang="th">ไทย</button>
-          <button id="lang-en" class="lang-btn" data-lang="en">EN</button>
+        <!-- Updated Language Selector - Matching profile.html -->
+        <div class="dropdown">
+          <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-globe me-1"></i>
+            <span id="currentLanguage">ไทย</span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end language-dropdown-menu" aria-labelledby="languageDropdown">
+            <div class="language-dropdown-scroll" id="languageMenu">
+              <!-- Language options will be populated by JavaScript -->
+            </div>
+          </div>
         </div>
         
         <div class="dropdown user-dropdown ms-3">
@@ -64,15 +176,15 @@
 
   <main class="container my-4">
     <!-- Progress Summary -->
-<div class="row mb-4">
-  <div class="col-12">
-    <div class="card shadow-sm">
-      <div class="card-header bg-primary text-white py-3">
-        <h4 class="card-title mb-0 text-white">
-          <i class="fas fa-tasks me-2"></i>
-          <span data-i18n="progress_summary" class="text-white">สรุปความคืบหน้าหลักสูตร</span>
-        </h4>
-      </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white py-3">
+            <h4 class="card-title mb-0 text-white">
+              <i class="fas fa-tasks me-2"></i>
+              <span data-i18n="progress_summary" class="text-white">สรุปความคืบหน้าหลักสูตร</span>
+            </h4>
+          </div>
           <div class="card-body">
             <div class="row text-center">
               <div class="col-xl-3 col-md-6 mb-3">
@@ -101,8 +213,8 @@
               </div>
             </div>
             <div class="progress mt-3" style="height: 12px;">
-            <div id="progressBar" class="progress-bar-solid" 
-                 role="progressbar" style="width: 0%"></div>
+              <div id="progressBar" class="progress-bar-solid" 
+                   role="progressbar" style="width: 0%"></div>
             </div>
           </div>
         </div>
@@ -388,7 +500,7 @@
           <span class="text-muted">&copy; 2025 STIU Student Portal. All rights reserved.</span>
         </div>
         <div class="col-md-6 text-center text-md-end">
-          <span class="text-muted">Version 3.3.3</span>
+          <span class="text-muted">Version 4.0.0</span>
         </div>
       </div>
     </div>
