@@ -168,6 +168,131 @@
       margin-top: 2rem;
       border-top: 1px solid #dee2e6;
     }
+    
+    /* Password field with eye icon inside */
+    .password-wrapper {
+      position: relative;
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #6c757d;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 10;
+    }
+    
+    .password-toggle:hover {
+      color: #495057;
+    }
+    
+    .password-toggle:focus {
+      outline: none;
+    }
+    
+    .form-control.password-field {
+      padding-right: 40px;
+    }
+    
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      overflow: auto;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal.show {
+      display: block;
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 0;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      animation: modalFadeIn 0.3s ease;
+    }
+    
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #dee2e6;
+      background-color: #f8f9fa;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    
+    .modal-body h4, .modal-body h5, .modal-body h6 {
+      color: #0d6efd;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .modal-body h4:first-child {
+      margin-top: 0;
+    }
+    
+    .modal-body p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .modal-body ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .modal-body li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    
+    .modal-close {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #6c757d;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+    
+    .modal-close:hover {
+      color: #0d6efd;
+    }
   </style>
 </head>
 <body class="bg-light">
@@ -265,7 +390,12 @@
                 <!-- Password & Confirm Password -->
                 <div class="col-md-6">
                   <label for="password" class="form-label fw-semibold" data-i18n="password">Password</label>
-                  <input id="password" name="password" type="password" class="form-control" data-i18n-placeholder="password_placeholder" required minlength="8">
+                  <div class="password-wrapper">
+                    <input id="password" name="password" type="password" class="form-control password-field" data-i18n-placeholder="password_placeholder" required minlength="8">
+                    <button type="button" class="password-toggle" id="togglePassword">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
                   <div class="form-text">
                     <small data-i18n="password_requirements">Password must contain: uppercase, lowercase, number, and special character</small>
                   </div>
@@ -273,7 +403,12 @@
                 </div>
                 <div class="col-md-6">
                   <label for="confirmPassword" class="form-label fw-semibold" data-i18n="confirm_password">Confirm Password</label>
-                  <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" data-i18n-placeholder="confirm_password_placeholder" required>
+                  <div class="password-wrapper">
+                    <input id="confirmPassword" name="confirmPassword" type="password" class="form-control password-field" data-i18n-placeholder="confirm_password_placeholder" required>
+                    <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
                   <div class="field-error text-danger small mt-1" id="confirmPassword-error" style="display: none;" data-i18n="confirm_password_error">Passwords do not match</div>
                   <div id="password-match" class="small mt-1" style="display: none;"></div>
                 </div>
@@ -366,9 +501,9 @@
                     <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
                     <label class="form-check-label" for="agree">
                       <span data-i18n="agree_text">I agree to the</span> 
-                      <a href="#" class="text-decoration-none" id="terms-link" data-i18n="terms_link">Terms and Conditions</a> 
-                      <span data-i18n="and_text">and</span> 
-                      <a href="#" class="text-decoration-none" id="privacy-link" data-i18n="privacy_link">Privacy Policy</a>
+<a href="#" class="text-decoration-none" id="termsLink" data-i18n="terms_link">Terms and Conditions</a> 
+<span data-i18n="and_text">and</span> 
+<a href="#" class="text-decoration-none" id="privacyLink" data-i18n="privacy_link">Privacy Policy</a>
                     </label>
                   </div>
                   <div class="field-error text-danger small mt-1" id="agree-error" style="display: none;" data-i18n="agree_error">Please accept the terms and conditions</div>
@@ -518,6 +653,19 @@
       <p class="text-muted" data-i18n="please_wait">Please wait a moment</p>
     </div>
   </div>
+
+<!-- Terms & Conditions and Privacy Policy Modal -->
+<div class="modal" id="legalModal">
+  <div class="modal-content">
+    <div class="modal-header position-relative">
+      <h2 class="modal-title text-center w-100" id="modalTitle">Terms and Conditions</h2>
+      <button type="button" class="btn-close position-absolute" style="right: 1rem; top: 1.5rem;" aria-label="Close"></button>
+    </div>
+    <div class="modal-body" id="modalContent">
+      <!-- Content will be loaded here by JavaScript -->
+    </div>
+  </div>
+</div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
