@@ -113,6 +113,18 @@
     .modal.fade.show {
       display: block;
     }
+    /* Password toggle button */
+    #togglePassword {
+      border-color: #ced4da;
+      border-left: 0;
+      background-color: white;
+    }
+    #togglePassword:hover {
+      background-color: #f8f9fa;
+    }
+    .input-group-text {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="bg-light">
@@ -165,14 +177,19 @@
                   <label for="loginEmail" class="form-label fw-semibold" data-i18n="email">Email</label>
                   <input id="loginEmail" name="email" type="email" class="form-control form-control-lg" 
                          data-i18n-placeholder="email_placeholder" required>
-                  <div class="field-error text-danger small mt-1" id="email-error" data-i18n="email_error" style="display: none;">Please enter a valid email</div>
+                  <div class="field-error text-danger small mt-1" id="email-error" data-i18n="email_error" style="display: none;">Wrong Email or Password</div>
                 </div>
 
                 <!-- Password -->
                 <div class="col-12">
                   <label for="loginPassword" class="form-label fw-semibold" data-i18n="password">Password</label>
-                  <input id="loginPassword" name="password" type="password" class="form-control form-control-lg" 
-                         data-i18n-placeholder="password_placeholder" required>
+                  <div class="input-group">
+                    <input id="loginPassword" name="password" type="password" class="form-control form-control-lg" 
+                           data-i18n-placeholder="password_placeholder" required>
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
                   <div class="field-error text-danger small mt-1" id="password-error" data-i18n="password_error" style="display: none;">Please enter your password</div>
                 </div>
 

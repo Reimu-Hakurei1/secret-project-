@@ -5,7 +5,7 @@ const loginTranslations = {
     "login_subtitle": "Please enter your email and password",
     "email": "Email",
     "email_placeholder": "e.g. 1234567890@students.stamford.edu",
-    "email_error": "Please enter a valid email",
+    "email_error": "Wrong Email or Password",
     "password": "Password",
     "password_placeholder": "Enter your password",
     "password_error": "Please enter your password",
@@ -33,7 +33,7 @@ const loginTranslations = {
     "login_subtitle": "请输入您的电子邮件和密码",
     "email": "电子邮件",
     "email_placeholder": "例如：1234567890@students.stamford.edu",
-    "email_error": "请输入有效的电子邮件",
+    "email_error": "邮箱或密码错误",
     "password": "密码",
     "password_placeholder": "输入密码",
     "password_error": "请输入密码",
@@ -61,7 +61,7 @@ const loginTranslations = {
     "login_subtitle": "メールアドレスとパスワードを入力してください",
     "email": "メールアドレス",
     "email_placeholder": "例: 1234567890@students.stamford.edu",
-    "email_error": "有効なメールアドレスを入力してください",
+    "email_error": "メールアドレスまたはパスワードが間違っています",
     "password": "パスワード",
     "password_placeholder": "パスワードを入力",
     "password_error": "パスワードを入力してください",
@@ -89,7 +89,7 @@ const loginTranslations = {
     "login_subtitle": "이메일과 비밀번호를 입력해 주세요",
     "email": "이메일",
     "email_placeholder": "예: 1234567890@students.stamford.edu",
-    "email_error": "유효한 이메일을 입력해 주세요",
+    "email_error": "이메일 또는 비밀번호가 잘못되었습니다",
     "password": "비밀번호",
     "password_placeholder": "비밀번호 입력",
     "password_error": "비밀번호를 입력해 주세요",
@@ -117,7 +117,7 @@ const loginTranslations = {
     "login_subtitle": "الرجاء إدخال البريد الإلكتروني وكلمة المرور",
     "email": "البريد الإلكتروني",
     "email_placeholder": "مثال: 1234567890@students.stamford.edu",
-    "email_error": "الرجاء إدخال بريد إلكتروني صالح",
+    "email_error": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
     "password": "كلمة المرور",
     "password_placeholder": "أدخل كلمة المرور",
     "password_error": "الرجاء إدخال كلمة المرور",
@@ -145,7 +145,7 @@ const loginTranslations = {
     "login_subtitle": "कृपया अपना ईमेल और पासवर्ड दर्ज करें",
     "email": "ईमेल",
     "email_placeholder": "जैसे: 1234567890@students.stamford.edu",
-    "email_error": "कृपया एक वैध ईमेल दर्ज करें",
+    "email_error": "गलत ईमेल या पासवर्डं",
     "password": "पासवर्ड",
     "password_placeholder": "अपना पासवर्ड दर्ज करें",
     "password_error": "कृपया अपना पासवर्ड दर्ज करें",
@@ -173,7 +173,7 @@ const loginTranslations = {
     "login_subtitle": "กรุณากรอกอีเมลและรหัสผ่าน",
     "email": "อีเมล",
     "email_placeholder": "เช่น 1234567890@students.stamford.edu",
-    "email_error": "กรุณากรอกอีเมลที่ถูกต้อง",
+    "email_error": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
     "password": "รหัสผ่าน",
     "password_placeholder": "กรอกรหัสผ่าน",
     "password_error": "กรุณากรอกรหัสผ่าน",
@@ -201,7 +201,7 @@ const loginTranslations = {
     "login_subtitle": "Vui lòng nhập email và mật khẩu",
     "email": "Email",
     "email_placeholder": "ví dụ: 1234567890@students.stamford.edu",
-    "email_error": "Vui lòng nhập email hợp lệ",
+    "email_error": "Email hoặc mật khẩu không đúng",
     "password": "Mật khẩu",
     "password_placeholder": "Nhập mật khẩu",
     "password_error": "Vui lòng nhập mật khẩu",
@@ -229,7 +229,7 @@ const loginTranslations = {
     "login_subtitle": "Silakan masukkan email dan kata sandi",
     "email": "Email",
     "email_placeholder": "contoh: 1234567890@students.stamford.edu",
-    "email_error": "Silakan masukkan email yang valid",
+    "email_error": "Email atau kata sandi salah",
     "password": "Kata Sandi",
     "password_placeholder": "Masukkan kata sandi",
     "password_error": "Silakan masukkan kata sandi",
@@ -257,7 +257,7 @@ const loginTranslations = {
     "login_subtitle": "Sila masukkan e-mel dan kata laluan",
     "email": "E-mel",
     "email_placeholder": "contoh: 1234567890@students.stamford.edu",
-    "email_error": "Sila masukkan e-mel yang sah",
+    "email_error": "E-mel atau kata laluan salah",
     "password": "Kata Laluan",
     "password_placeholder": "Masukkan kata laluan",
     "password_error": "Sila masukkan kata laluan",
@@ -285,7 +285,7 @@ const loginTranslations = {
     "login_subtitle": "Пожалуйста, введите вашу электронную почту и пароль",
     "email": "Электронная почта",
     "email_placeholder": "например: 1234567890@students.stamford.edu",
-    "email_error": "Пожалуйста, введите действительный адрес электронной почты",
+    "email_error": "Неверный email или пароль",
     "password": "Пароль",
     "password_placeholder": "Введите пароль",
     "password_error": "Пожалуйста, введите пароль",
@@ -313,7 +313,7 @@ const loginTranslations = {
     "login_subtitle": "براہ کرم اپنا ای میل اور پاس ورڈ درج کریں",
     "email": "ای میل",
     "email_placeholder": "مثال: 1234567890@students.stamford.edu",
-    "email_error": "براہ کرم ایک درست ای میل درج کریں",
+    "email_error": "غلط ای میل یا پاس ورڈ",
     "password": "پاس ورڈ",
     "password_placeholder": "پاس ورڈ درج کریں",
     "password_error": "براہ کرم پاس ورڈ درج کریں",
@@ -341,7 +341,7 @@ const loginTranslations = {
     "login_subtitle": "Lütfen e-postanızı ve şifrenizi girin",
     "email": "E-posta",
     "email_placeholder": "örnek: 1234567890@students.stamford.edu",
-    "email_error": "Lütfen geçerli bir e-posta girin",
+    "email_error": "Hatalı e-posta veya şifre",
     "password": "Şifre",
     "password_placeholder": "Şifrenizi girin",
     "password_error": "Lütfen şifrenizi girin",
@@ -369,7 +369,7 @@ const loginTranslations = {
     "login_subtitle": "لطفاً ایمیل و رمز عبور خود را وارد کنید",
     "email": "ایمیل",
     "email_placeholder": "مثال: 1234567890@students.stamford.edu",
-    "email_error": "لطفاً یک ایمیل معتبر وارد کنید",
+    "email_error": "ایمیل یا رمز عبور اشتباه است",
     "password": "رمز عبور",
     "password_placeholder": "رمز عبور را وارد کنید",
     "password_error": "لطفاً رمز عبور را وارد کنید",
@@ -397,7 +397,7 @@ const loginTranslations = {
     "login_subtitle": "தயவு செய்து உங்கள் மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும்",
     "email": "மின்னஞ்சல்",
     "email_placeholder": "எ.கா: 1234567890@students.stamford.edu",
-    "email_error": "சரியான மின்னஞ்சலை உள்ளிடவும்",
+    "email_error": "தவறான இமெயில் அல்லது கடவுச்சொல்",
     "password": "கடவுச்சொல்",
     "password_placeholder": "கடவுச்சொல்லை உள்ளிடவும்",
     "password_error": "கடவுச்சொல்லை உள்ளிடவும்",
@@ -425,7 +425,7 @@ const loginTranslations = {
     "login_subtitle": "దయచేసి మీ ఇమెయిల్ మరియు పాస్వర్డ్ నమోదు చేయండి",
     "email": "ఇమెయిల్",
     "email_placeholder": "ఉదా: 1234567890@students.stamford.edu",
-    "email_error": "దయచేసి సరైన ఇమెయిల్ నమోదు చేయండి",
+    "email_error": "తప్పు ఇమెయిల్ లేదా పాస్‌వర్డ్",
     "password": "పాస్వర్డ్",
     "password_placeholder": "పాస్వర్డ్ నమోదు చేయండి",
     "password_error": "దయచేసి పాస్వర్డ్ నమోదు చేయండి",
@@ -453,7 +453,7 @@ const loginTranslations = {
     "login_subtitle": "আপনার ইমেইল এবং পাসওয়ার্ড দিন",
     "email": "ইমেইল",
     "email_placeholder": "যেমন: 1234567890@students.stamford.edu",
-    "email_error": "সঠিক ইমেইল দিন",
+    "email_error": "ভুল ইমেইল বা পাসওয়ার্ড",
     "password": "পাসওয়ার্ড",
     "password_placeholder": "পাসওয়ার্ড দিন",
     "password_error": "পাসওয়ার্ড দিন",
@@ -481,7 +481,7 @@ const loginTranslations = {
     "login_subtitle": "ກະລຸນາປ້ອນອີເມວແລະລະຫັດຜ່ານ",
     "email": "ອີເມວ",
     "email_placeholder": "ຕົວຢ່າງ: 1234567890@students.stamford.edu",
-    "email_error": "ກະລຸນາປ້ອນອີເມວທີ່ຖືກຕ້ອງ",
+    "email_error": "ອີເມວ ຫຼື ລະຫັດຜ່ານຜິດ",
     "password": "ລະຫັດຜ່ານ",
     "password_placeholder": "ປ້ອນລະຫັດຜ່ານ",
     "password_error": "ກະລຸນາປ້ອນລະຫັດຜ່ານ",
@@ -509,7 +509,7 @@ const loginTranslations = {
     "login_subtitle": "សូមបញ្ចូលអ៊ីមែល និងពាក្យសម្ងាត់របស់អ្នក",
     "email": "អ៊ីមែល",
     "email_placeholder": "ឧទាហរណ៍: 1234567890@students.stamford.edu",
-    "email_error": "សូមបញ្ចូលអ៊ីមែលត្រឹមត្រូវ",
+    "email_error": "អ៊ីមែល ឬ ពាក្យសម្ងាត់មិនត្រឹមត្រូវ",
     "password": "ពាក្យសម្ងាត់",
     "password_placeholder": "បញ្ចូលពាក្យសម្ងាត់",
     "password_error": "សូមបញ្ចូលពាក្យសម្ងាត់",
@@ -537,7 +537,7 @@ const loginTranslations = {
     "login_subtitle": "ကျေးဇူးပြု၍ သင့်အီးမေးလ်နှင့် စကားဝှက်ကို ထည့်ပါ",
     "email": "အီးမေးလ်",
     "email_placeholder": "ဥပမာ: 1234567890@students.stamford.edu",
-    "email_error": "ကျေးဇူးပြု၍ မှန်ကန်သောအီးမေးလ်ကို ထည့်ပါ",
+    "email_error": "အီးမေးလ် သို့မဟုတ် စကားဝှက် မှားနေပါသည်",
     "password": "စကားဝှက်",
     "password_placeholder": "စကားဝှက်ထည့်ပါ",
     "password_error": "စကားဝှက်ထည့်ပါ",
@@ -565,7 +565,7 @@ const loginTranslations = {
     "login_subtitle": "कृपया आफ्नो इमेल र पासवर्ड प्रविष्ट गर्नुहोस्",
     "email": "इमेल",
     "email_placeholder": "जस्तै: 1234567890@students.stamford.edu",
-    "email_error": "कृपया एक वैध इमेल प्रविष्ट गर्नुहोस्",
+    "email_error": "गलत इमेल वा पासवर्ड",
     "password": "पासवर्ड",
     "password_placeholder": "पासवर्ड प्रविष्ट गर्नुहोस्",
     "password_error": "कृपया पासवर्ड प्रविष्ट गर्नुहोस्",
@@ -593,7 +593,7 @@ const loginTranslations = {
     "login_subtitle": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਈਮੇਲ ਅਤੇ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
     "email": "ਈਮੇਲ",
     "email_placeholder": "ਜਿਵੇਂ: 1234567890@students.stamford.edu",
-    "email_error": "ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ ਈਮੇਲ ਦਰਜ ਕਰੋ",
+    "email_error": "ਗਲਤ ਈਮੇਲ ਜਾਂ ਪਾਸਵਰਡ",
     "password": "ਪਾਸਵਰਡ",
     "password_placeholder": "ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
     "password_error": "ਕਿਰਪਾ ਕਰਕੇ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
@@ -621,7 +621,7 @@ const loginTranslations = {
     "login_subtitle": "කරුණාකර ඔබගේ ඊමේල් සහ මුරපදය ඇතුලත් කරන්න",
     "email": "ඊමේල්",
     "email_placeholder": "උදා: 1234567890@students.stamford.edu",
-    "email_error": "කරුණාකර වලංගු ඊමේල් ලිපිනයක් ඇතුලත් කරන්න",
+    "email_error": "වැරදි ඊමේල් හෝ මුරපදයක්",
     "password": "මුරපදය",
     "password_placeholder": "මුරපදය ඇතුලත් කරන්න",
     "password_error": "කරුණාකර මුරපදය ඇතුලත් කරන්න",
@@ -673,17 +673,33 @@ const languageNames = {
   si: "සිංහල 🇱🇰"
 };
 
-let currentLang = 'en'; // Set English as default
+let currentLang = 'en';
 let forgotPasswordModal = null;
 let passwordResetAttempts = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Load language immediately when DOM is ready
+  loadLanguage();
   initializeLoginApp();
 });
 
+function loadLanguage() {
+  // Check if language is stored in localStorage
+  const savedLang = localStorage.getItem('preferredLang');
+  if (savedLang && loginTranslations[savedLang]) {
+    currentLang = savedLang;
+    console.log('🌐 Loaded saved language:', currentLang);
+  } else {
+    // Set default to English if no saved language
+    currentLang = 'en';
+    localStorage.setItem('preferredLang', 'en');
+    console.log('🌐 Defaulting to English');
+  }
+}
+
 async function initializeLoginApp() {
-  // Initialize language
-  initializeLanguage();
+  // Initialize language dropdown (already have currentLang from loadLanguage)
+  initializeLanguageDropdown();
   
   // Initialize Bootstrap modal
   initializeModal();
@@ -693,6 +709,9 @@ async function initializeLoginApp() {
   
   // Check if user is already logged in
   checkExistingAuth();
+  
+  // Apply language immediately
+  updateAllText();
 }
 
 function initializeModal() {
@@ -711,19 +730,6 @@ function initializeModal() {
       resetForgotPasswordForm();
     });
   }
-}
-
-function initializeLanguage() {
-  const savedLang = localStorage.getItem('preferredLang') || 'en';
-  currentLang = savedLang;
-  
-  console.log('🌐 Initializing language:', currentLang);
-  
-  // Initialize language dropdown
-  initializeLanguageDropdown();
-  
-  // Apply initial language
-  updateAllText();
 }
 
 function initializeLanguageDropdown() {
@@ -871,6 +877,7 @@ function setupEventListeners() {
   const loginForm = document.getElementById('loginForm');
   const forgotPasswordLink = document.getElementById('forgotPasswordLink');
   const sendResetLinkBtn = document.getElementById('sendResetLinkBtn');
+  const togglePasswordBtn = document.getElementById('togglePassword');
   
   if (loginForm) {
     loginForm.addEventListener('submit', handleLogin);
@@ -895,6 +902,22 @@ function setupEventListeners() {
         }
       });
     }
+  }
+  
+  // Password toggle functionality
+  if (togglePasswordBtn) {
+    togglePasswordBtn.addEventListener('click', function() {
+      const passwordInput = document.getElementById('loginPassword');
+      const icon = this.querySelector('i');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+      } else {
+        passwordInput.type = 'password';
+        icon.className = 'fas fa-eye';
+      }
+    });
   }
 }
 
