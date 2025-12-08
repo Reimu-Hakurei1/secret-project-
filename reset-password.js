@@ -1,1549 +1,1399 @@
 const resetPasswordTranslations = {
-      en: {
-        "reset_password_title": "Reset Password",
-        "reset_password_instruction": "Please enter your new password below",
-        "new_password": "New Password",
-        "new_password_placeholder": "Enter new password",
-        "confirm_password": "Confirm Password",
-        "confirm_password_placeholder": "Confirm new password",
-        "reset_password_btn": "Reset Password",
-        "back_to_login": "Back to Login",
-        "error_title": "Error!",
-        "success_title": "Success!",
-        "loading": "Loading...",
-        "please_wait": "Please wait a moment",
-        "resetting_password": "Resetting Password...",
-        "go_to_login": "Go to Login",
-        "go_to_login_page": "Go to Login Page",
-        "password_reset_success": "Your password has been reset successfully!",
-        "password_reset_error": "Failed to reset password",
-        "passwords_not_match": "Passwords do not match",
-        "password_too_short": "Password must be at least 8 characters",
-        "password_requirements": "Password does not meet requirements",
-        "password_req_length": "At least 8 characters",
-        "password_req_lowercase": "Contains lowercase letter",
-        "password_req_uppercase": "Contains uppercase letter",
-        "password_req_number": "Contains number",
-        "password_req_special": "Contains special character (!@#$%^&*)",
-        "invalid_link_title": "Invalid or Expired Link",
-        "invalid_link_message": "This password reset link is invalid or has expired.",
-        "invalid_link_instruction": "Please request a new password reset link from the login page.",
-        "verifying_link": "Verifying reset link...",
-        "link_verified": "Link verified. You can now reset your password.",
-        "weak_password": "Weak password",
-        "fair_password": "Fair password",
-        "good_password": "Good password",
-        "strong_password": "Strong password"
-      },
-      zh: {
-        "reset_password_title": "重置密码",
-        "reset_password_instruction": "请在下面输入您的新密码",
-        "new_password": "新密码",
-        "new_password_placeholder": "输入新密码",
-        "confirm_password": "确认密码",
-        "confirm_password_placeholder": "确认新密码",
-        "reset_password_btn": "重置密码",
-        "back_to_login": "返回登录",
-        "error_title": "错误！",
-        "success_title": "成功！",
-        "loading": "加载中...",
-        "please_wait": "请稍候",
-        "resetting_password": "正在重置密码...",
-        "go_to_login": "前往登录",
-        "go_to_login_page": "前往登录页面",
-        "password_reset_success": "您的密码已成功重置！",
-        "password_reset_error": "重置密码失败",
-        "passwords_not_match": "密码不匹配",
-        "password_too_short": "密码必须至少8个字符",
-        "password_requirements": "密码不符合要求",
-        "password_req_length": "至少8个字符",
-        "password_req_lowercase": "包含小写字母",
-        "password_req_uppercase": "包含大写字母",
-        "password_req_number": "包含数字",
-        "password_req_special": "包含特殊字符(!@#$%^&*)",
-        "invalid_link_title": "无效或过期的链接",
-        "invalid_link_message": "此密码重置链接无效或已过期。",
-        "invalid_link_instruction": "请从登录页面请求新的密码重置链接。",
-        "verifying_link": "正在验证重置链接...",
-        "link_verified": "链接已验证。您现在可以重置密码了。",
-        "weak_password": "弱密码",
-        "fair_password": "一般密码",
-        "good_password": "良好密码",
-        "strong_password": "强密码"
-      },
-      ja: {
-        "reset_password_title": "パスワードのリセット",
-        "reset_password_instruction": "新しいパスワードを入力してください",
-        "new_password": "新しいパスワード",
-        "new_password_placeholder": "新しいパスワードを入力",
-        "confirm_password": "パスワードの確認",
-        "confirm_password_placeholder": "新しいパスワードを確認",
-        "reset_password_btn": "パスワードをリセット",
-        "back_to_login": "ログインに戻る",
-        "error_title": "エラー！",
-        "success_title": "成功！",
-        "loading": "読み込み中...",
-        "please_wait": "少々お待ちください",
-        "resetting_password": "パスワードをリセット中...",
-        "go_to_login": "ログインへ",
-        "go_to_login_page": "ログインページへ",
-        "password_reset_success": "パスワードが正常にリセットされました！",
-        "password_reset_error": "パスワードのリセットに失敗しました",
-        "passwords_not_match": "パスワードが一致しません",
-        "password_too_short": "パスワードは8文字以上である必要があります",
-        "password_requirements": "パスワードが要件を満たしていません",
-        "password_req_length": "8文字以上",
-        "password_req_lowercase": "小文字を含む",
-        "password_req_uppercase": "大文字を含む",
-        "password_req_number": "数字を含む",
-        "password_req_special": "特殊文字(!@#$%^&*)を含む",
-        "invalid_link_title": "無効または期限切れのリンク",
-        "invalid_link_message": "このパスワードリセットリンクは無効または期限切れです。",
-        "invalid_link_instruction": "ログインページから新しいパスワードリセットリンクをリクエストしてください。",
-        "verifying_link": "リセットリンクを確認中...",
-        "link_verified": "リンクが確認されました。パスワードをリセットできます。",
-        "weak_password": "弱いパスワード",
-        "fair_password": "普通のパスワード",
-        "good_password": "良好なパスワード",
-        "strong_password": "強いパスワード"
-      },
-      ko: {
-        "reset_password_title": "비밀번호 재설정",
-        "reset_password_instruction": "새 비밀번호를 입력하세요",
-        "new_password": "새 비밀번호",
-        "new_password_placeholder": "새 비밀번호 입력",
-        "confirm_password": "비밀번호 확인",
-        "confirm_password_placeholder": "새 비밀번호 확인",
-        "reset_password_btn": "비밀번호 재설정",
-        "back_to_login": "로그인으로 돌아가기",
-        "error_title": "오류!",
-        "success_title": "성공!",
-        "loading": "로딩 중...",
-        "please_wait": "잠시만 기다려 주세요",
-        "resetting_password": "비밀번호 재설정 중...",
-        "go_to_login": "로그인으로 이동",
-        "go_to_login_page": "로그인 페이지로 이동",
-        "password_reset_success": "비밀번호가 성공적으로 재설정되었습니다!",
-        "password_reset_error": "비밀번호 재설정 실패",
-        "passwords_not_match": "비밀번호가 일치하지 않습니다",
-        "password_too_short": "비밀번호는 최소 8자 이상이어야 합니다",
-        "password_requirements": "비밀번호가 요구사항을 충족하지 않습니다",
-        "password_req_length": "최소 8자",
-        "password_req_lowercase": "소문자 포함",
-        "password_req_uppercase": "대문자 포함",
-        "password_req_number": "숫자 포함",
-        "password_req_special": "특수문자(!@#$%^&*) 포함",
-        "invalid_link_title": "유효하지 않거나 만료된 링크",
-        "invalid_link_message": "이 비밀번호 재설정 링크가 유효하지 않거나 만료되었습니다.",
-        "invalid_link_instruction": "로그인 페이지에서 새로운 비밀번호 재설정 링크를 요청하세요.",
-        "verifying_link": "재설정 링크 확인 중...",
-        "link_verified": "링크가 확인되었습니다. 이제 비밀번호를 재설정할 수 있습니다.",
-        "weak_password": "약한 비밀번호",
-        "fair_password": "보통 비밀번호",
-        "good_password": "좋은 비밀번호",
-        "strong_password": "강력한 비밀번호"
-      },
-      ar: {
-        "reset_password_title": "إعادة تعيين كلمة المرور",
-        "reset_password_instruction": "الرجاء إدخال كلمة المرور الجديدة أدناه",
-        "new_password": "كلمة المرور الجديدة",
-        "new_password_placeholder": "أدخل كلمة المرور الجديدة",
-        "confirm_password": "تأكيد كلمة المرور",
-        "confirm_password_placeholder": "تأكيد كلمة المرور الجديدة",
-        "reset_password_btn": "إعادة تعيين كلمة المرور",
-        "back_to_login": "العودة إلى تسجيل الدخول",
-        "error_title": "خطأ!",
-        "success_title": "نجاح!",
-        "loading": "جاري التحميل...",
-        "please_wait": "الرجاء الانتظار لحظة",
-        "resetting_password": "جاري إعادة تعيين كلمة المرور...",
-        "go_to_login": "انتقل إلى تسجيل الدخول",
-        "go_to_login_page": "انتقل إلى صفحة تسجيل الدخول",
-        "password_reset_success": "تم إعادة تعيين كلمة المرور بنجاح!",
-        "password_reset_error": "فشل إعادة تعيين كلمة المرور",
-        "passwords_not_match": "كلمات المرور غير متطابقة",
-        "password_too_short": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
-        "password_requirements": "كلمة المرور لا تستوفي المتطلبات",
-        "password_req_length": "8 أحرف على الأقل",
-        "password_req_lowercase": "تحتوي على حرف صغير",
-        "password_req_uppercase": "تحتوي على حرف كبير",
-        "password_req_number": "تحتوي على رقم",
-        "password_req_special": "تحتوي على حرف خاص (!@#$%^&*)",
-        "invalid_link_title": "رابط غير صالح أو منتهي الصلاحية",
-        "invalid_link_message": "رابط إعادة تعيين كلمة المرور هذا غير صالح أو منتهي الصلاحية.",
-        "invalid_link_instruction": "يرجى طلب رابط إعادة تعيين كلمة مرور جديد من صفحة تسجيل الدخول.",
-        "verifying_link": "جاري التحقق من رابط إعادة التعيين...",
-        "link_verified": "تم التحقق من الرابط. يمكنك الآن إعادة تعيين كلمة المرور.",
-        "weak_password": "كلمة مرور ضعيفة",
-        "fair_password": "كلمة مرور متوسطة",
-        "good_password": "كلمة مرور جيدة",
-        "strong_password": "كلمة مرور قوية"
-      },
-      hi: {
-        "reset_password_title": "पासवर्ड रीसेट करें",
-        "reset_password_instruction": "कृपया नीचे अपना नया पासवर्ड दर्ज करें",
-        "new_password": "नया पासवर्ड",
-        "new_password_placeholder": "नया पासवर्ड दर्ज करें",
-        "confirm_password": "पासवर्ड की पुष्टि करें",
-        "confirm_password_placeholder": "नए पासवर्ड की पुष्टि करें",
-        "reset_password_btn": "पासवर्ड रीसेट करें",
-        "back_to_login": "लॉगिन पर वापस जाएं",
-        "error_title": "त्रुटि!",
-        "success_title": "सफलता!",
-        "loading": "लोड हो रहा है...",
-        "please_wait": "कृपया थोड़ी प्रतीक्षा करें",
-        "resetting_password": "पासवर्ड रीसेट हो रहा है...",
-        "go_to_login": "लॉगिन पर जाएं",
-        "go_to_login_page": "लॉगिन पेज पर जाएं",
-        "password_reset_success": "आपका पासवर्ड सफलतापूर्वक रीसेट कर दिया गया है!",
-        "password_reset_error": "पासवर्ड रीसेट करने में विफल",
-        "passwords_not_match": "पासवर्ड मेल नहीं खाते",
-        "password_too_short": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए",
-        "password_requirements": "पासवर्ड आवश्यकताओं को पूरा नहीं करता",
-        "password_req_length": "कम से कम 8 अक्षर",
-        "password_req_lowercase": "छोटा अक्षर शामिल है",
-        "password_req_uppercase": "बड़ा अक्षर शामिल है",
-        "password_req_number": "संख्या शामिल है",
-        "password_req_special": "विशेष वर्ण शामिल है (!@#$%^&*)",
-        "invalid_link_title": "अमान्य या समाप्त लिंक",
-        "invalid_link_message": "यह पासवर्ड रीसेट लिंक अमान्य या समाप्त हो चुका है।",
-        "invalid_link_instruction": "कृपया लॉगिन पेज से एक नया पासवर्ड रीसेट लिंक अनुरोध करें।",
-        "verifying_link": "रीसेट लिंक सत्यापित किया जा रहा है...",
-        "link_verified": "लिंक सत्यापित हो गया है। अब आप अपना पासवर्ड रीसेट कर सकते हैं।",
-        "weak_password": "कमजोर पासवर्ड",
-        "fair_password": "मध्यम पासवर्ड",
-        "good_password": "अच्छा पासवर्ड",
-        "strong_password": "मजबूत पासवर्ड"
-      },
-      th: {
-        "reset_password_title": "รีเซ็ตรหัสผ่าน",
-        "reset_password_instruction": "กรุณากรอกรหัสผ่านใหม่ด้านล่าง",
-        "new_password": "รหัสผ่านใหม่",
-        "new_password_placeholder": "กรอกรหัสผ่านใหม่",
-        "confirm_password": "ยืนยันรหัสผ่าน",
-        "confirm_password_placeholder": "ยืนยันรหัสผ่านใหม่",
-        "reset_password_btn": "รีเซ็ตรหัสผ่าน",
-        "back_to_login": "กลับไปหน้าเข้าสู่ระบบ",
-        "error_title": "เกิดข้อผิดพลาด!",
-        "success_title": "สำเร็จ!",
-        "loading": "กำลังโหลด...",
-        "please_wait": "กรุณารอสักครู่",
-        "resetting_password": "กำลังรีเซ็ตรหัสผ่าน...",
-        "go_to_login": "ไปยังหน้าเข้าสู่ระบบ",
-        "go_to_login_page": "ไปยังหน้าเข้าสู่ระบบ",
-        "password_reset_success": "รีเซ็ตรหัสผ่านสำเร็จแล้ว!",
-        "password_reset_error": "รีเซ็ตรหัสผ่านไม่สำเร็จ",
-        "passwords_not_match": "รหัสผ่านไม่ตรงกัน",
-        "password_too_short": "รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร",
-        "password_requirements": "รหัสผ่านไม่ตรงตามข้อกำหนด",
-        "password_req_length": "อย่างน้อย 8 ตัวอักษร",
-        "password_req_lowercase": "มีตัวอักษรพิมพ์เล็ก",
-        "password_req_uppercase": "มีตัวอักษรพิมพ์ใหญ่",
-        "password_req_number": "มีตัวเลข",
-        "password_req_special": "มีอักขระพิเศษ (!@#$%^&*)",
-        "invalid_link_title": "ลิงก์ไม่ถูกต้องหรือหมดอายุ",
-        "invalid_link_message": "ลิงก์รีเซ็ตรหัสผ่านนี้ไม่ถูกต้องหรือหมดอายุแล้ว",
-        "invalid_link_instruction": "กรุณาขอลิงก์รีเซ็ตรหัสผ่านใหม่จากหน้าเข้าสู่ระบบ",
-        "verifying_link": "กำลังตรวจสอบลิงก์รีเซ็ต...",
-        "link_verified": "ตรวจสอบลิงก์เรียบร้อยแล้ว ตอนนี้คุณสามารถรีเซ็ตรหัสผ่านได้",
-        "weak_password": "รหัสผ่านอ่อน",
-        "fair_password": "รหัสผ่านปานกลาง",
-        "good_password": "รหัสผ่านดี",
-        "strong_password": "รหัสผ่านแข็งแกร่ง"
-      },
-      vi: {
-        "reset_password_title": "Đặt lại mật khẩu",
-        "reset_password_instruction": "Vui lòng nhập mật khẩu mới bên dưới",
-        "new_password": "Mật khẩu mới",
-        "new_password_placeholder": "Nhập mật khẩu mới",
-        "confirm_password": "Xác nhận mật khẩu",
-        "confirm_password_placeholder": "Xác nhận mật khẩu mới",
-        "reset_password_btn": "Đặt lại mật khẩu",
-        "back_to_login": "Quay lại đăng nhập",
-        "error_title": "Lỗi!",
-        "success_title": "Thành công!",
-        "loading": "Đang tải...",
-        "please_wait": "Vui lòng đợi một chút",
-        "resetting_password": "Đang đặt lại mật khẩu...",
-        "go_to_login": "Đi đến đăng nhập",
-        "go_to_login_page": "Đi đến trang đăng nhập",
-        "password_reset_success": "Mật khẩu của bạn đã được đặt lại thành công!",
-        "password_reset_error": "Không thể đặt lại mật khẩu",
-        "passwords_not_match": "Mật khẩu không khớp",
-        "password_too_short": "Mật khẩu phải có ít nhất 8 ký tự",
-        "password_requirements": "Mật khẩu không đáp ứng yêu cầu",
-        "password_req_length": "Ít nhất 8 ký tự",
-        "password_req_lowercase": "Chứa chữ thường",
-        "password_req_uppercase": "Chứa chữ hoa",
-        "password_req_number": "Chứa số",
-        "password_req_special": "Chứa ký tự đặc biệt (!@#$%^&*)",
-        "invalid_link_title": "Liên kết không hợp lệ hoặc đã hết hạn",
-        "invalid_link_message": "Liên kết đặt lại mật khẩu này không hợp lệ hoặc đã hết hạn.",
-        "invalid_link_instruction": "Vui lòng yêu cầu liên kết đặt lại mật khẩu mới từ trang đăng nhập.",
-        "verifying_link": "Đang xác minh liên kết đặt lại...",
-        "link_verified": "Liên kết đã được xác minh. Bây giờ bạn có thể đặt lại mật khẩu.",
-        "weak_password": "Mật khẩu yếu",
-        "fair_password": "Mật khẩu trung bình",
-        "good_password": "Mật khẩu tốt",
-        "strong_password": "Mật khẩu mạnh"
-      },
-      id: {
-        "reset_password_title": "Atur Ulang Kata Sandi",
-        "reset_password_instruction": "Silakan masukkan kata sandi baru di bawah ini",
-        "new_password": "Kata Sandi Baru",
-        "new_password_placeholder": "Masukkan kata sandi baru",
-        "confirm_password": "Konfirmasi Kata Sandi",
-        "confirm_password_placeholder": "Konfirmasi kata sandi baru",
-        "reset_password_btn": "Atur Ulang Kata Sandi",
-        "back_to_login": "Kembali ke Login",
-        "error_title": "Kesalahan!",
-        "success_title": "Berhasil!",
-        "loading": "Memuat...",
-        "please_wait": "Harap tunggu sebentar",
-        "resetting_password": "Mengatur ulang kata sandi...",
-        "go_to_login": "Pergi ke Login",
-        "go_to_login_page": "Pergi ke Halaman Login",
-        "password_reset_success": "Kata sandi Anda telah berhasil diatur ulang!",
-        "password_reset_error": "Gagal mengatur ulang kata sandi",
-        "passwords_not_match": "Kata sandi tidak cocok",
-        "password_too_short": "Kata sandi minimal 8 karakter",
-        "password_requirements": "Kata sandi tidak memenuhi persyaratan",
-        "password_req_length": "Minimal 8 karakter",
-        "password_req_lowercase": "Mengandung huruf kecil",
-        "password_req_uppercase": "Mengandung huruf besar",
-        "password_req_number": "Mengandung angka",
-        "password_req_special": "Mengandung karakter khusus (!@#$%^&*)",
-        "invalid_link_title": "Tautan Tidak Valid atau Kedaluwarsa",
-        "invalid_link_message": "Tautan atur ulang kata sandi ini tidak valid atau telah kedaluwarsa.",
-        "invalid_link_instruction": "Silakan minta tautan atur ulang kata sandi baru dari halaman login.",
-        "verifying_link": "Memverifikasi tautan atur ulang...",
-        "link_verified": "Tautan telah diverifikasi. Sekarang Anda dapat mengatur ulang kata sandi.",
-        "weak_password": "Kata sandi lemah",
-        "fair_password": "Kata sandi cukup",
-        "good_password": "Kata sandi baik",
-        "strong_password": "Kata sandi kuat"
-      },
-      ms: {
-        "reset_password_title": "Tetapkan Semula Kata Laluan",
-        "reset_password_instruction": "Sila masukkan kata laluan baru di bawah",
-        "new_password": "Kata Laluan Baru",
-        "new_password_placeholder": "Masukkan kata laluan baru",
-        "confirm_password": "Sahkan Kata Laluan",
-        "confirm_password_placeholder": "Sahkan kata laluan baru",
-        "reset_password_btn": "Tetapkan Semula Kata Laluan",
-        "back_to_login": "Kembali ke Log Masuk",
-        "error_title": "Ralat!",
-        "success_title": "Berjaya!",
-        "loading": "Memuat...",
-        "please_wait": "Sila tunggu sebentar",
-        "resetting_password": "Menetapkan semula kata laluan...",
-        "go_to_login": "Pergi ke Log Masuk",
-        "go_to_login_page": "Pergi ke Halaman Log Masuk",
-        "password_reset_success": "Kata laluan anda telah berjaya ditetapkan semula!",
-        "password_reset_error": "Gagal menetapkan semula kata laluan",
-        "passwords_not_match": "Kata laluan tidak sepadan",
-        "password_too_short": "Kata laluan mesti sekurang-kurangnya 8 aksara",
-        "password_requirements": "Kata laluan tidak memenuhi keperluan",
-        "password_req_length": "Sekurang-kurangnya 8 aksara",
-        "password_req_lowercase": "Mengandungi huruf kecil",
-        "password_req_uppercase": "Mengandungi huruf besar",
-        "password_req_number": "Mengandungi nombor",
-        "password_req_special": "Mengandungi aksara khas (!@#$%^&*)",
-        "invalid_link_title": "Pautan Tidak Sah atau Tamat Tempoh",
-        "invalid_link_message": "Pautan tetapan semula kata laluan ini tidak sah atau telah tamat tempoh.",
-        "invalid_link_instruction": "Sila minta pautan tetapan semula kata laluan baru dari halaman log masuk.",
-        "verifying_link": "Mengesahkan pautan tetapan semula...",
-        "link_verified": "Pautan telah disahkan. Sekarang anda boleh menetapkan semula kata laluan.",
-        "weak_password": "Kata laluan lemah",
-        "fair_password": "Kata laluan sederhana",
-        "good_password": "Kata laluan baik",
-        "strong_password": "Kata laluan kuat"
-      },
-      ru: {
-        "reset_password_title": "Сбросить пароль",
-        "reset_password_instruction": "Пожалуйста, введите новый пароль ниже",
-        "new_password": "Новый пароль",
-        "new_password_placeholder": "Введите новый пароль",
-        "confirm_password": "Подтвердите пароль",
-        "confirm_password_placeholder": "Подтвердите новый пароль",
-        "reset_password_btn": "Сбросить пароль",
-        "back_to_login": "Вернуться к входу",
-        "error_title": "Ошибка!",
-        "success_title": "Успех!",
-        "loading": "Загрузка...",
-        "please_wait": "Пожалуйста, подождите",
-        "resetting_password": "Сброс пароля...",
-        "go_to_login": "Перейти к входу",
-        "go_to_login_page": "Перейти на страницу входа",
-        "password_reset_success": "Ваш пароль успешно сброшен!",
-        "password_reset_error": "Не удалось сбросить пароль",
-        "passwords_not_match": "Пароли не совпадают",
-        "password_too_short": "Пароль должен быть не менее 8 символов",
-        "password_requirements": "Пароль не соответствует требованиям",
-        "password_req_length": "Не менее 8 символов",
-        "password_req_lowercase": "Содержит строчную букву",
-        "password_req_uppercase": "Содержит заглавную букву",
-        "password_req_number": "Содержит цифру",
-        "password_req_special": "Содержит специальный символ (!@#$%^&*)",
-        "invalid_link_title": "Недействительная или устаревшая ссылка",
-        "invalid_link_message": "Эта ссылка для сброса пароля недействительна или устарела.",
-        "invalid_link_instruction": "Пожалуйста, запросите новую ссылку для сброса пароля со страницы входа.",
-        "verifying_link": "Проверка ссылки сброса...",
-        "link_verified": "Ссылка проверена. Теперь вы можете сбросить пароль.",
-        "weak_password": "Слабый пароль",
-        "fair_password": "Средний пароль",
-        "good_password": "Хороший пароль",
-        "strong_password": "Сильный пароль"
-      },
-      ur: {
-        "reset_password_title": "پاس ورڈ ری سیٹ کریں",
-        "reset_password_instruction": "براہ کرم نیچے اپنا نیا پاس ورڈ درج کریں",
-        "new_password": "نیا پاس ورڈ",
-        "new_password_placeholder": "نیا پاس ورڈ درج کریں",
-        "confirm_password": "پاس ورڈ کی تصدیق کریں",
-        "confirm_password_placeholder": "نئے پاس ورڈ کی تصدیق کریں",
-        "reset_password_btn": "پاس ورڈ ری سیٹ کریں",
-        "back_to_login": "لاگ ان پر واپس جائیں",
-        "error_title": "خرابی!",
-        "success_title": "کامیابی!",
-        "loading": "لوڈ ہو رہا ہے...",
-        "please_wait": "براہ کرم تھوڑی دیر انتظار کریں",
-        "resetting_password": "پاس ورڈ ری سیٹ ہو رہا ہے...",
-        "go_to_login": "لاگ ان پر جائیں",
-        "go_to_login_page": "لاگ ان پیج پر جائیں",
-        "password_reset_success": "آپ کا پاس ورڈ کامیابی کے ساتھ ری سیٹ ہو گیا ہے!",
-        "password_reset_error": "پاس ورڈ ری سیٹ کرنے میں ناکام",
-        "passwords_not_match": "پاس ورڈ مماثل نہیں ہیں",
-        "password_too_short": "پاس ورڈ کم از کم 8 حروف کا ہونا چاہیے",
-        "password_requirements": "پاس ورڈ تقاضوں کو پورا نہیں کرتا",
-        "password_req_length": "کم از کم 8 حروف",
-        "password_req_lowercase": "چھوٹے حروف شامل ہیں",
-        "password_req_uppercase": "بڑے حروف شامل ہیں",
-        "password_req_number": "نمبر شامل ہے",
-        "password_req_special": "خصوصی کردار شامل ہے (!@#$%^&*)",
-        "invalid_link_title": "غلط یا میعاد ختم ہونے والا لنک",
-        "invalid_link_message": "یہ پاس ورڈ ری سیٹ لنک غلط ہے یا میعاد ختم ہو گئی ہے۔",
-        "invalid_link_instruction": "براہ کرم لاگ ان پیج سے نیا پاس ورڈ ری سیٹ لنک درخواست کریں۔",
-        "verifying_link": "ری سیٹ لنک کی تصدیق ہو رہی ہے...",
-        "link_verified": "لنک کی تصدیق ہو گئی ہے۔ اب آپ اپنا پاس ورڈ ری سیٹ کر سکتے ہیں۔",
-        "weak_password": "کمزور پاس ورڈ",
-        "fair_password": "متوسط پاس ورڈ",
-        "good_password": "اچھا پاس ورڈ",
-        "strong_password": "مضبوط پاس ورڈ"
-      },
-      tr: {
-        "reset_password_title": "Şifreyi Sıfırla",
-        "reset_password_instruction": "Lütfen yeni şifrenizi aşağıya girin",
-        "new_password": "Yeni Şifre",
-        "new_password_placeholder": "Yeni şifre girin",
-        "confirm_password": "Şifreyi Onayla",
-        "confirm_password_placeholder": "Yeni şifreyi onayla",
-        "reset_password_btn": "Şifreyi Sıfırla",
-        "back_to_login": "Girişe Dön",
-        "error_title": "Hata!",
-        "success_title": "Başarı!",
-        "loading": "Yükleniyor...",
-        "please_wait": "Lütfen bir dakika bekleyin",
-        "resetting_password": "Şifre sıfırlanıyor...",
-        "go_to_login": "Girişe Git",
-        "go_to_login_page": "Giriş Sayfasına Git",
-        "password_reset_success": "Şifreniz başarıyla sıfırlandı!",
-        "password_reset_error": "Şifre sıfırlama başarısız",
-        "passwords_not_match": "Şifreler eşleşmiyor",
-        "password_too_short": "Şifre en az 8 karakter olmalı",
-        "password_requirements": "Şifre gereksinimleri karşılamıyor",
-        "password_req_length": "En az 8 karakter",
-        "password_req_lowercase": "Küçük harf içerir",
-        "password_req_uppercase": "Büyük harf içerir",
-        "password_req_number": "Rakam içerir",
-        "password_req_special": "Özel karakter içerir (!@#$%^&*)",
-        "invalid_link_title": "Geçersiz veya Süresi Dolmuş Bağlantı",
-        "invalid_link_message": "Bu şifre sıfırlama bağlantısı geçersiz veya süresi dolmuş.",
-        "invalid_link_instruction": "Lütfen giriş sayfasından yeni bir şifre sıfırlama bağlantısı isteyin.",
-        "verifying_link": "Sıfırlama bağlantısı doğrulanıyor...",
-        "link_verified": "Bağlantı doğrulandı. Artık şifrenizi sıfırlayabilirsiniz.",
-        "weak_password": "Zayıf şifre",
-        "fair_password": "Orta şifre",
-        "good_password": "İyi şifre",
-        "strong_password": "Güçlü şifre"
-      },
-      fa: {
-        "reset_password_title": "بازنشانی رمز عبور",
-        "reset_password_instruction": "لطفاً رمز عبور جدید خود را در زیر وارد کنید",
-        "new_password": "رمز عبور جدید",
-        "new_password_placeholder": "رمز عبور جدید را وارد کنید",
-        "confirm_password": "تأیید رمز عبور",
-        "confirm_password_placeholder": "رمز عبور جدید را تأیید کنید",
-        "reset_password_btn": "بازنشانی رمز عبور",
-        "back_to_login": "بازگشت به ورود",
-        "error_title": "خطا!",
-        "success_title": "موفقیت!",
-        "loading": "در حال بارگذاری...",
-        "please_wait": "لطفاً چند لحظه صبر کنید",
-        "resetting_password": "در حال بازنشانی رمز عبور...",
-        "go_to_login": "برو به ورود",
-        "go_to_login_page": "برو به صفحه ورود",
-        "password_reset_success": "رمز عبور شما با موفقیت بازنشانی شد!",
-        "password_reset_error": "بازنشانی رمز عبور ناموفق بود",
-        "passwords_not_match": "رمزهای عبور مطابقت ندارند",
-        "password_too_short": "رمز عبور باید حداقل 8 کاراکتر باشد",
-        "password_requirements": "رمز عبور الزامات را برآورده نمی کند",
-        "password_req_length": "حداقل 8 کاراکتر",
-        "password_req_lowercase": "حاوی حروف کوچک است",
-        "password_req_uppercase": "حاوی حروف بزرگ است",
-        "password_req_number": "حاوی عدد است",
-        "password_req_special": "حاوی کاراکتر ویژه است (!@#$%^&*)",
-        "invalid_link_title": "لینک نامعتبر یا منقضی شده",
-        "invalid_link_message": "این لینک بازنشانی رمز عبور نامعتبر یا منقضی شده است.",
-        "invalid_link_instruction": "لطفاً یک لینک بازنشانی رمز عبور جدید از صفحه ورود درخواست کنید.",
-        "verifying_link": "در حال تأیید لینک بازنشانی...",
-        "link_verified": "لینک تأیید شد. اکنون می‌توانید رمز عبور خود را بازنشانی کنید.",
-        "weak_password": "رمز عبور ضعیف",
-        "fair_password": "رمز عبور متوسط",
-        "good_password": "رمز عبور خوب",
-        "strong_password": "رمز عبور قوی"
-      },
-      ta: {
-        "reset_password_title": "கடவுச்சொல்லை மீட்டமை",
-        "reset_password_instruction": "தயவு செய்து உங்கள் புதிய கடவுச்சொல்லை கீழே உள்ளிடவும்",
-        "new_password": "புதிய கடவுச்சொல்",
-        "new_password_placeholder": "புதிய கடவுச்சொல்லை உள்ளிடவும்",
-        "confirm_password": "கடவுச்சொல்லை உறுதிப்படுத்தவும்",
-        "confirm_password_placeholder": "புதிய கடவுச்சொல்லை உறுதிப்படுத்தவும்",
-        "reset_password_btn": "கடவுச்சொல்லை மீட்டமை",
-        "back_to_login": "உள்நுழைவுக்குத் திரும்பு",
-        "error_title": "பிழை!",
-        "success_title": "வெற்றி!",
-        "loading": "ஏற்றுகிறது...",
-        "please_wait": "தயவு செய்து சிறிது நேரம் காத்திருக்கவும்",
-        "resetting_password": "கடவுச்சொல் மீட்டமைக்கப்படுகிறது...",
-        "go_to_login": "உள்நுழைவுக்குச் செல்லவும்",
-        "go_to_login_page": "உள்நுழைவுப் பக்கத்திற்குச் செல்லவும்",
-        "password_reset_success": "உங்கள் கடவுச்சொல் வெற்றிகரமாக மீட்டமைக்கப்பட்டது!",
-        "password_reset_error": "கடவுச்சொல்லை மீட்டமைக்க முடியவில்லை",
-        "passwords_not_match": "கடவுச்சொற்கள் பொருந்தவில்லை",
-        "password_too_short": "கடவுச்சொல் குறைந்தது 8 எழுத்துகளாக இருக்க வேண்டும்",
-        "password_requirements": "கடவுச்சொல் தேவைகளைப் பூர்த்தி செய்யவில்லை",
-        "password_req_length": "குறைந்தது 8 எழுத்துகள்",
-        "password_req_lowercase": "சிறிய எழுத்தைக் கொண்டுள்ளது",
-        "password_req_uppercase": "பெரிய எழுத்தைக் கொண்டுள்ளது",
-        "password_req_number": "எண்ணைக் கொண்டுள்ளது",
-        "password_req_special": "சிறப்பு எழுத்தைக் கொண்டுள்ளது (!@#$%^&*)",
-        "invalid_link_title": "தவறான அல்லது காலாவதியான இணைப்பு",
-        "invalid_link_message": "இந்த கடவுச்சொல் மீட்டமைப்பு இணைப்பு தவறானது அல்லது காலாவதியானது.",
-        "invalid_link_instruction": "தயவு செய்து உள்நுழைவுப் பக்கத்திலிருந்து புதிய கடவுச்சொல் மீட்டமைப்பு இணைப்பைக் கோரவும்.",
-        "verifying_link": "மீட்டமைப்பு இணைப்பு சரிபார்க்கப்படுகிறது...",
-        "link_verified": "இணைப்பு சரிபார்க்கப்பட்டது. இப்போது நீங்கள் உங்கள் கடவுச்சொல்லை மீட்டமைக்கலாம்.",
-        "weak_password": "பலவீனமான கடவுச்சொல்",
-        "fair_password": "நடுத்தர கடவுச்சொல்",
-        "good_password": "நல்ல கடவுச்சொல்",
-        "strong_password": "வலுவான கடவுச்சொல்"
-      },
-      te: {
-        "reset_password_title": "పాస్వర్డ్ రీసెట్ చేయండి",
-        "reset_password_instruction": "దయచేసి మీ కొత్త పాస్వర్డ్ క్రింద నమోదు చేయండి",
-        "new_password": "కొత్త పాస్వర్డ్",
-        "new_password_placeholder": "కొత్త పాస్వర్డ్ నమోదు చేయండి",
-        "confirm_password": "పాస్వర్డ్ ని నిర్ధారించండి",
-        "confirm_password_placeholder": "కొత్త పాస్వర్డ్ ని నిర్ధారించండి",
-        "reset_password_btn": "పాస్వర్డ్ రీసెట్ చేయండి",
-        "back_to_login": "లాగిన్ కు తిరిగి వెళ్ళండి",
-        "error_title": "లోపం!",
-        "success_title": "విజయం!",
-        "loading": "లోడ్ అవుతోంది...",
-        "please_wait": "దయచేసి కొద్ది సేపు వేచి ఉండండి",
-        "resetting_password": "పాస్వర్డ్ రీసెట్ చేయబడుతోంది...",
-        "go_to_login": "లాగిన్ కు వెళ్ళండి",
-        "go_to_login_page": "లాగిన్ పేజీ కు వెళ్ళండి",
-        "password_reset_success": "మీ పాస్వర్డ్ విజయవంతంగా రీసెట్ చేయబడింది!",
-        "password_reset_error": "పాస్వర్డ్ రీసెట్ చేయడంలో విఫలమైంది",
-        "passwords_not_match": "పాస్వర్డ్లు సరిపోలడం లేదు",
-        "password_too_short": "పాస్వర్డ్ కనీసం 8 అక్షరాలు ఉండాలి",
-        "password_requirements": "పాస్వర్డ్ అవసరాలను పూర్తి చేయడం లేదు",
-        "password_req_length": "కనీసం 8 అక్షరాలు",
-        "password_req_lowercase": "చిన్న అక్షరం ఉంటుంది",
-        "password_req_uppercase": "పెద్ద అక్షరం ఉంటుంది",
-        "password_req_number": "సంఖ్య ఉంటుంది",
-        "password_req_special": "ప్రత్యేక అక్షరం ఉంటుంది (!@#$%^&*)",
-        "invalid_link_title": "చెల్లని లేదా గడువు మీరిన లింక్",
-        "invalid_link_message": "ఈ పాస్వర్డ్ రీసెట్ లింక్ చెల్లదు లేదా గడువు మీరింది.",
-        "invalid_link_instruction": "దయచేసి లాగిన్ పేజీ నుండి కొత్త పాస్వర్డ్ రీసెట్ లింక్ కోసం అభ్యర్థించండి.",
-        "verifying_link": "రీసెట్ లింక్ ధృవీకరించబడుతోంది...",
-        "link_verified": "లింక్ ధృవీకరించబడింది. ఇప్పుడు మీరు మీ పాస్వర్డ్ రీసెట్ చేయవచ్చు.",
-        "weak_password": "బలహీనమైన పాస్వర్డ్",
-        "fair_password": "మధ్యస్థ పాస్వర్డ్",
-        "good_password": "మంచి పాస్వర్డ్",
-        "strong_password": "బలమైన పాస్వర్డ్"
-      },
-      bn: {
-        "reset_password_title": "পাসওয়ার্ড রিসেট করুন",
-        "reset_password_instruction": "নিচে আপনার নতুন পাসওয়ার্ড লিখুন",
-        "new_password": "নতুন পাসওয়ার্ড",
-        "new_password_placeholder": "নতুন পাসওয়ার্ড লিখুন",
-        "confirm_password": "পাসওয়ার্ড নিশ্চিত করুন",
-        "confirm_password_placeholder": "নতুন পাসওয়ার্ড নিশ্চিত করুন",
-        "reset_password_btn": "পাসওয়ার্ড রিসেট করুন",
-        "back_to_login": "লগইনে ফিরে যান",
-        "error_title": "ত্রুটি!",
-        "success_title": "সাফল্য!",
-        "loading": "লোড হচ্ছে...",
-        "please_wait": "অনুগ্রহ করে একটু অপেক্ষা করুন",
-        "resetting_password": "পাসওয়ার্ড রিসেট হচ্ছে...",
-        "go_to_login": "লগইনে যান",
-        "go_to_login_page": "লগইন পৃষ্ঠায় যান",
-        "password_reset_success": "আপনার পাসওয়ার্ড সফলভাবে রিসেট করা হয়েছে!",
-        "password_reset_error": "পাসওয়ার্ড রিসেট করতে ব্যর্থ হয়েছে",
-        "passwords_not_match": "পাসওয়ার্ড মেলে না",
-        "password_too_short": "পাসওয়ার্ড অন্তত 8 অক্ষরের হতে হবে",
-        "password_requirements": "পাসওয়ার্ড প্রয়োজনীয়তা পূরণ করে না",
-        "password_req_length": "অন্তত 8 অক্ষর",
-        "password_req_lowercase": "ছোট হাতের অক্ষর রয়েছে",
-        "password_req_uppercase": "বড় হাতের অক্ষর রয়েছে",
-        "password_req_number": "সংখ্যা রয়েছে",
-        "password_req_special": "বিশেষ অক্ষর রয়েছে (!@#$%^&*)",
-        "invalid_link_title": "অবৈধ বা মেয়াদোত্তীর্ণ লিঙ্ক",
-        "invalid_link_message": "এই পাসওয়ার্ড রিসেট লিঙ্কটি অবৈধ বা মেয়াদোত্তীর্ণ।",
-        "invalid_link_instruction": "অনুগ্রহ করে লগইন পৃষ্ঠা থেকে একটি নতুন পাসওয়ার্ড রিসেট লিঙ্ক অনুরোধ করুন।",
-        "verifying_link": "রিসেট লিঙ্ক যাচাই করা হচ্ছে...",
-        "link_verified": "লিঙ্ক যাচাই করা হয়েছে। এখন আপনি আপনার পাসওয়ার্ড রিসেট করতে পারেন।",
-        "weak_password": "দুর্বল পাসওয়ার্ড",
-        "fair_password": "মাঝারি পাসওয়ার্ড",
-        "good_password": "ভাল পাসওয়ার্ড",
-        "strong_password": "শক্তিশালী পাসওয়ার্ড"
-      },
-      lo: {
-        "reset_password_title": "ຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່",
-        "reset_password_instruction": "ກະລຸນາປ້ອນລະຫັດຜ່ານໃໝ່ຂອງທ່ານດ້ານລຸ່ມ",
-        "new_password": "ລະຫັດຜ່ານໃໝ່",
-        "new_password_placeholder": "ປ້ອນລະຫັດຜ່ານໃໝ່",
-        "confirm_password": "ຢືນຢັນລະຫັດຜ່ານ",
-        "confirm_password_placeholder": "ຢືນຢັນລະຫັດຜ່ານໃໝ່",
-        "reset_password_btn": "ຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່",
-        "back_to_login": "ກັບຄືນໄປທີ່ເຂົ້າສູ່ລະບົບ",
-        "error_title": "ຂໍ້ຜິດພາດ!",
-        "success_title": "ສຳເລັດ!",
-        "loading": "ກຳລັງໂຫຼດ...",
-        "please_wait": "ກະລຸນາລໍຖ້າເລັກນ້ອຍ",
-        "resetting_password": "ກຳລັງຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່...",
-        "go_to_login": "ໄປທີ່ເຂົ້າສູ່ລະບົບ",
-        "go_to_login_page": "ໄປທີ່ໜ້າເຂົ້າສູ່ລະບົບ",
-        "password_reset_success": "ລະຫັດຜ່ານຂອງທ່ານໄດ້ຖືກຕັ້ງຄ່າໃໝ່ສຳເລັດແລ້ວ!",
-        "password_reset_error": "ບໍ່ສາມາດຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່ໄດ້",
-        "passwords_not_match": "ລະຫັດຜ່ານບໍ່ກົງກັນ",
-        "password_too_short": "ລະຫັດຜ່ານຕ້ອງມີຢ່າງໜ້ອຍ 8 ຕົວອັກສອນ",
-        "password_requirements": "ລະຫັດຜ່ານບໍ່ຕອບສະໜອງຄວາມຕ້ອງການ",
-        "password_req_length": "ຢ່າງໜ້ອຍ 8 ຕົວອັກສອນ",
-        "password_req_lowercase": "ມີຕົວອັກສອນພິມນ້ອຍ",
-        "password_req_uppercase": "ມີຕົວອັກສອນພິມໃຫຍ່",
-        "password_req_number": "ມີຕົວເລກ",
-        "password_req_special": "ມີຕົວອັກສອນພິເສດ (!@#$%^&*)",
-        "invalid_link_title": "ລິງບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸ",
-        "invalid_link_message": "ລິງຕັ້ງຄ່າລະຫັດຜ່ານນີ້ບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸແລ້ວ.",
-        "invalid_link_instruction": "ກະລຸນາຂໍລິງຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່ຈາກໜ້າເຂົ້າສູ່ລະບົບ.",
-        "verifying_link": "ກຳລັງກວດສອບລິງຕັ້ງຄ່າ...",
-        "link_verified": "ກວດສອບລິງແລ້ວ. ຕອນນີ້ທ່ານສາມາດຕັ້ງຄ່າລະຫັດຜ່ານໄດ້.",
-        "weak_password": "ລະຫັດຜ່ານອ່ອນ",
-        "fair_password": "ລະຫັດຜ່ານປານກາງ",
-        "good_password": "ລະຫັດຜ່ານດີ",
-        "strong_password": "ລະຫັດຜ່ານແຂງ"
-      },
-      km: {
-        "reset_password_title": "កំណត់ពាក្យសម្ងាត់ឡើងវិញ",
-        "reset_password_instruction": "សូមបញ្ចូលពាក្យសម្ងាត់ថ្មីរបស់អ្នកខាងក្រោម",
-        "new_password": "ពាក្យសម្ងាត់ថ្មី",
-        "new_password_placeholder": "បញ្ចូលពាក្យសម្ងាត់ថ្មី",
-        "confirm_password": "បញ្ជាក់ពាក្យសម្ងាត់",
-        "confirm_password_placeholder": "បញ្ជាក់ពាក្យសម្ងាត់ថ្មី",
-        "reset_password_btn": "កំណត់ពាក្យសម្ងាត់ឡើងវិញ",
-        "back_to_login": "ត្រឡប់ទៅការចូល",
-        "error_title": "កំហុស!",
-        "success_title": "ជោគជ័យ!",
-        "loading": "កំពុងផ្ទុក...",
-        "please_wait": "សូមរង់ចាំមួយភ្លែត",
-        "resetting_password": "កំពុងកំណត់ពាក្យសម្ងាត់ឡើងវិញ...",
-        "go_to_login": "ទៅកាន់ការចូល",
-        "go_to_login_page": "ទៅកាន់ទំព័រចូល",
-        "password_reset_success": "ពាក្យសម្ងាត់របស់អ្នកត្រូវបានកំណត់ឡើងវិញដោយជោគជ័យ!",
-        "password_reset_error": "បរាជ័យក្នុងការកំណត់ពាក្យសម្ងាត់ឡើងវិញ",
-        "passwords_not_match": "ពាក្យសម្ងាត់មិនត្រូវគ្នា",
-        "password_too_short": "ពាក្យសម្ងាត់ត្រូវតែមានយ៉ាងហោចណាស់ 8 តួអក្សរ",
-        "password_requirements": "ពាក្យសម្ងាត់មិនបំពេញតម្រូវការ",
-        "password_req_length": "យ៉ាងហោចណាស់ 8 តួអក្សរ",
-        "password_req_lowercase": "មានអក្សរតូច",
-        "password_req_uppercase": "មានអក្សរធំ",
-        "password_req_number": "មានលេខ",
-        "password_req_special": "មានតួអក្សរពិសេស (!@#$%^&*)",
-        "invalid_link_title": "តំណភ្ជាប់មិនត្រឹមត្រូវ ឬហួសសម័យ",
-        "invalid_link_message": "តំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ឡើងវិញនេះមិនត្រឹមត្រូវ ឬហួសសម័យ។",
-        "invalid_link_instruction": "សូមស្នើសុំតំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ឡើងវិញថ្មីពីទំព័រចូល។",
-        "verifying_link": "កំពុងផ្ទៀងផ្ទាត់តំណភ្ជាប់កំណត់ឡើងវិញ...",
-        "link_verified": "បានផ្ទៀងផ្ទាត់តំណភ្ជាប់។ ឥឡូវនេះអ្នកអាចកំណត់ពាក្យសម្ងាត់ឡើងវិញបាន។",
-        "weak_password": "ពាក្យសម្ងាត់ខ្សោយ",
-        "fair_password": "ពាក្យសម្ងាត់មធ្យម",
-        "good_password": "ពាក្យសម្ងាត់ល្អ",
-        "strong_password": "ពាក្យសម្ងាត់ខ្លាំង"
-      },
-      my: {
-        "reset_password_title": "စကားဝှက်ကို ပြန်လည်သတ်မှတ်ပါ",
-        "reset_password_instruction": "ကျေးဇူးပြု၍ သင့်စကားဝှက်အသစ်ကို အောက်တွင်ရိုက်ထည့်ပါ",
-        "new_password": "စကားဝှက်အသစ်",
-        "new_password_placeholder": "စကားဝှက်အသစ်ရိုက်ထည့်ပါ",
-        "confirm_password": "စကားဝှက်အတည်ပြုပါ",
-        "confirm_password_placeholder": "စကားဝှက်အသစ်အတည်ပြုပါ",
-        "reset_password_btn": "စကားဝှက်ပြန်လည်သတ်မှတ်ပါ",
-        "back_to_login": "လော့ဂ်အင် သို့ ပြန်သွားပါ",
-        "error_title": "အမှား!",
-        "success_title": "အောင်မြင်ပါသည်!",
-        "loading": "လာမည့်...",
-        "please_wait": "ကျေးဇူးပြု၍ ခဏစောင့်ပါ",
-        "resetting_password": "စကားဝှက်ပြန်လည်သတ်မှတ်နေသည်...",
-        "go_to_login": "လော့ဂ်အင် သို့ သွားပါ",
-        "go_to_login_page": "လော့ဂ်အင် စာမျက်နှာသို့ သွားပါ",
-        "password_reset_success": "သင့်စကားဝှက် အောင်မြင်စွာ ပြန်လည်သတ်မှတ်ပြီးပါပြီ!",
-        "password_reset_error": "စကားဝှက်ပြန်လည်သတ်မှတ်ရန် မအောင်မြင်ပါ",
-        "passwords_not_match": "စကားဝှက်များ မကိုက်ညီပါ",
-        "password_too_short": "စကားဝှက်သည် အနည်းဆုံး စာလုံး ၈ လုံးရှိရမည်",
-        "password_requirements": "စကားဝှက်သည် လိုအပ်ချက်များနှင့် မကိုက်ညီပါ",
-        "password_req_length": "အနည်းဆုံး စာလုံး ၈ လုံး",
-        "password_req_lowercase": "စာလုံးအသေးပါရှိသည်",
-        "password_req_uppercase": "စာလုံးအကြီးပါရှိသည်",
-        "password_req_number": "နံပါတ်ပါရှိသည်",
-        "password_req_special": "အထူးစာလုံးပါရှိသည် (!@#$%^&*)",
-        "invalid_link_title": "မမှန်ကန်သော သို့မဟုတ် သက်တမ်းကုန်သွားသော လင့်ခ်",
-        "invalid_link_message": "ဤစကားဝှက်ပြန်လည်သတ်မှတ်ရန် လင့်ခ်သည် မမှန်ကန်ပါ သို့မဟုတ် သက်တမ်းကုန်သွားပါပြီ။",
-        "invalid_link_instruction": "ကျေးဇူးပြု၍ လော့ဂ်အင် စာမျက်နှာမှ စကားဝှက်ပြန်လည်သတ်မှတ်ရန် လင့်ခ်အသစ်တစ်ခုကို တောင်းဆိုပါ။",
-        "verifying_link": "ပြန်လည်သတ်မှတ်ရန် လင့်ခ်ကို အတည်ပြုနေသည်...",
-        "link_verified": "လင့်ခ်ကို အတည်ပြုပြီးပါပြီ။ ယခု သင်သည် သင့်စကားဝှက်ကို ပြန်လည်သတ်မှတ်နိုင်ပါပြီ။",
-        "weak_password": "အားနည်းသောစကားဝှက်",
-        "fair_password": "အသင့်အတင့်စကားဝှက်",
-        "good_password": "ကောင်းသောစကားဝှက်",
-        "strong_password": "အားကောင်းသောစကားဝှက်"
-      },
-      ne: {
-        "reset_password_title": "पासवर्ड रिसेट गर्नुहोस्",
-        "reset_password_instruction": "कृपया तल आफ्नो नयाँ पासवर्ड प्रविष्ट गर्नुहोस्",
-        "new_password": "नयाँ पासवर्ड",
-        "new_password_placeholder": "नयाँ पासवर्ड प्रविष्ट गर्नुहोस्",
-        "confirm_password": "पासवर्ड पुष्टि गर्नुहोस्",
-        "confirm_password_placeholder": "नयाँ पासवर्ड पुष्टि गर्नुहोस्",
-        "reset_password_btn": "पासवर्ड रिसेट गर्नुहोस्",
-        "back_to_login": "लगइनमा फर्कनुहोस्",
-        "error_title": "त्रुटि!",
-        "success_title": "सफलता!",
-        "loading": "लोड हुँदै...",
-        "please_wait": "कृपया केही पल प्रतीक्षा गर्नुहोस्",
-        "resetting_password": "पासवर्ड रिसेट हुँदै...",
-        "go_to_login": "लगइनमा जानुहोस्",
-        "go_to_login_page": "लगइन पृष्ठमा जानुहोस्",
-        "password_reset_success": "तपाईंको पासवर्ड सफलतापूर्वक रिसेट भएको छ!",
-        "password_reset_error": "पासवर्ड रिसेट गर्न असफल",
-        "passwords_not_match": "पासवर्डहरू मेल खाँदैनन्",
-        "password_too_short": "पासवर्ड कम्तीमा ८ वर्णको हुनुपर्छ",
-        "password_requirements": "पासवर्डले आवश्यकताहरू पूरा गर्दैन",
-        "password_req_length": "कम्तीमा ८ वर्ण",
-        "password_req_lowercase": "सानो अक्षर समावेश गर्दछ",
-        "password_req_uppercase": "ठूलो अक्षर समावेश गर्दछ",
-        "password_req_number": "नम्बर समावेश गर्दछ",
-        "password_req_special": "विशेष वर्ण समावेश गर्दछ (!@#$%^&*)",
-        "invalid_link_title": "अमान्य वा म्याद सकिएको लिङ्क",
-        "invalid_link_message": "यो पासवर्ड रिसेट लिङ्क अमान्य छ वा म्याद सकिएको छ।",
-        "invalid_link_instruction": "कृपया लगइन पृष्ठबाट नयाँ पासवर्ड रिसेट लिङ्क अनुरोध गर्नुहोस्।",
-        "verifying_link": "रिसेट लिङ्क प्रमाणित गरिँदै...",
-        "link_verified": "लिङ्क प्रमाणित भयो। अब तपाईं आफ्नो पासवर्ड रिसेट गर्न सक्नुहुन्छ।",
-        "weak_password": "कमजोर पासवर्ड",
-        "fair_password": "मध्यम पासवर्ड",
-        "good_password": "राम्रो पासवर्ड",
-        "strong_password": "बलियो पासवर्ड"
-      },
-      pa: {
-        "reset_password_title": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰੋ",
-        "reset_password_instruction": "ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਆਪਣਾ ਨਵਾਂ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
-        "new_password": "ਨਵਾਂ ਪਾਸਵਰਡ",
-        "new_password_placeholder": "ਨਵਾਂ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
-        "confirm_password": "ਪਾਸਵਰਡ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
-        "confirm_password_placeholder": "ਨਵੇਂ ਪਾਸਵਰਡ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
-        "reset_password_btn": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰੋ",
-        "back_to_login": "ਲੌਗਇਨ ਤੇ ਵਾਪਸ ਜਾਓ",
-        "error_title": "ਗਲਤੀ!",
-        "success_title": "ਸਫਲਤਾ!",
-        "loading": "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...",
-        "please_wait": "ਕਿਰਪਾ ਕਰਕੇ ਥੋੜਾ ਇੰਤਜ਼ਾਰ ਕਰੋ",
-        "resetting_password": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਹੋ ਰਿਹਾ ਹੈ...",
-        "go_to_login": "ਲੌਗਇਨ ਤੇ ਜਾਓ",
-        "go_to_login_page": "ਲੌਗਇਨ ਪੇਜ ਤੇ ਜਾਓ",
-        "password_reset_success": "ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਸਫਲਤਾਪੂਰਵਕ ਰੀਸੈਟ ਹੋ ਗਿਆ ਹੈ!",
-        "password_reset_error": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
-        "passwords_not_match": "ਪਾਸਵਰਡ ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ",
-        "password_too_short": "ਪਾਸਵਰਡ ਘੱਟੋ-ਘੱਟ 8 ਅੱਖਰਾਂ ਦਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ",
-        "password_requirements": "ਪਾਸਵਰਡ ਲੋੜਾਂ ਨੂੰ ਪੂਰਾ ਨਹੀਂ ਕਰਦਾ",
-        "password_req_length": "ਘੱਟੋ-ਘੱਟ 8 ਅੱਖਰ",
-        "password_req_lowercase": "ਛੋਟੇ ਅੱਖਰ ਸ਼ਾਮਲ ਹਨ",
-        "password_req_uppercase": "ਵੱਡੇ ਅੱਖਰ ਸ਼ਾਮਲ ਹਨ",
-        "password_req_number": "ਨੰਬਰ ਸ਼ਾਮਲ ਹੈ",
-        "password_req_special": "ਖਾਸ ਅੱਖਰ ਸ਼ਾਮਲ ਹੈ (!@#$%^&*)",
-        "invalid_link_title": "ਅਵੈਧ ਜਾਂ ਮਿਆਦ ਪੁੱਗੀ ਲਿੰਕ",
-        "invalid_link_message": "ਇਹ ਪਾਸਵਰਡ ਰੀਸੈਟ ਲਿੰਕ ਅਵੈਧ ਹੈ ਜਾਂ ਮਿਆਦ ਪੁੱਗ ਗਈ ਹੈ।",
-        "invalid_link_instruction": "ਕਿਰਪਾ ਕਰਕੇ ਲੌਗਇਨ ਪੇਜ ਤੋਂ ਨਵਾਂ ਪਾਸਵਰਡ ਰੀਸੈਟ ਲਿੰਕ ਦੀ ਬੇਨਤੀ ਕਰੋ।",
-        "verifying_link": "ਰੀਸੈਟ ਲਿੰਕ ਤਸਦੀਕ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
-        "link_verified": "ਲਿੰਕ ਤਸਦੀਕ ਹੋ ਗਿਆ ਹੈ। ਹੁਣ ਤੁਸੀਂ ਆਪਣਾ ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰ ਸਕਦੇ ਹੋ।",
-        "weak_password": "ਕਮਜ਼ੋਰ ਪਾਸਵਰਡ",
-        "fair_password": "ਠੀਕ-ਠਾਕ ਪਾਸਵਰਡ",
-        "good_password": "ਚੰਗਾ ਪਾਸਵਰਡ",
-        "strong_password": "ਮਜ਼ਬੂਤ ਪਾਸਵਰਡ"
-      },
-      si: {
-        "reset_password_title": "මුරපදය යළි සකසන්න",
-        "reset_password_instruction": "කරුණාකර ඔබගේ නව මුරපදය පහත ඇතුළත් කරන්න",
-        "new_password": "නව මුරපදය",
-        "new_password_placeholder": "නව මුරපදය ඇතුළත් කරන්න",
-        "confirm_password": "මුරපදය තහවුරු කරන්න",
-        "confirm_password_placeholder": "නව මුරපදය තහවුරු කරන්න",
-        "reset_password_btn": "මුරපදය යළි සකසන්න",
-        "back_to_login": "පිවිසුමට ආපසු යන්න",
-        "error_title": "දෝෂයක්!",
-        "success_title": "සාර්ථකත්වය!",
-        "loading": "පූරණය වෙමින්...",
-        "please_wait": "කරුණාකර මොහොතක් රැඳී සිටින්න",
-        "resetting_password": "මුරපදය යළි සකස්කරමින්...",
-        "go_to_login": "පිවිසුමට යන්න",
-        "go_to_login_page": "පිවිසුම් පිටුවට යන්න",
-        "password_reset_success": "ඔබගේ මුරපදය සාර්ථකව යළි සකස් කරන ලදී!",
-        "password_reset_error": "මුරපදය යළි සකස් කිරීමට අසමත් විය",
-        "passwords_not_match": "මුරපද ගැලපෙන්නේ නැත",
-        "password_too_short": "මුරපදය අක්ෂර 8ක් අවම වශයෙන් විය යුතුය",
-        "password_requirements": "මුරපදය අවශ්‍යතා සපුරා නොමැත",
-        "password_req_length": "අවම වශයෙන් අක්ෂර 8",
-        "password_req_lowercase": "පහත් අකුරු අඩංගු වේ",
-        "password_req_uppercase": "ඉහළ අකුරු අඩංගු වේ",
-        "password_req_number": "අංකයක් අඩංගු වේ",
-        "password_req_special": "විශේෂ අක්ෂරයක් අඩංගු වේ (!@#$%^&*)",
-        "invalid_link_title": "වලංගු නොවන හෝ කල් ඉකුත් වූ සබැඳිය",
-        "invalid_link_message": "මෙම මුරපදය යළි සකස් කිරීමේ සබැඳිය වලංගු නොවන හෝ කල් ඉකුත් වූ එකකි.",
-        "invalid_link_instruction": "කරුණාකර පිවිසුම් පිටුවෙන් නව මුරපදය යළි සකස් කිරීමේ සබැඳියක් ඉල්ලන්න.",
-        "verifying_link": "යළි සකස් කිරීමේ සබැඳිය සත්‍යාපනය වෙමින්...",
-        "link_verified": "සබැඳිය සත්‍යාපනය විය. දැන් ඔබට ඔබගේ මුරපදය යළි සකස් කළ හැකිය.",
-        "weak_password": "දුර්වල මුරපදය",
-        "fair_password": "මධ්‍යස්ථ මුරපදය",
-        "good_password": "හොඳ මුරපදය",
-        "strong_password": "ශක්තිමත් මුරපදය"
+  en: {
+    "reset_password_title": "Reset Password",
+    "reset_password_instruction": "Please enter your new password below",
+    "new_password": "New Password",
+    "new_password_placeholder": "Enter new password",
+    "confirm_password": "Confirm Password",
+    "confirm_password_placeholder": "Confirm new password",
+    "reset_password_btn": "Reset Password",
+    "back_to_login": "Back to Login",
+    "error_title": "Error!",
+    "success_title": "Success!",
+    "loading": "Loading...",
+    "please_wait": "Please wait a moment",
+    "resetting_password": "Resetting Password...",
+    "go_to_login": "Go to Login",
+    "go_to_login_page": "Go to Login Page",
+    "password_reset_success": "Your password has been reset successfully!",
+    "password_reset_error": "Failed to reset password",
+    "passwords_not_match": "Passwords do not match",
+    "password_too_short": "Password must be at least 8 characters",
+    "password_requirements": "Password does not meet requirements",
+    "password_req_length": "At least 8 characters",
+    "password_req_lowercase": "Contains lowercase letter",
+    "password_req_uppercase": "Contains uppercase letter",
+    "password_req_number": "Contains number",
+    "password_req_special": "Contains special character (!@#$%^&*)",
+    "invalid_link_title": "Invalid or Expired Link",
+    "invalid_link_message": "This password reset link is invalid or has expired.",
+    "invalid_link_instruction": "Please request a new password reset link from the login page.",
+    "verifying_link": "Verifying reset link...",
+    "link_verified": "Link verified. You can now reset your password.",
+    "weak_password": "Weak password",
+    "fair_password": "Fair password",
+    "good_password": "Good password",
+    "strong_password": "Strong password"
+  },
+  zh: {
+    "reset_password_title": "重置密码",
+    "reset_password_instruction": "请在下面输入您的新密码",
+    "new_password": "新密码",
+    "new_password_placeholder": "输入新密码",
+    "confirm_password": "确认密码",
+    "confirm_password_placeholder": "确认新密码",
+    "reset_password_btn": "重置密码",
+    "back_to_login": "返回登录",
+    "error_title": "错误！",
+    "success_title": "成功！",
+    "loading": "加载中...",
+    "please_wait": "请稍候",
+    "resetting_password": "正在重置密码...",
+    "go_to_login": "前往登录",
+    "go_to_login_page": "前往登录页面",
+    "password_reset_success": "您的密码已成功重置！",
+    "password_reset_error": "重置密码失败",
+    "passwords_not_match": "密码不匹配",
+    "password_too_short": "密码必须至少8个字符",
+    "password_requirements": "密码不符合要求",
+    "password_req_length": "至少8个字符",
+    "password_req_lowercase": "包含小写字母",
+    "password_req_uppercase": "包含大写字母",
+    "password_req_number": "包含数字",
+    "password_req_special": "包含特殊字符(!@#$%^&*)",
+    "invalid_link_title": "无效或过期的链接",
+    "invalid_link_message": "此密码重置链接无效或已过期。",
+    "invalid_link_instruction": "请从登录页面请求新的密码重置链接。",
+    "verifying_link": "正在验证重置链接...",
+    "link_verified": "链接已验证。您现在可以重置密码了。",
+    "weak_password": "弱密码",
+    "fair_password": "一般密码",
+    "good_password": "良好密码",
+    "strong_password": "强密码"
+  },
+  ja: {
+    "reset_password_title": "パスワードのリセット",
+    "reset_password_instruction": "新しいパスワードを入力してください",
+    "new_password": "新しいパスワード",
+    "new_password_placeholder": "新しいパスワードを入力",
+    "confirm_password": "パスワードの確認",
+    "confirm_password_placeholder": "新しいパスワードを確認",
+    "reset_password_btn": "パスワードをリセット",
+    "back_to_login": "ログインに戻る",
+    "error_title": "エラー！",
+    "success_title": "成功！",
+    "loading": "読み込み中...",
+    "please_wait": "少々お待ちください",
+    "resetting_password": "パスワードをリセット中...",
+    "go_to_login": "ログインへ",
+    "go_to_login_page": "ログインページへ",
+    "password_reset_success": "パスワードが正常にリセットされました！",
+    "password_reset_error": "パスワードのリセットに失敗しました",
+    "passwords_not_match": "パスワードが一致しません",
+    "password_too_short": "パスワードは8文字以上である必要があります",
+    "password_requirements": "パスワードが要件を満たしていません",
+    "password_req_length": "8文字以上",
+    "password_req_lowercase": "小文字を含む",
+    "password_req_uppercase": "大文字を含む",
+    "password_req_number": "数字を含む",
+    "password_req_special": "特殊文字(!@#$%^&*)を含む",
+    "invalid_link_title": "無効または期限切れのリンク",
+    "invalid_link_message": "このパスワードリセットリンクは無効または期限切れです。",
+    "invalid_link_instruction": "ログインページから新しいパスワードリセットリンクをリクエストしてください。",
+    "verifying_link": "リセットリンクを確認中...",
+    "link_verified": "リンクが確認されました。パスワードをリセットできます。",
+    "weak_password": "弱いパスワード",
+    "fair_password": "普通のパスワード",
+    "good_password": "良好なパスワード",
+    "strong_password": "強いパスワード"
+  },
+  ko: {
+    "reset_password_title": "비밀번호 재설정",
+    "reset_password_instruction": "새 비밀번호를 입력하세요",
+    "new_password": "새 비밀번호",
+    "new_password_placeholder": "새 비밀번호 입력",
+    "confirm_password": "비밀번호 확인",
+    "confirm_password_placeholder": "새 비밀번호 확인",
+    "reset_password_btn": "비밀번호 재설정",
+    "back_to_login": "로그인으로 돌아가기",
+    "error_title": "오류!",
+    "success_title": "성공!",
+    "loading": "로딩 중...",
+    "please_wait": "잠시만 기다려 주세요",
+    "resetting_password": "비밀번호 재설정 중...",
+    "go_to_login": "로그인으로 이동",
+    "go_to_login_page": "로그인 페이지로 이동",
+    "password_reset_success": "비밀번호가 성공적으로 재설정되었습니다!",
+    "password_reset_error": "비밀번호 재설정 실패",
+    "passwords_not_match": "비밀번호가 일치하지 않습니다",
+    "password_too_short": "비밀번호는 최소 8자 이상이어야 합니다",
+    "password_requirements": "비밀번호가 요구사항을 충족하지 않습니다",
+    "password_req_length": "최소 8자",
+    "password_req_lowercase": "소문자 포함",
+    "password_req_uppercase": "대문자 포함",
+    "password_req_number": "숫자 포함",
+    "password_req_special": "특수문자(!@#$%^&*) 포함",
+    "invalid_link_title": "유효하지 않거나 만료된 링크",
+    "invalid_link_message": "이 비밀번호 재설정 링크가 유효하지 않거나 만료되었습니다.",
+    "invalid_link_instruction": "로그인 페이지에서 새로운 비밀번호 재설정 링크를 요청하세요.",
+    "verifying_link": "재설정 링크 확인 중...",
+    "link_verified": "링크가 확인되었습니다. 이제 비밀번호를 재설정할 수 있습니다.",
+    "weak_password": "약한 비밀번호",
+    "fair_password": "보통 비밀번호",
+    "good_password": "좋은 비밀번호",
+    "strong_password": "강력한 비밀번호"
+  },
+  ar: {
+    "reset_password_title": "إعادة تعيين كلمة المرور",
+    "reset_password_instruction": "الرجاء إدخال كلمة المرور الجديدة أدناه",
+    "new_password": "كلمة المرور الجديدة",
+    "new_password_placeholder": "أدخل كلمة المرور الجديدة",
+    "confirm_password": "تأكيد كلمة المرور",
+    "confirm_password_placeholder": "تأكيد كلمة المرور الجديدة",
+    "reset_password_btn": "إعادة تعيين كلمة المرور",
+    "back_to_login": "العودة إلى تسجيل الدخول",
+    "error_title": "خطأ!",
+    "success_title": "نجاح!",
+    "loading": "جاري التحميل...",
+    "please_wait": "الرجاء الانتظار لحظة",
+    "resetting_password": "جاري إعادة تعيين كلمة المرور...",
+    "go_to_login": "انتقل إلى تسجيل الدخول",
+    "go_to_login_page": "انتقل إلى صفحة تسجيل الدخول",
+    "password_reset_success": "تم إعادة تعيين كلمة المرور بنجاح!",
+    "password_reset_error": "فشل إعادة تعيين كلمة المرور",
+    "passwords_not_match": "كلمات المرور غير متطابقة",
+    "password_too_short": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+    "password_requirements": "كلمة المرور لا تستوفي المتطلبات",
+    "password_req_length": "8 أحرف على الأقل",
+    "password_req_lowercase": "تحتوي على حرف صغير",
+    "password_req_uppercase": "تحتوي على حرف كبير",
+    "password_req_number": "تحتوي على رقم",
+    "password_req_special": "تحتوي على حرف خاص (!@#$%^&*)",
+    "invalid_link_title": "رابط غير صالح أو منتهي الصلاحية",
+    "invalid_link_message": "رابط إعادة تعيين كلمة المرور هذا غير صالح أو منتهي الصلاحية.",
+    "invalid_link_instruction": "يرجى طلب رابط إعادة تعيين كلمة مرور جديد من صفحة تسجيل الدخول.",
+    "verifying_link": "جاري التحقق من رابط إعادة التعيين...",
+    "link_verified": "تم التحقق من الرابط. يمكنك الآن إعادة تعيين كلمة المرور.",
+    "weak_password": "كلمة مرور ضعيفة",
+    "fair_password": "كلمة مرور متوسطة",
+    "good_password": "كلمة مرور جيدة",
+    "strong_password": "كلمة مرور قوية"
+  },
+  hi: {
+    "reset_password_title": "पासवर्ड रीसेट करें",
+    "reset_password_instruction": "कृपया नीचे अपना नया पासवर्ड दर्ज करें",
+    "new_password": "नया पासवर्ड",
+    "new_password_placeholder": "नया पासवर्ड दर्ज करें",
+    "confirm_password": "पासवर्ड की पुष्टि करें",
+    "confirm_password_placeholder": "नए पासवर्ड की पुष्टि करें",
+    "reset_password_btn": "पासवर्ड रीसेट करें",
+    "back_to_login": "लॉगिन पर वापस जाएं",
+    "error_title": "त्रुटि!",
+    "success_title": "सफलता!",
+    "loading": "लोड हो रहा है...",
+    "please_wait": "कृपया थोड़ी प्रतीक्षा करें",
+    "resetting_password": "पासवर्ड रीसेट हो रहा है...",
+    "go_to_login": "लॉगिन पर जाएं",
+    "go_to_login_page": "लॉगिन पेज पर जाएं",
+    "password_reset_success": "आपका पासवर्ड सफलतापूर्वक रीसेट कर दिया गया है!",
+    "password_reset_error": "पासवर्ड रीसेट करने में विफल",
+    "passwords_not_match": "पासवर्ड मेल नहीं खाते",
+    "password_too_short": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए",
+    "password_requirements": "पासवर्ड आवश्यकताओं को पूरा नहीं करता",
+    "password_req_length": "कम से कम 8 अक्षर",
+    "password_req_lowercase": "छोटा अक्षर शामिल है",
+    "password_req_uppercase": "बड़ा अक्षर शामिल है",
+    "password_req_number": "संख्या शामिल है",
+    "password_req_special": "विशेष वर्ण शामिल है (!@#$%^&*)",
+    "invalid_link_title": "अमान्य या समाप्त लिंक",
+    "invalid_link_message": "यह पासवर्ड रीसेट लिंक अमान्य या समाप्त हो चुका है।",
+    "invalid_link_instruction": "कृपया लॉगिन पेज से एक नया पासवर्ड रीसेट लिंक अनुरोध करें।",
+    "verifying_link": "रीसेट लिंक सत्यापित किया जा रहा है...",
+    "link_verified": "लिंक सत्यापित हो गया है। अब आप अपना पासवर्ड रीसेट कर सकते हैं।",
+    "weak_password": "कमजोर पासवर्ड",
+    "fair_password": "मध्यम पासवर्ड",
+    "good_password": "अच्छा पासवर्ड",
+    "strong_password": "मजबूत पासवर्ड"
+  },
+  th: {
+    "reset_password_title": "รีเซ็ตรหัสผ่าน",
+    "reset_password_instruction": "กรุณากรอกรหัสผ่านใหม่ด้านล่าง",
+    "new_password": "รหัสผ่านใหม่",
+    "new_password_placeholder": "กรอกรหัสผ่านใหม่",
+    "confirm_password": "ยืนยันรหัสผ่าน",
+    "confirm_password_placeholder": "ยืนยันรหัสผ่านใหม่",
+    "reset_password_btn": "รีเซ็ตรหัสผ่าน",
+    "back_to_login": "กลับไปหน้าเข้าสู่ระบบ",
+    "error_title": "เกิดข้อผิดพลาด!",
+    "success_title": "สำเร็จ!",
+    "loading": "กำลังโหลด...",
+    "please_wait": "กรุณารอสักครู่",
+    "resetting_password": "กำลังรีเซ็ตรหัสผ่าน...",
+    "go_to_login": "ไปยังหน้าเข้าสู่ระบบ",
+    "go_to_login_page": "ไปยังหน้าเข้าสู่ระบบ",
+    "password_reset_success": "รีเซ็ตรหัสผ่านสำเร็จแล้ว!",
+    "password_reset_error": "รีเซ็ตรหัสผ่านไม่สำเร็จ",
+    "passwords_not_match": "รหัสผ่านไม่ตรงกัน",
+    "password_too_short": "รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร",
+    "password_requirements": "รหัสผ่านไม่ตรงตามข้อกำหนด",
+    "password_req_length": "อย่างน้อย 8 ตัวอักษร",
+    "password_req_lowercase": "มีตัวอักษรพิมพ์เล็ก",
+    "password_req_uppercase": "มีตัวอักษรพิมพ์ใหญ่",
+    "password_req_number": "มีตัวเลข",
+    "password_req_special": "มีอักขระพิเศษ (!@#$%^&*)",
+    "invalid_link_title": "ลิงก์ไม่ถูกต้องหรือหมดอายุ",
+    "invalid_link_message": "ลิงก์รีเซ็ตรหัสผ่านนี้ไม่ถูกต้องหรือหมดอายุแล้ว",
+    "invalid_link_instruction": "กรุณาขอลิงก์รีเซ็ตรหัสผ่านใหม่จากหน้าเข้าสู่ระบบ",
+    "verifying_link": "กำลังตรวจสอบลิงก์รีเซ็ต...",
+    "link_verified": "ตรวจสอบลิงก์เรียบร้อยแล้ว ตอนนี้คุณสามารถรีเซ็ตรหัสผ่านได้",
+    "weak_password": "รหัสผ่านอ่อน",
+    "fair_password": "รหัสผ่านปานกลาง",
+    "good_password": "รหัสผ่านดี",
+    "strong_password": "รหัสผ่านแข็งแกร่ง"
+  },
+  vi: {
+    "reset_password_title": "Đặt lại mật khẩu",
+    "reset_password_instruction": "Vui lòng nhập mật khẩu mới bên dưới",
+    "new_password": "Mật khẩu mới",
+    "new_password_placeholder": "Nhập mật khẩu mới",
+    "confirm_password": "Xác nhận mật khẩu",
+    "confirm_password_placeholder": "Xác nhận mật khẩu mới",
+    "reset_password_btn": "Đặt lại mật khẩu",
+    "back_to_login": "Quay lại đăng nhập",
+    "error_title": "Lỗi!",
+    "success_title": "Thành công!",
+    "loading": "Đang tải...",
+    "please_wait": "Vui lòng đợi một chút",
+    "resetting_password": "Đang đặt lại mật khẩu...",
+    "go_to_login": "Đi đến đăng nhập",
+    "go_to_login_page": "Đi đến trang đăng nhập",
+    "password_reset_success": "Mật khẩu của bạn đã được đặt lại thành công!",
+    "password_reset_error": "Không thể đặt lại mật khẩu",
+    "passwords_not_match": "Mật khẩu không khớp",
+    "password_too_short": "Mật khẩu phải có ít nhất 8 ký tự",
+    "password_requirements": "Mật khẩu không đáp ứng yêu cầu",
+    "password_req_length": "Ít nhất 8 ký tự",
+    "password_req_lowercase": "Chứa chữ thường",
+    "password_req_uppercase": "Chứa chữ hoa",
+    "password_req_number": "Chứa số",
+    "password_req_special": "Chứa ký tự đặc biệt (!@#$%^&*)",
+    "invalid_link_title": "Liên kết không hợp lệ hoặc đã hết hạn",
+    "invalid_link_message": "Liên kết đặt lại mật khẩu này không hợp lệ hoặc đã hết hạn.",
+    "invalid_link_instruction": "Vui lòng yêu cầu liên kết đặt lại mật khẩu mới từ trang đăng nhập.",
+    "verifying_link": "Đang xác minh liên kết đặt lại...",
+    "link_verified": "Liên kết đã được xác minh. Bây giờ bạn có thể đặt lại mật khẩu.",
+    "weak_password": "Mật khẩu yếu",
+    "fair_password": "Mật khẩu trung bình",
+    "good_password": "Mật khẩu tốt",
+    "strong_password": "Mật khẩu mạnh"
+  },
+  id: {
+    "reset_password_title": "Atur Ulang Kata Sandi",
+    "reset_password_instruction": "Silakan masukkan kata sandi baru di bawah ini",
+    "new_password": "Kata Sandi Baru",
+    "new_password_placeholder": "Masukkan kata sandi baru",
+    "confirm_password": "Konfirmasi Kata Sandi",
+    "confirm_password_placeholder": "Konfirmasi kata sandi baru",
+    "reset_password_btn": "Atur Ulang Kata Sandi",
+    "back_to_login": "Kembali ke Login",
+    "error_title": "Kesalahan!",
+    "success_title": "Berhasil!",
+    "loading": "Memuat...",
+    "please_wait": "Harap tunggu sebentar",
+    "resetting_password": "Mengatur ulang kata sandi...",
+    "go_to_login": "Pergi ke Login",
+    "go_to_login_page": "Pergi ke Halaman Login",
+    "password_reset_success": "Kata sandi Anda telah berhasil diatur ulang!",
+    "password_reset_error": "Gagal mengatur ulang kata sandi",
+    "passwords_not_match": "Kata sandi tidak cocok",
+    "password_too_short": "Kata sandi minimal 8 karakter",
+    "password_requirements": "Kata sandi tidak memenuhi persyaratan",
+    "password_req_length": "Minimal 8 karakter",
+    "password_req_lowercase": "Mengandung huruf kecil",
+    "password_req_uppercase": "Mengandung huruf besar",
+    "password_req_number": "Mengandung angka",
+    "password_req_special": "Mengandung karakter khusus (!@#$%^&*)",
+    "invalid_link_title": "Tautan Tidak Valid atau Kedaluwarsa",
+    "invalid_link_message": "Tautan atur ulang kata sandi ini tidak valid atau telah kedaluwarsa.",
+    "invalid_link_instruction": "Silakan minta tautan atur ulang kata sandi baru dari halaman login.",
+    "verifying_link": "Memverifikasi tautan atur ulang...",
+    "link_verified": "Tautan telah diverifikasi. Sekarang Anda dapat mengatur ulang kata sandi.",
+    "weak_password": "Kata sandi lemah",
+    "fair_password": "Kata sandi cukup",
+    "good_password": "Kata sandi baik",
+    "strong_password": "Kata sandi kuat"
+  },
+  ms: {
+    "reset_password_title": "Tetapkan Semula Kata Laluan",
+    "reset_password_instruction": "Sila masukkan kata laluan baru di bawah",
+    "new_password": "Kata Laluan Baru",
+    "new_password_placeholder": "Masukkan kata laluan baru",
+    "confirm_password": "Sahkan Kata Laluan",
+    "confirm_password_placeholder": "Sahkan kata laluan baru",
+    "reset_password_btn": "Tetapkan Semula Kata Laluan",
+    "back_to_login": "Kembali ke Log Masuk",
+    "error_title": "Ralat!",
+    "success_title": "Berjaya!",
+    "loading": "Memuat...",
+    "please_wait": "Sila tunggu sebentar",
+    "resetting_password": "Menetapkan semula kata laluan...",
+    "go_to_login": "Pergi ke Log Masuk",
+    "go_to_login_page": "Pergi ke Halaman Log Masuk",
+    "password_reset_success": "Kata laluan anda telah berjaya ditetapkan semula!",
+    "password_reset_error": "Gagal menetapkan semula kata laluan",
+    "passwords_not_match": "Kata laluan tidak sepadan",
+    "password_too_short": "Kata laluan mesti sekurang-kurangnya 8 aksara",
+    "password_requirements": "Kata laluan tidak memenuhi keperluan",
+    "password_req_length": "Sekurang-kurangnya 8 aksara",
+    "password_req_lowercase": "Mengandungi huruf kecil",
+    "password_req_uppercase": "Mengandungi huruf besar",
+    "password_req_number": "Mengandungi nombor",
+    "password_req_special": "Mengandungi aksara khas (!@#$%^&*)",
+    "invalid_link_title": "Pautan Tidak Sah atau Tamat Tempoh",
+    "invalid_link_message": "Pautan tetapan semula kata laluan ini tidak sah atau telah tamat tempoh.",
+    "invalid_link_instruction": "Sila minta pautan tetapan semula kata laluan baru dari halaman log masuk.",
+    "verifying_link": "Mengesahkan pautan tetapan semula...",
+    "link_verified": "Pautan telah disahkan. Sekarang anda boleh menetapkan semula kata laluan.",
+    "weak_password": "Kata laluan lemah",
+    "fair_password": "Kata laluan sederhana",
+    "good_password": "Kata laluan baik",
+    "strong_password": "Kata laluan kuat"
+  },
+  ru: {
+    "reset_password_title": "Сбросить пароль",
+    "reset_password_instruction": "Пожалуйста, введите новый пароль ниже",
+    "new_password": "Новый пароль",
+    "new_password_placeholder": "Введите новый пароль",
+    "confirm_password": "Подтвердите пароль",
+    "confirm_password_placeholder": "Подтвердите новый пароль",
+    "reset_password_btn": "Сбросить пароль",
+    "back_to_login": "Вернуться к входу",
+    "error_title": "Ошибка!",
+    "success_title": "Успех!",
+    "loading": "Загрузка...",
+    "please_wait": "Пожалуйста, подождите",
+    "resetting_password": "Сброс пароля...",
+    "go_to_login": "Перейти к входу",
+    "go_to_login_page": "Перейти на страницу входа",
+    "password_reset_success": "Ваш пароль успешно сброшен!",
+    "password_reset_error": "Не удалось сбросить пароль",
+    "passwords_not_match": "Пароли не совпадают",
+    "password_too_short": "Пароль должен быть не менее 8 символов",
+    "password_requirements": "Пароль не соответствует требованиям",
+    "password_req_length": "Не менее 8 символов",
+    "password_req_lowercase": "Содержит строчную букву",
+    "password_req_uppercase": "Содержит заглавную букву",
+    "password_req_number": "Содержит цифру",
+    "password_req_special": "Содержит специальный символ (!@#$%^&*)",
+    "invalid_link_title": "Недействительная или устаревшая ссылка",
+    "invalid_link_message": "Эта ссылка для сброса пароля недействительна или устарела.",
+    "invalid_link_instruction": "Пожалуйста, запросите новую ссылку для сброса пароля со страницы входа.",
+    "verifying_link": "Проверка ссылки сброса...",
+    "link_verified": "Ссылка проверена. Теперь вы можете сбросить пароль.",
+    "weak_password": "Слабый пароль",
+    "fair_password": "Средний пароль",
+    "good_password": "Хороший пароль",
+    "strong_password": "Сильный пароль"
+  },
+  ur: {
+    "reset_password_title": "پاس ورڈ ری سیٹ کریں",
+    "reset_password_instruction": "براہ کرم نیچے اپنا نیا پاس ورڈ درج کریں",
+    "new_password": "نیا پاس ورڈ",
+    "new_password_placeholder": "نیا پاس ورڈ درج کریں",
+    "confirm_password": "پاس ورڈ کی تصدیق کریں",
+    "confirm_password_placeholder": "نئے پاس ورڈ کی تصدیق کریں",
+    "reset_password_btn": "پاس ورڈ ری سیٹ کریں",
+    "back_to_login": "لاگ ان پر واپس جائیں",
+    "error_title": "خرابی!",
+    "success_title": "کامیابی!",
+    "loading": "لوڈ ہو رہا ہے...",
+    "please_wait": "براہ کرم تھوڑی دیر انتظار کریں",
+    "resetting_password": "پاس ورڈ ری سیٹ ہو رہا ہے...",
+    "go_to_login": "لاگ ان پر جائیں",
+    "go_to_login_page": "لاگ ان پیج پر جائیں",
+    "password_reset_success": "آپ کا پاس ورڈ کامیابی کے ساتھ ری سیٹ ہو گیا ہے!",
+    "password_reset_error": "پاس ورڈ ری سیٹ کرنے میں ناکام",
+    "passwords_not_match": "پاس ورڈ مماثل نہیں ہیں",
+    "password_too_short": "پاس ورڈ کم از کم 8 حروف کا ہونا چاہیے",
+    "password_requirements": "پاس ورڈ تقاضوں کو پورا نہیں کرتا",
+    "password_req_length": "کم از کم 8 حروف",
+    "password_req_lowercase": "چھوٹے حروف شامل ہیں",
+    "password_req_uppercase": "بڑے حروف شامل ہیں",
+    "password_req_number": "نمبر شامل ہے",
+    "password_req_special": "خصوصی کردار شامل ہے (!@#$%^&*)",
+    "invalid_link_title": "غلط یا میعاد ختم ہونے والا لنک",
+    "invalid_link_message": "یہ پاس ورڈ ری سیٹ لنک غلط ہے یا میعاد ختم ہو گئی ہے۔",
+    "invalid_link_instruction": "براہ کرم لاگ ان پیج سے نیا پاس ورڈ ری سیٹ لنک درخواست کریں۔",
+    "verifying_link": "ری سیٹ لنک کی تصدیق ہو رہی ہے...",
+    "link_verified": "لنک کی تصدیق ہو گئی ہے۔ اب آپ اپنا پاس ورڈ ری سیٹ کر سکتے ہیں۔",
+    "weak_password": "کمزور پاس ورڈ",
+    "fair_password": "متوسط پاس ورڈ",
+    "good_password": "اچھا پاس ورڈ",
+    "strong_password": "مضبوط پاس ورڈ"
+  },
+  tr: {
+    "reset_password_title": "Şifreyi Sıfırla",
+    "reset_password_instruction": "Lütfen yeni şifrenizi aşağıya girin",
+    "new_password": "Yeni Şifre",
+    "new_password_placeholder": "Yeni şifre girin",
+    "confirm_password": "Şifreyi Onayla",
+    "confirm_password_placeholder": "Yeni şifreyi onayla",
+    "reset_password_btn": "Şifreyi Sıfırla",
+    "back_to_login": "Girişe Dön",
+    "error_title": "Hata!",
+    "success_title": "Başarı!",
+    "loading": "Yükleniyor...",
+    "please_wait": "Lütfen bir dakika bekleyin",
+    "resetting_password": "Şifre sıfırlanıyor...",
+    "go_to_login": "Girişe Git",
+    "go_to_login_page": "Giriş Sayfasına Git",
+    "password_reset_success": "Şifreniz başarıyla sıfırlandı!",
+    "password_reset_error": "Şifre sıfırlama başarısız",
+    "passwords_not_match": "Şifreler eşleşmiyor",
+    "password_too_short": "Şifre en az 8 karakter olmalı",
+    "password_requirements": "Şifre gereksinimleri karşılamıyor",
+    "password_req_length": "En az 8 karakter",
+    "password_req_lowercase": "Küçük harf içerir",
+    "password_req_uppercase": "Büyük harf içerir",
+    "password_req_number": "Rakam içerir",
+    "password_req_special": "Özel karakter içerir (!@#$%^&*)",
+    "invalid_link_title": "Geçersiz veya Süresi Dolmuş Bağlantı",
+    "invalid_link_message": "Bu şifre sıfırlama bağlantısı geçersiz veya süresi dolmuş.",
+    "invalid_link_instruction": "Lütfen giriş sayfasından yeni bir şifre sıfırlama bağlantısı isteyin.",
+    "verifying_link": "Sıfırlama bağlantısı doğrulanıyor...",
+    "link_verified": "Bağlantı doğrulandı. Artık şifrenizi sıfırlayabilirsiniz.",
+    "weak_password": "Zayıf şifre",
+    "fair_password": "Orta şifre",
+    "good_password": "İyi şifre",
+    "strong_password": "Güçlü şifre"
+  },
+  fa: {
+    "reset_password_title": "بازنشانی رمز عبور",
+    "reset_password_instruction": "لطفاً رمز عبور جدید خود را در زیر وارد کنید",
+    "new_password": "رمز عبور جدید",
+    "new_password_placeholder": "رمز عبور جدید را وارد کنید",
+    "confirm_password": "تأیید رمز عبور",
+    "confirm_password_placeholder": "رمز عبور جدید را تأیید کنید",
+    "reset_password_btn": "بازنشانی رمز عبور",
+    "back_to_login": "بازگشت به ورود",
+    "error_title": "خطا!",
+    "success_title": "موفقیت!",
+    "loading": "در حال بارگذاری...",
+    "please_wait": "لطفاً چند لحظه صبر کنید",
+    "resetting_password": "در حال بازنشانی رمز عبور...",
+    "go_to_login": "برو به ورود",
+    "go_to_login_page": "برو به صفحه ورود",
+    "password_reset_success": "رمز عبور شما با موفقیت بازنشانی شد!",
+    "password_reset_error": "بازنشانی رمز عبور ناموفق بود",
+    "passwords_not_match": "رمزهای عبور مطابقت ندارند",
+    "password_too_short": "رمز عبور باید حداقل 8 کاراکتر باشد",
+    "password_requirements": "رمز عبور الزامات را برآورده نمی کند",
+    "password_req_length": "حداقل 8 کاراکتر",
+    "password_req_lowercase": "حاوی حروف کوچک است",
+    "password_req_uppercase": "حاوی حروف بزرگ است",
+    "password_req_number": "حاوی عدد است",
+    "password_req_special": "حاوی کاراکتر ویژه است (!@#$%^&*)",
+    "invalid_link_title": "لینک نامعتبر یا منقضی شده",
+    "invalid_link_message": "این لینک بازنشانی رمز عبور نامعتبر یا منقضی شده است.",
+    "invalid_link_instruction": "لطفاً یک لینک بازنشانی رمز عبور جدید از صفحه ورود درخواست کنید.",
+    "verifying_link": "در حال تأیید لینک بازنشانی...",
+    "link_verified": "لینک تأیید شد. اکنون می‌توانید رمز عبور خود را بازنشانی کنید.",
+    "weak_password": "رمز عبور ضعیف",
+    "fair_password": "رمز عبور متوسط",
+    "good_password": "رمز عبور خوب",
+    "strong_password": "رمز عبور قوی"
+  },
+  ta: {
+    "reset_password_title": "கடவுச்சொல்லை மீட்டமை",
+    "reset_password_instruction": "தயவு செய்து உங்கள் புதிய கடவுச்சொல்லை கீழே உள்ளிடவும்",
+    "new_password": "புதிய கடவுச்சொல்",
+    "new_password_placeholder": "புதிய கடவுச்சொல்லை உள்ளிடவும்",
+    "confirm_password": "கடவுச்சொல்லை உறுதிப்படுத்தவும்",
+    "confirm_password_placeholder": "புதிய கடவுச்சொல்லை உறுதிப்படுத்தவும்",
+    "reset_password_btn": "கடவுச்சொல்லை மீட்டமை",
+    "back_to_login": "உள்நுழைவுக்குத் திரும்பு",
+    "error_title": "பிழை!",
+    "success_title": "வெற்றி!",
+    "loading": "ஏற்றுகிறது...",
+    "please_wait": "தயவு செய்து சிறிது நேரம் காத்திருக்கவும்",
+    "resetting_password": "கடவுச்சொல் மீட்டமைக்கப்படுகிறது...",
+    "go_to_login": "உள்நுழைவுக்குச் செல்லவும்",
+    "go_to_login_page": "உள்நுழைவுப் பக்கத்திற்குச் செல்லவும்",
+    "password_reset_success": "உங்கள் கடவுச்சொல் வெற்றிகரமாக மீட்டமைக்கப்பட்டது!",
+    "password_reset_error": "கடவுச்சொல்லை மீட்டமைக்க முடியவில்லை",
+    "passwords_not_match": "கடவுச்சொற்கள் பொருந்தவில்லை",
+    "password_too_short": "கடவுச்சொல் குறைந்தது 8 எழுத்துகளாக இருக்க வேண்டும்",
+    "password_requirements": "கடவுச்சொல் தேவைகளைப் பூர்த்தி செய்யவில்லை",
+    "password_req_length": "குறைந்தது 8 எழுத்துகள்",
+    "password_req_lowercase": "சிறிய எழுத்தைக் கொண்டுள்ளது",
+    "password_req_uppercase": "பெரிய எழுத்தைக் கொண்டுள்ளது",
+    "password_req_number": "எண்ணைக் கொண்டுள்ளது",
+    "password_req_special": "சிறப்பு எழுத்தைக் கொண்டுள்ளது (!@#$%^&*)",
+    "invalid_link_title": "தவறான அல்லது காலாவதியான இணைப்பு",
+    "invalid_link_message": "இந்த கடவுச்சொல் மீட்டமைப்பு இணைப்பு தவறானது அல்லது காலாவதியானது.",
+    "invalid_link_instruction": "தயவு செய்து உள்நுழைவுப் பக்கத்திலிருந்து புதிய கடவுச்சொல் மீட்டமைப்பு இணைப்பைக் கோரவும்.",
+    "verifying_link": "மீட்டமைப்பு இணைப்பு சரிபார்க்கப்படுகிறது...",
+    "link_verified": "இணைப்பு சரிபார்க்கப்பட்டது. இப்போது நீங்கள் உங்கள் கடவுச்சொல்லை மீட்டமைக்கலாம்.",
+    "weak_password": "பலவீனமான கடவுச்சொல்",
+    "fair_password": "நடுத்தர கடவுச்சொல்",
+    "good_password": "நல்ல கடவுச்சொல்",
+    "strong_password": "வலுவான கடவுச்சொல்"
+  },
+  te: {
+    "reset_password_title": "పాస్వర్డ్ రీసెట్ చేయండి",
+    "reset_password_instruction": "దయచేసి మీ కొత్త పాస్వర్డ్ క్రింద నమోదు చేయండి",
+    "new_password": "కొత్త పాస్వర్డ్",
+    "new_password_placeholder": "కొత్త పాస్వర్డ్ నమోదు చేయండి",
+    "confirm_password": "పాస్వర్డ్ ని నిర్ధారించండి",
+    "confirm_password_placeholder": "కొత్త పాస్వర్డ్ ని నిర్ధారించండి",
+    "reset_password_btn": "పాస్వర్డ్ రీసెట్ చేయండి",
+    "back_to_login": "లాగిన్ కు తిరిగి వెళ్ళండి",
+    "error_title": "లోపం!",
+    "success_title": "విజయం!",
+    "loading": "లోడ్ అవుతోంది...",
+    "please_wait": "దయచేసి కొద్ది సేపు వేచి ఉండండి",
+    "resetting_password": "పాస్వర్డ్ రీసెట్ చేయబడుతోంది...",
+    "go_to_login": "లాగిన్ కు వెళ్ళండి",
+    "go_to_login_page": "లాగిన్ పేజీ కు వెళ్ళండి",
+    "password_reset_success": "మీ పాస్వర్డ్ విజయవంతంగా రీసెట్ చేయబడింది!",
+    "password_reset_error": "పాస్వర్డ్ రీసెట్ చేయడంలో విఫలమైంది",
+    "passwords_not_match": "పాస్వర్డ్లు సరిపోలడం లేదు",
+    "password_too_short": "పాస్వర్డ్ కనీసం 8 అక్షరాలు ఉండాలి",
+    "password_requirements": "పాస్వర్డ్ అవసరాలను పూర్తి చేయడం లేదు",
+    "password_req_length": "కనీసం 8 అక్షరాలు",
+    "password_req_lowercase": "చిన్న అక్షరం ఉంటుంది",
+    "password_req_uppercase": "పెద్ద అక్షరం ఉంటుంది",
+    "password_req_number": "సంఖ్య ఉంటుంది",
+    "password_req_special": "ప్రత్యేక అక్షరం ఉంటుంది (!@#$%^&*)",
+    "invalid_link_title": "చెల్లని లేదా గడువు మీరిన లింక్",
+    "invalid_link_message": "ఈ పాస్వర్డ్ రీసెట్ లింక్ చెల్లదు లేదా గడువు మీరింది.",
+    "invalid_link_instruction": "దయచేసి లాగిన్ పేజీ నుండి కొత్త పాస్వర్డ్ రీసెట్ లింక్ కోసం అభ్యర్థించండి.",
+    "verifying_link": "రీసెట్ లింక్ ధృవీకరించబడుతోంది...",
+    "link_verified": "లింక్ ధృవీకరించబడింది. ఇప్పుడు మీరు మీ పాస్వర్డ్ రీసెట్ చేయవచ్చు.",
+    "weak_password": "బలహీనమైన పాస్వర్డ్",
+    "fair_password": "మధ్యస్థ పాస్వర్డ్",
+    "good_password": "మంచి పాస్వర్డ్",
+    "strong_password": "బలమైన పాస్వర్డ్"
+  },
+  bn: {
+    "reset_password_title": "পাসওয়ার্ড রিসেট করুন",
+    "reset_password_instruction": "নিচে আপনার নতুন পাসওয়ার্ড লিখুন",
+    "new_password": "নতুন পাসওয়ার্ড",
+    "new_password_placeholder": "নতুন পাসওয়ার্ড লিখুন",
+    "confirm_password": "পাসওয়ার্ড নিশ্চিত করুন",
+    "confirm_password_placeholder": "নতুন পাসওয়ার্ড নিশ্চিত করুন",
+    "reset_password_btn": "পাসওয়ার্ড রিসেট করুন",
+    "back_to_login": "লগইনে ফিরে যান",
+    "error_title": "ত্রুটি!",
+    "success_title": "সাফল্য!",
+    "loading": "লোড হচ্ছে...",
+    "please_wait": "অনুগ্রহ করে একটু অপেক্ষা করুন",
+    "resetting_password": "পাসওয়ার্ড রিসেট হচ্ছে...",
+    "go_to_login": "লগইনে যান",
+    "go_to_login_page": "লগইন পৃষ্ঠায় যান",
+    "password_reset_success": "আপনার পাসওয়ার্ড সফলভাবে রিসেট করা হয়েছে!",
+    "password_reset_error": "পাসওয়ার্ড রিসেট করতে ব্যর্থ হয়েছে",
+    "passwords_not_match": "পাসওয়ার্ড মেলে না",
+    "password_too_short": "পাসওয়ার্ড অন্তত 8 অক্ষরের হতে হবে",
+    "password_requirements": "পাসওয়ার্ড প্রয়োজনীয়তা পূরণ করে না",
+    "password_req_length": "অন্তত 8 অক্ষর",
+    "password_req_lowercase": "ছোট হাতের অক্ষর রয়েছে",
+    "password_req_uppercase": "বড় হাতের অক্ষর রয়েছে",
+    "password_req_number": "সংখ্যা রয়েছে",
+    "password_req_special": "বিশেষ অক্ষর রয়েছে (!@#$%^&*)",
+    "invalid_link_title": "অবৈধ বা মেয়াদোত্তীর্ণ লিঙ্ক",
+    "invalid_link_message": "এই পাসওয়ার্ড রিসেট লিঙ্কটি অবৈধ বা মেয়াদোত্তীর্ণ।",
+    "invalid_link_instruction": "অনুগ্রহ করে লগইন পৃষ্ঠা থেকে একটি নতুন পাসওয়ার্ড রিসেট লিঙ্ক অনুরোধ করুন।",
+    "verifying_link": "রিসেট লিঙ্ক যাচাই করা হচ্ছে...",
+    "link_verified": "লিঙ্ক যাচাই করা হয়েছে। এখন আপনি আপনার পাসওয়ার্ড রিসেট করতে পারেন।",
+    "weak_password": "দুর্বল পাসওয়ার্ড",
+    "fair_password": "মাঝারি পাসওয়ার্ড",
+    "good_password": "ভাল পাসওয়ার্ড",
+    "strong_password": "শক্তিশালী পাসওয়ার্ড"
+  },
+  lo: {
+    "reset_password_title": "ຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່",
+    "reset_password_instruction": "ກະລຸນາປ້ອນລະຫັດຜ່ານໃໝ່ຂອງທ່ານດ້ານລຸ່ມ",
+    "new_password": "ລະຫັດຜ່ານໃໝ່",
+    "new_password_placeholder": "ປ້ອນລະຫັດຜ່ານໃໝ່",
+    "confirm_password": "ຢືນຢັນລະຫັດຜ່ານ",
+    "confirm_password_placeholder": "ຢືນຢັນລະຫັດຜ່ານໃໝ່",
+    "reset_password_btn": "ຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່",
+    "back_to_login": "ກັບຄືນໄປທີ່ເຂົ້າສູ່ລະບົບ",
+    "error_title": "ຂໍ້ຜິດພາດ!",
+    "success_title": "ສຳເລັດ!",
+    "loading": "ກຳລັງໂຫຼດ...",
+    "please_wait": "ກະລຸນາລໍຖ້າເລັກນ້ອຍ",
+    "resetting_password": "ກຳລັງຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່...",
+    "go_to_login": "ໄປທີ່ເຂົ້າສູ່ລະບົບ",
+    "go_to_login_page": "ໄປທີ່ໜ້າເຂົ້າສູ່ລະບົບ",
+    "password_reset_success": "ລະຫັດຜ່ານຂອງທ່ານໄດ້ຖືກຕັ້ງຄ່າໃໝ່ສຳເລັດແລ້ວ!",
+    "password_reset_error": "ບໍ່ສາມາດຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່ໄດ້",
+    "passwords_not_match": "ລະຫັດຜ່ານບໍ່ກົງກັນ",
+    "password_too_short": "ລະຫັດຜ່ານຕ້ອງມີຢ່າງໜ້ອຍ 8 ຕົວອັກສອນ",
+    "password_requirements": "ລະຫັດຜ່ານບໍ່ຕອບສະໜອງຄວາມຕ້ອງການ",
+    "password_req_length": "ຢ່າງໜ້ອຍ 8 ຕົວອັກສອນ",
+    "password_req_lowercase": "ມີຕົວອັກສອນພິມນ້ອຍ",
+    "password_req_uppercase": "ມີຕົວອັກສອນພິມໃຫຍ່",
+    "password_req_number": "ມີຕົວເລກ",
+    "password_req_special": "ມີຕົວອັກສອນພິເສດ (!@#$%^&*)",
+    "invalid_link_title": "ລິງບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸ",
+    "invalid_link_message": "ລິງຕັ້ງຄ່າລະຫັດຜ່ານນີ້ບໍ່ຖືກຕ້ອງ ຫຼື ໝົດອາຍຸແລ້ວ.",
+    "invalid_link_instruction": "ກະລຸນາຂໍລິງຕັ້ງຄ່າລະຫັດຜ່ານໃໝ່ຈາກໜ້າເຂົ້າສູ່ລະບົບ.",
+    "verifying_link": "ກຳລັງກວດສອບລິງຕັ້ງຄ່າ...",
+    "link_verified": "ກວດສອບລິງແລ້ວ. ຕອນນີ້ທ່ານສາມາດຕັ້ງຄ່າລະຫັດຜ່ານໄດ້.",
+    "weak_password": "ລະຫັດຜ່ານອ່ອນ",
+    "fair_password": "ລະຫັດຜ່ານປານກາງ",
+    "good_password": "ລະຫັດຜ່ານດີ",
+    "strong_password": "ລະຫັດຜ່ານແຂງ"
+  },
+  km: {
+    "reset_password_title": "កំណត់ពាក្យសម្ងាត់ឡើងវិញ",
+    "reset_password_instruction": "សូមបញ្ចូលពាក្យសម្ងាត់ថ្មីរបស់អ្នកខាងក្រោម",
+    "new_password": "ពាក្យសម្ងាត់ថ្មី",
+    "new_password_placeholder": "បញ្ចូលពាក្យសម្ងាត់ថ្មី",
+    "confirm_password": "បញ្ជាក់ពាក្យសម្ងាត់",
+    "confirm_password_placeholder": "បញ្ជាក់ពាក្យសម្ងាត់ថ្មី",
+    "reset_password_btn": "កំណត់ពាក្យសម្ងាត់ឡើងវិញ",
+    "back_to_login": "ត្រឡប់ទៅការចូល",
+    "error_title": "កំហុស!",
+    "success_title": "ជោគជ័យ!",
+    "loading": "កំពុងផ្ទុក...",
+    "please_wait": "សូមរង់ចាំមួយភ្លែត",
+    "resetting_password": "កំពុងកំណត់ពាក្យសម្ងាត់ឡើងវិញ...",
+    "go_to_login": "ទៅកាន់ការចូល",
+    "go_to_login_page": "ទៅកាន់ទំព័រចូល",
+    "password_reset_success": "ពាក្យសម្ងាត់របស់អ្នកត្រូវបានកំណត់ឡើងវិញដោយជោគជ័យ!",
+    "password_reset_error": "បរាជ័យក្នុងការកំណត់ពាក្យសម្ងាត់ឡើងវិញ",
+    "passwords_not_match": "ពាក្យសម្ងាត់មិនត្រូវគ្នា",
+    "password_too_short": "ពាក្យសម្ងាត់ត្រូវតែមានយ៉ាងហោចណាស់ 8 តួអក្សរ",
+    "password_requirements": "ពាក្យសម្ងាត់មិនបំពេញតម្រូវការ",
+    "password_req_length": "យ៉ាងហោចណាស់ 8 តួអក្សរ",
+    "password_req_lowercase": "មានអក្សរតូច",
+    "password_req_uppercase": "មានអក្សរធំ",
+    "password_req_number": "មានលេខ",
+    "password_req_special": "មានតួអក្សរពិសេស (!@#$%^&*)",
+    "invalid_link_title": "តំណភ្ជាប់មិនត្រឹមត្រូវ ឬហួសសម័យ",
+    "invalid_link_message": "តំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ឡើងវិញនេះមិនត្រឹមត្រូវ ឬហួសសម័យ។",
+    "invalid_link_instruction": "សូមស្នើសុំតំណភ្ជាប់កំណត់ពាក្យសម្ងាត់ឡើងវិញថ្មីពីទំព័រចូល។",
+    "verifying_link": "កំពុងផ្ទៀងផ្ទាត់តំណភ្ជាប់កំណត់ឡើងវិញ...",
+    "link_verified": "បានផ្ទៀងផ្ទាត់តំណភ្ជាប់។ ឥឡូវនេះអ្នកអាចកំណត់ពាក្យសម្ងាត់ឡើងវិញបាន។",
+    "weak_password": "ពាក្យសម្ងាត់ខ្សោយ",
+    "fair_password": "ពាក្យសម្ងាត់មធ្យម",
+    "good_password": "ពាក្យសម្ងាត់ល្អ",
+    "strong_password": "ពាក្យសម្ងាត់ខ្លាំង"
+  },
+  my: {
+    "reset_password_title": "စကားဝှက်ကို ပြန်လည်သတ်မှတ်ပါ",
+    "reset_password_instruction": "ကျေးဇူးပြု၍ သင့်စကားဝှက်အသစ်ကို အောက်တွင်ရိုက်ထည့်ပါ",
+    "new_password": "စကားဝှက်အသစ်",
+    "new_password_placeholder": "စကားဝှက်အသစ်ရိုက်ထည့်ပါ",
+    "confirm_password": "စကားဝှက်အတည်ပြုပါ",
+    "confirm_password_placeholder": "စကားဝှက်အသစ်အတည်ပြုပါ",
+    "reset_password_btn": "စကားဝှက်ပြန်လည်သတ်မှတ်ပါ",
+    "back_to_login": "လော့ဂ်အင် သို့ ပြန်သွားပါ",
+    "error_title": "အမှား!",
+    "success_title": "အောင်မြင်ပါသည်!",
+    "loading": "လာမည့်...",
+    "please_wait": "ကျေးဇူးပြု၍ ခဏစောင့်ပါ",
+    "resetting_password": "စကားဝှက်ပြန်လည်သတ်မှတ်နေသည်...",
+    "go_to_login": "လော့ဂ်အင် သို့ သွားပါ",
+    "go_to_login_page": "လော့ဂ်အင် စာမျက်နှာသို့ သွားပါ",
+    "password_reset_success": "သင့်စကားဝှက် အောင်မြင်စွာ ပြန်လည်သတ်မှတ်ပြီးပါပြီ!",
+    "password_reset_error": "စကားဝှက်ပြန်လည်သတ်မှတ်ရန် မအောင်မြင်ပါ",
+    "passwords_not_match": "စကားဝှက်များ မကိုက်ညီပါ",
+    "password_too_short": "စကားဝှက်သည် အနည်းဆုံး စာလုံး ၈ လုံးရှိရမည်",
+    "password_requirements": "စကားဝှက်သည် လိုအပ်ချက်များနှင့် မကိုက်ညီပါ",
+    "password_req_length": "အနည်းဆုံး စာလုံး ၈ လုံး",
+    "password_req_lowercase": "စာလုံးအသေးပါရှိသည်",
+    "password_req_uppercase": "စာလုံးအကြီးပါရှိသည်",
+    "password_req_number": "နံပါတ်ပါရှိသည်",
+    "password_req_special": "အထူးစာလုံးပါရှိသည် (!@#$%^&*)",
+    "invalid_link_title": "မမှန်ကန်သော သို့မဟုတ် သက်တမ်းကုန်သွားသော လင့်ခ်",
+    "invalid_link_message": "ဤစကားဝှက်ပြန်လည်သတ်မှတ်ရန် လင့်ခ်သည် မမှန်ကန်ပါ သို့မဟုတ် သက်တမ်းကုန်သွားပါပြီ။",
+    "invalid_link_instruction": "ကျေးဇူးပြု၍ လော့ဂ်အင် စာမျက်နှာမှ စကားဝှက်ပြန်လည်သတ်မှတ်ရန် လင့်ခ်အသစ်တစ်ခုကို တောင်းဆိုပါ။",
+    "verifying_link": "ပြန်လည်သတ်မှတ်ရန် လင့်ခ်ကို အတည်ပြုနေသည်...",
+    "link_verified": "လင့်ခ်ကို အတည်ပြုပြီးပါပြီ။ ယခု သင်သည် သင့်စကားဝှက်ကို ပြန်လည်သတ်မှတ်နိုင်ပါပြီ။",
+    "weak_password": "အားနည်းသောစကားဝှက်",
+    "fair_password": "အသင့်အတင့်စကားဝှက်",
+    "good_password": "ကောင်းသောစကားဝှက်",
+    "strong_password": "အားကောင်းသောစကားဝှက်"
+  },
+  ne: {
+    "reset_password_title": "पासवर्ड रिसेट गर्नुहोस्",
+    "reset_password_instruction": "कृपया तल आफ्नो नयाँ पासवर्ड प्रविष्ट गर्नुहोस्",
+    "new_password": "नयाँ पासवर्ड",
+    "new_password_placeholder": "नयाँ पासवर्ड प्रविष्ट गर्नुहोस्",
+    "confirm_password": "पासवर्ड पुष्टि गर्नुहोस्",
+    "confirm_password_placeholder": "नयाँ पासवर्ड पुष्टि गर्नुहोस्",
+    "reset_password_btn": "पासवर्ड रिसेट गर्नुहोस्",
+    "back_to_login": "लगइनमा फर्कनुहोस्",
+    "error_title": "त्रुटि!",
+    "success_title": "सफलता!",
+    "loading": "लोड हुँदै...",
+    "please_wait": "कृपया केही पल प्रतीक्षा गर्नुहोस्",
+    "resetting_password": "पासवर्ड रिसेट हुँदै...",
+    "go_to_login": "लगइनमा जानुहोस्",
+    "go_to_login_page": "लगइन पृष्ठमा जानुहोस्",
+    "password_reset_success": "तपाईंको पासवर्ड सफलतापूर्वक रिसेट भएको छ!",
+    "password_reset_error": "पासवर्ड रिसेट गर्न असफल",
+    "passwords_not_match": "पासवर्डहरू मेल खाँदैनन्",
+    "password_too_short": "पासवर्ड कम्तीमा ८ वर्णको हुनुपर्छ",
+    "password_requirements": "पासवर्डले आवश्यकताहरू पूरा गर्दैन",
+    "password_req_length": "कम्तीमा ८ वर्ण",
+    "password_req_lowercase": "सानो अक्षर समावेश गर्दछ",
+    "password_req_uppercase": "ठूलो अक्षर समावेश गर्दछ",
+    "password_req_number": "नम्बर समावेश गर्दछ",
+    "password_req_special": "विशेष वर्ण समावेश गर्दछ (!@#$%^&*)",
+    "invalid_link_title": "अमान्य वा म्याद सकिएको लिङ्क",
+    "invalid_link_message": "यो पासवर्ड रिसेट लिङ्क अमान्य छ वा म्याद सकिएको छ।",
+    "invalid_link_instruction": "कृपया लगइन पृष्ठबाट नयाँ पासवर्ड रिसेट लिङ्क अनुरोध गर्नुहोस्।",
+    "verifying_link": "रिसेट लिङ्क प्रमाणित गरिँदै...",
+    "link_verified": "लिङ्क प्रमाणित भयो। अब तपाईं आफ्नो पासवर्ड रिसेट गर्न सक्नुहुन्छ।",
+    "weak_password": "कमजोर पासवर्ड",
+    "fair_password": "मध्यम पासवर्ड",
+    "good_password": "राम्रो पासवर्ड",
+    "strong_password": "बलियो पासवर्ड"
+  },
+  pa: {
+    "reset_password_title": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰੋ",
+    "reset_password_instruction": "ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਆਪਣਾ ਨਵਾਂ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
+    "new_password": "ਨਵਾਂ ਪਾਸਵਰਡ",
+    "new_password_placeholder": "ਨਵਾਂ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ",
+    "confirm_password": "ਪਾਸਵਰਡ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+    "confirm_password_placeholder": "ਨਵੇਂ ਪਾਸਵਰਡ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+    "reset_password_btn": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰੋ",
+    "back_to_login": "ਲੌਗਇਨ ਤੇ ਵਾਪਸ ਜਾਓ",
+    "error_title": "ਗਲਤੀ!",
+    "success_title": "ਸਫਲਤਾ!",
+    "loading": "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...",
+    "please_wait": "ਕਿਰਪਾ ਕਰਕੇ ਥੋੜਾ ਇੰਤਜ਼ਾਰ ਕਰੋ",
+    "resetting_password": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਹੋ ਰਿਹਾ ਹੈ...",
+    "go_to_login": "ਲੌਗਇਨ ਤੇ ਜਾਓ",
+    "go_to_login_page": "ਲੌਗਇਨ ਪੇਜ ਤੇ ਜਾਓ",
+    "password_reset_success": "ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਸਫਲਤਾਪੂਰਵਕ ਰੀਸੈਟ ਹੋ ਗਿਆ ਹੈ!",
+    "password_reset_error": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
+    "passwords_not_match": "ਪਾਸਵਰਡ ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ",
+    "password_too_short": "ਪਾਸਵਰਡ ਘੱਟੋ-ਘੱਟ 8 ਅੱਖਰਾਂ ਦਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ",
+    "password_requirements": "ਪਾਸਵਰਡ ਲੋੜਾਂ ਨੂੰ ਪੂਰਾ ਨਹੀਂ ਕਰਦਾ",
+    "password_req_length": "ਘੱਟੋ-ਘੱਟ 8 ਅੱਖਰ",
+    "password_req_lowercase": "ਛੋਟੇ ਅੱਖਰ ਸ਼ਾਮਲ ਹਨ",
+    "password_req_uppercase": "ਵੱਡੇ ਅੱਖਰ ਸ਼ਾਮਲ ਹਨ",
+    "password_req_number": "ਨੰਬਰ ਸ਼ਾਮਲ ਹੈ",
+    "password_req_special": "ਖਾਸ ਅੱਖਰ ਸ਼ਾਮਲ ਹੈ (!@#$%^&*)",
+    "invalid_link_title": "ਅਵੈਧ ਜਾਂ ਮਿਆਦ ਪੁੱਗੀ ਲਿੰਕ",
+    "invalid_link_message": "ਇਹ ਪਾਸਵਰਡ ਰੀਸੈਟ ਲਿੰਕ ਅਵੈਧ ਹੈ ਜਾਂ ਮਿਆਦ ਪੁੱਗ ਗਈ ਹੈ।",
+    "invalid_link_instruction": "ਕਿਰਪਾ ਕਰਕੇ ਲੌਗਇਨ ਪੇਜ ਤੋਂ ਨਵਾਂ ਪਾਸਵਰਡ ਰੀਸੈਟ ਲਿੰਕ ਦੀ ਬੇਨਤੀ ਕਰੋ।",
+    "verifying_link": "ਰੀਸੈਟ ਲਿੰਕ ਤਸਦੀਕ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+    "link_verified": "ਲਿੰਕ ਤਸਦੀਕ ਹੋ ਗਿਆ ਹੈ। ਹੁਣ ਤੁਸੀਂ ਆਪਣਾ ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰ ਸਕਦੇ ਹੋ।",
+    "weak_password": "ਕਮਜ਼ੋਰ ਪਾਸਵਰਡ",
+    "fair_password": "ਠੀਕ-ਠਾਕ ਪਾਸਵਰਡ",
+    "good_password": "ਚੰਗਾ ਪਾਸਵਰਡ",
+    "strong_password": "ਮਜ਼ਬੂਤ ਪਾਸਵਰਡ"
+  },
+  si: {
+    "reset_password_title": "මුරපදය යළි සකසන්න",
+    "reset_password_instruction": "කරුණාකර ඔබගේ නව මුරපදය පහත ඇතුළත් කරන්න",
+    "new_password": "නව මුරපදය",
+    "new_password_placeholder": "නව මුරපදය ඇතුළත් කරන්න",
+    "confirm_password": "මුරපදය තහවුරු කරන්න",
+    "confirm_password_placeholder": "නව මුරපදය තහවුරු කරන්න",
+    "reset_password_btn": "මුරපදය යළි සකසන්න",
+    "back_to_login": "පිවිසුමට ආපසු යන්න",
+    "error_title": "දෝෂයක්!",
+    "success_title": "සාර්ථකත්වය!",
+    "loading": "පූරණය වෙමින්...",
+    "please_wait": "කරුණාකර මොහොතක් රැඳී සිටින්න",
+    "resetting_password": "මුරපදය යළි සකස්කරමින්...",
+    "go_to_login": "පිවිසුමට යන්න",
+    "go_to_login_page": "පිවිසුම් පිටුවට යන්න",
+    "password_reset_success": "ඔබගේ මුරපදය සාර්ථකව යළි සකස් කරන ලදී!",
+    "password_reset_error": "මුරපදය යළි සකස් කිරීමට අසමත් විය",
+    "passwords_not_match": "මුරපද ගැලපෙන්නේ නැත",
+    "password_too_short": "මුරපදය අක්ෂර 8ක් අවම වශයෙන් විය යුතුය",
+    "password_requirements": "මුරපදය අවශ්‍යතා සපුරා නොමැත",
+    "password_req_length": "අවම වශයෙන් අක්ෂර 8",
+    "password_req_lowercase": "පහත් අකුරු අඩංගු වේ",
+    "password_req_uppercase": "ඉහළ අකුරු අඩංගු වේ",
+    "password_req_number": "අංකයක් අඩංගු වේ",
+    "password_req_special": "විශේෂ අක්ෂරයක් අඩංගු වේ (!@#$%^&*)",
+    "invalid_link_title": "වලංගු නොවන හෝ කල් ඉකුත් වූ සබැඳිය",
+    "invalid_link_message": "මෙම මුරපදය යළි සකස් කිරීමේ සබැඳිය වලංගු නොවන හෝ කල් ඉකුත් වූ එකකි.",
+    "invalid_link_instruction": "කරුණාකර පිවිසුම් පිටුවෙන් නව මුරපදය යළි සකස් කිරීමේ සබැඳියක් ඉල්ලන්න.",
+    "verifying_link": "යළි සකස් කිරීමේ සබැඳිය සත්‍යාපනය වෙමින්...",
+    "link_verified": "සබැඳිය සත්‍යාපනය විය. දැන් ඔබට ඔබගේ මුරපදය යළි සකස් කළ හැකිය.",
+    "weak_password": "දුර්වල මුරපදය",
+    "fair_password": "මධ්‍යස්ථ මුරපදය",
+    "good_password": "හොඳ මුරපదය",
+    "strong_password": "ශක්තිමත් මුරපදය"
+  }
+};
+
+// Language names for dropdown with flags
+const languageNames = {
+  en: "English 🇺🇸",
+  zh: "中文 🇨🇳",
+  ja: "日本語 🇯🇵",
+  ko: "한국어 🇰🇷",
+  ar: "العربية 🇸🇦",
+  hi: "हिन्दी 🇮🇳",
+  th: "ไทย 🇹🇭",
+  vi: "Tiếng Việt 🇻🇳",
+  id: "Bahasa Indonesia 🇮🇩",
+  ms: "Bahasa Malaysia 🇲🇾",
+  ru: "Русский 🇷🇺",
+  ur: "اردو 🇵🇰",
+  tr: "Türkçe 🇹🇷",
+  fa: "فارسی 🇮🇷",
+  ta: "தமிழ் 🇮🇳",
+  te: "తెలుగు 🇮🇳",
+  bn: "বাংলা 🇧🇩",
+  lo: "ລາວ 🇱🇦",
+  km: "ខ្មែរ 🇰🇭",
+  my: "မြန်မာ 🇲🇲",
+  ne: "नेपाली 🇳🇵",
+  pa: "ਪੰਜਾਬੀ 🇮🇳",
+  si: "සිංහල 🇱🇰"
+};
+
+let currentLang = 'en';
+let resetCode = null;
+let userEmail = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeResetPasswordApp();
+});
+
+async function initializeResetPasswordApp() {
+  initializeLanguage();
+  checkResetCode();
+  setupEventListeners();
+}
+
+function initializeLanguage() {
+  const savedLang = localStorage.getItem('preferredLang') || 'en';
+  currentLang = savedLang;
+  
+  console.log('🌐 Initializing language:', currentLang);
+  
+  initializeLanguageDropdown();
+  updateAllText();
+}
+
+function initializeLanguageDropdown() {
+  const languageMenu = document.getElementById('languageMenu');
+  const currentLanguageElement = document.getElementById('currentLanguage');
+  
+  if (!languageMenu) return;
+  
+  languageMenu.innerHTML = '';
+  
+  const languageOrder = ['en', 'zh', 'ja', 'ko', 'ar', 'hi', 'th', 'vi', 'id', 'ms', 'ru', 'ur', 'tr', 'fa', 'ta', 'te', 'bn', 'lo', 'km', 'my', 'ne', 'pa', 'si'];
+  
+  languageOrder.forEach(code => {
+    const name = languageNames[code];
+    if (!name) return;
+    
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'dropdown-item language-dropdown-item';
+    button.dataset.lang = code;
+    button.textContent = name;
+    
+    if (code === currentLang) {
+      button.classList.add('active');
+      if (currentLanguageElement) {
+        currentLanguageElement.textContent = name.split(' ')[0];
       }
-    };
-
-    // Language names for dropdown with flags
-    const languageNames = {
-      en: "English 🇺🇸",
-      zh: "中文 🇨🇳",
-      ja: "日本語 🇯🇵",
-      ko: "한국어 🇰🇷",
-      ar: "العربية 🇸🇦",
-      hi: "हिन्दी 🇮🇳",
-      th: "ไทย 🇹🇭",
-      vi: "Tiếng Việt 🇻🇳",
-      id: "Bahasa Indonesia 🇮🇩",
-      ms: "Bahasa Malaysia 🇲🇾",
-      ru: "Русский 🇷🇺",
-      ur: "اردو 🇵🇰",
-      tr: "Türkçe 🇹🇷",
-      fa: "فارسی 🇮🇷",
-      ta: "தமிழ் 🇮🇳",
-      te: "తెలుగు 🇮🇳",
-      bn: "বাংলা 🇧🇩",
-      lo: "ລາວ 🇱🇦",
-      km: "ខ្មែរ 🇰🇭",
-      my: "မြန်မာ 🇲🇲",
-      ne: "नेपाली 🇳🇵",
-      pa: "ਪੰਜਾਬੀ 🇮🇳",
-      si: "සිංහල 🇱🇰"
-    };
-
-    let currentLang = 'en';
-    let resetCode = null;
-    let userEmail = null;
-
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeResetPasswordApp();
+    }
+    
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const lang = this.dataset.lang;
+      console.log('🔄 Language dropdown clicked:', lang);
+      switchLanguage(lang);
+      
+      const dropdownButton = document.getElementById('languageDropdown');
+      if (dropdownButton) {
+        const dropdown = bootstrap.Dropdown.getInstance(dropdownButton);
+        if (dropdown) {
+          dropdown.hide();
+        }
+      }
     });
+    
+    languageMenu.appendChild(button);
+  });
+}
 
-    async function initializeResetPasswordApp() {
-      initializeLanguage();
-      checkResetCode();
-      setupEventListeners();
-    }
+function switchLanguage(lang) {
+  console.log('🔄 Switching language to:', lang);
+  
+  if (lang === currentLang) return;
+  
+  currentLang = lang;
+  localStorage.setItem('preferredLang', lang);
+  
+  updateLanguageDropdown();
+  updateAllText();
+  
+  console.log('✅ Language switched to:', lang);
+}
 
-    function initializeLanguage() {
-      const savedLang = localStorage.getItem('preferredLang') || 'en';
-      currentLang = savedLang;
-      
-      console.log('🌐 Initializing language:', currentLang);
-      
-      initializeLanguageDropdown();
-      updateAllText();
-    }
-
-    function initializeLanguageDropdown() {
-      const languageMenu = document.getElementById('languageMenu');
-      const currentLanguageElement = document.getElementById('currentLanguage');
-      
-      if (!languageMenu) return;
-      
-      languageMenu.innerHTML = '';
-      
-      const languageOrder = ['en', 'zh', 'ja', 'ko', 'ar', 'hi', 'th', 'vi', 'id', 'ms', 'ru', 'ur', 'tr', 'fa', 'ta', 'te', 'bn', 'lo', 'km', 'my', 'ne', 'pa', 'si'];
-      
-      languageOrder.forEach(code => {
-        const name = languageNames[code];
-        if (!name) return;
-        
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'dropdown-item language-dropdown-item';
-        button.dataset.lang = code;
-        button.textContent = name;
-        
-        if (code === currentLang) {
-          button.classList.add('active');
-          if (currentLanguageElement) {
-            currentLanguageElement.textContent = name.split(' ')[0];
-          }
-        }
-        
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          const lang = this.dataset.lang;
-          console.log('🔄 Language dropdown clicked:', lang);
-          switchLanguage(lang);
-          
-          const dropdownButton = document.getElementById('languageDropdown');
-          if (dropdownButton) {
-            const dropdown = bootstrap.Dropdown.getInstance(dropdownButton);
-            if (dropdown) {
-              dropdown.hide();
-            }
-          }
-        });
-        
-        languageMenu.appendChild(button);
-      });
-    }
-
-    function switchLanguage(lang) {
-      console.log('🔄 Switching language to:', lang);
-      
-      if (lang === currentLang) return;
-      
-      currentLang = lang;
-      localStorage.setItem('preferredLang', lang);
-      
-      updateLanguageDropdown();
-      updateAllText();
-      
-      console.log('✅ Language switched to:', lang);
-    }
-
-    function updateLanguageDropdown() {
-      const languageItems = document.querySelectorAll('#languageMenu .dropdown-item');
-      const currentLanguageElement = document.getElementById('currentLanguage');
-      
-      languageItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.dataset.lang === currentLang) {
-          item.classList.add('active');
-          if (currentLanguageElement) {
-            currentLanguageElement.textContent = item.textContent.split(' ')[0];
-          }
-        }
-      });
-    }
-
-    function updateAllText() {
-      const langData = resetPasswordTranslations[currentLang];
-      
-      if (!langData) {
-        console.error('❌ No translation data for language:', currentLang);
-        return;
-      }
-      
-      console.log('📝 Updating text for language:', currentLang);
-      
-      updatePageTitle();
-      
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (langData[key]) {
-          element.textContent = langData[key];
-        }
-      });
-      
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-        const key = element.getAttribute('data-i18n-placeholder');
-        if (langData[key]) {
-          element.placeholder = langData[key];
-        }
-      });
-      
-      console.log('✅ All text updated for language:', currentLang);
-    }
-
-    function updatePageTitle() {
-      const titleElement = document.querySelector('title');
-      const key = 'reset_password_title';
-      if (resetPasswordTranslations[currentLang] && resetPasswordTranslations[currentLang][key]) {
-        titleElement.textContent = resetPasswordTranslations[currentLang][key] + ' - STIU Student Portal';
+function updateLanguageDropdown() {
+  const languageItems = document.querySelectorAll('#languageMenu .dropdown-item');
+  const currentLanguageElement = document.getElementById('currentLanguage');
+  
+  languageItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.dataset.lang === currentLang) {
+      item.classList.add('active');
+      if (currentLanguageElement) {
+        currentLanguageElement.textContent = item.textContent.split(' ')[0];
       }
     }
+  });
+}
 
-    function setupEventListeners() {
-      const resetForm = document.getElementById('resetPasswordForm');
-      const toggleNewPasswordBtn = document.getElementById('toggleNewPassword');
-      const toggleConfirmPasswordBtn = document.getElementById('toggleConfirmPassword');
-      
-      if (resetForm) {
-        resetForm.addEventListener('submit', handleResetPassword);
-      }
-      
-      if (toggleNewPasswordBtn) {
-        toggleNewPasswordBtn.addEventListener('click', function() {
-          togglePasswordVisibility('newPassword', this);
-        });
-      }
-      
-      if (toggleConfirmPasswordBtn) {
-        toggleConfirmPasswordBtn.addEventListener('click', function() {
-          togglePasswordVisibility('confirmPassword', this);
-        });
-      }
-      
-      const newPasswordInput = document.getElementById('newPassword');
-      if (newPasswordInput) {
-        newPasswordInput.addEventListener('input', validatePasswordRealtime);
-      }
-      
-      const confirmPasswordInput = document.getElementById('confirmPassword');
-      if (confirmPasswordInput) {
-        confirmPasswordInput.addEventListener('input', validatePasswordMatch);
-      }
+function updateAllText() {
+  const langData = resetPasswordTranslations[currentLang];
+  
+  if (!langData) {
+    console.error('❌ No translation data for language:', currentLang);
+    return;
+  }
+  
+  console.log('📝 Updating text for language:', currentLang);
+  
+  updatePageTitle();
+  
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    if (langData[key]) {
+      element.textContent = langData[key];
     }
+  });
+  
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    if (langData[key]) {
+      element.placeholder = langData[key];
+    }
+  });
+  
+  console.log('✅ All text updated for language:', currentLang);
+}
 
-// Password visibility toggle function
+function updatePageTitle() {
+  const titleElement = document.querySelector('title');
+  const key = 'reset_password_title';
+  if (resetPasswordTranslations[currentLang] && resetPasswordTranslations[currentLang][key]) {
+    titleElement.textContent = resetPasswordTranslations[currentLang][key] + ' - STIU Student Portal';
+  }
+}
+
+function setupEventListeners() {
+  const resetForm = document.getElementById('resetPasswordForm');
+  const toggleNewPasswordBtn = document.getElementById('toggleNewPassword');
+  const toggleConfirmPasswordBtn = document.getElementById('toggleConfirmPassword');
+  
+  if (resetForm) {
+    resetForm.addEventListener('submit', handleResetPassword);
+  }
+  
+  // Fix: Add event listeners for password toggle buttons
+  if (toggleNewPasswordBtn) {
+    toggleNewPasswordBtn.addEventListener('click', function() {
+      togglePasswordVisibility('newPassword', this);
+    });
+  }
+  
+  if (toggleConfirmPasswordBtn) {
+    toggleConfirmPasswordBtn.addEventListener('click', function() {
+      togglePasswordVisibility('confirmPassword', this);
+    });
+  }
+  
+  const newPasswordInput = document.getElementById('newPassword');
+  if (newPasswordInput) {
+    newPasswordInput.addEventListener('input', validatePasswordRealtime);
+  }
+  
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+  if (confirmPasswordInput) {
+    confirmPasswordInput.addEventListener('input', validatePasswordMatch);
+  }
+}
+
 function togglePasswordVisibility(inputId, button) {
   const input = document.getElementById(inputId);
   const icon = button.querySelector('i');
   
-  console.log('Toggling password visibility for:', inputId);
-  console.log('Current input type:', input.type);
-  console.log('Button element:', button);
-  console.log('Icon element:', icon);
+  if (!input) return;
   
   if (input.type === 'password') {
     input.type = 'text';
     if (icon) {
       icon.className = 'fas fa-eye-slash';
-      console.log('Changed to eye-slash icon');
-    } else {
-      button.innerHTML = '<i class="fas fa-eye-slash"></i>';
-      console.log('Replaced HTML with eye-slash icon');
     }
   } else {
     input.type = 'password';
     if (icon) {
       icon.className = 'fas fa-eye';
-      console.log('Changed to eye icon');
+    }
+  }
+}
+
+function checkResetCode() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const mode = urlParams.get('mode');
+  const oobCode = urlParams.get('oobCode');
+  
+  if (mode === 'resetPassword' && oobCode) {
+    console.log('🔑 Reset code found in URL');
+    resetCode = oobCode;
+    verifyResetCode();
+  } else {
+    showInvalidLink();
+  }
+}
+
+async function verifyResetCode() {
+  showLoadingSpinner(resetPasswordTranslations[currentLang]?.verifying_link || 'Verifying reset link...');
+  
+  try {
+    await waitForFirebase();
+    
+    const email = await firebase.auth().verifyPasswordResetCode(resetCode);
+    userEmail = email;
+    
+    console.log('✅ Reset code verified for email:', email);
+    
+    const emailDisplay = document.getElementById('emailDisplay');
+    if (emailDisplay) {
+      emailDisplay.textContent = email;
+      emailDisplay.style.fontWeight = '500';
+    }
+    
+    const instructionText = document.getElementById('resetInstructionText');
+    if (instructionText && resetPasswordTranslations[currentLang]?.link_verified) {
+      instructionText.textContent = resetPasswordTranslations[currentLang].link_verified;
+    }
+    
+    hideLoadingSpinner();
+    
+  } catch (error) {
+    console.error('❌ Reset code verification failed:', error);
+    hideLoadingSpinner();
+    showInvalidLink();
+  }
+}
+
+function showInvalidLink() {
+  const resetPasswordCard = document.getElementById('resetPasswordCard');
+  const invalidLinkCard = document.getElementById('invalidLinkCard');
+  
+  if (resetPasswordCard && invalidLinkCard) {
+    resetPasswordCard.style.display = 'none';
+    invalidLinkCard.style.display = 'block';
+  }
+}
+
+async function handleResetPassword(e) {
+  e.preventDefault();
+  
+  resetErrorMessages();
+  hideError();
+  hideSuccess();
+  
+  if (!validateResetForm()) {
+    return;
+  }
+  
+  await performPasswordReset();
+}
+
+function validateResetForm() {
+  let isValid = true;
+  
+  const newPassword = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const newPasswordError = document.getElementById('newPassword-error');
+  const confirmPasswordError = document.getElementById('confirmPassword-error');
+  
+  if (!newPassword) {
+    newPasswordError.textContent = resetPasswordTranslations[currentLang]?.password_requirements || 'Password is required';
+    newPasswordError.style.display = 'block';
+    isValid = false;
+  } else if (newPassword.length < 8) {
+    newPasswordError.textContent = resetPasswordTranslations[currentLang]?.password_too_short || 'Password must be at least 8 characters';
+    newPasswordError.style.display = 'block';
+    isValid = false;
+  } else if (!isPasswordStrong(newPassword)) {
+    newPasswordError.textContent = resetPasswordTranslations[currentLang]?.password_requirements || 'Password does not meet requirements';
+    newPasswordError.style.display = 'block';
+    isValid = false;
+  }
+  
+  if (!confirmPassword) {
+    confirmPasswordError.textContent = resetPasswordTranslations[currentLang]?.passwords_not_match || 'Please confirm your password';
+    confirmPasswordError.style.display = 'block';
+    isValid = false;
+  } else if (newPassword !== confirmPassword) {
+    confirmPasswordError.textContent = resetPasswordTranslations[currentLang]?.passwords_not_match || 'Passwords do not match';
+    confirmPasswordError.style.display = 'block';
+    isValid = false;
+  }
+  
+  return isValid;
+}
+
+function isPasswordStrong(password) {
+  if (password.length < 8) return false;
+  if (!/[a-z]/.test(password)) return false;
+  if (!/[A-Z]/.test(password)) return false;
+  if (!/\d/.test(password)) return false;
+  if (!/[!@#$%^&*]/.test(password)) return false;
+  return true;
+}
+
+function validatePasswordRealtime() {
+  const password = document.getElementById('newPassword').value;
+  const strengthBar = document.getElementById('passwordStrengthBar');
+  const strengthLabel = document.getElementById('passwordStrengthLabel');
+  
+  const requirements = {
+    length: document.getElementById('reqLength'),
+    lowercase: document.getElementById('reqLowercase'),
+    uppercase: document.getElementById('reqUppercase'),
+    number: document.getElementById('reqNumber'),
+    special: document.getElementById('reqSpecial')
+  };
+  
+  const hasLength = password.length >= 8;
+  const hasLowercase = /[a-z]/.test(password);
+  const hasUppercase = /[A-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSpecial = /[!@#$%^&*]/.test(password);
+  
+  updateRequirement(requirements.length, hasLength);
+  updateRequirement(requirements.lowercase, hasLowercase);
+  updateRequirement(requirements.uppercase, hasUppercase);
+  updateRequirement(requirements.number, hasNumber);
+  updateRequirement(requirements.special, hasSpecial);
+  
+  let strength = 0;
+  let strengthClass = '';
+  let strengthText = '';
+  
+  if (hasLength) strength++;
+  if (hasLowercase) strength++;
+  if (hasUppercase) strength++;
+  if (hasNumber) strength++;
+  if (hasSpecial) strength++;
+  
+  if (strength === 0) {
+    strengthClass = '';
+    strengthText = '';
+  } else if (strength <= 2) {
+    strengthClass = 'strength-weak';
+    strengthText = resetPasswordTranslations[currentLang]?.weak_password || 'Weak';
+  } else if (strength === 3) {
+    strengthClass = 'strength-fair';
+    strengthText = resetPasswordTranslations[currentLang]?.fair_password || 'Fair';
+  } else if (strength === 4) {
+    strengthClass = 'strength-good';
+    strengthText = resetPasswordTranslations[currentLang]?.good_password || 'Good';
+  } else {
+    strengthClass = 'strength-strong';
+    strengthText = resetPasswordTranslations[currentLang]?.strong_password || 'Strong';
+  }
+  
+  if (strengthBar) {
+    strengthBar.className = 'password-strength-bar ' + strengthClass;
+  }
+  
+  if (strengthLabel) {
+    strengthLabel.textContent = strengthText;
+    strengthLabel.className = 'strength-label ' + strengthClass + '-label';
+  }
+}
+
+function updateRequirement(element, isValid) {
+  if (element) {
+    const icon = element.querySelector('i');
+    if (icon) {
+      icon.className = isValid ? 'fas fa-check-circle' : 'far fa-circle';
+    }
+    element.className = isValid ? 'requirement valid' : 'requirement invalid';
+  }
+}
+
+function validatePasswordMatch() {
+  const newPassword = document.getElementById('newPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const confirmPasswordError = document.getElementById('confirmPassword-error');
+  
+  if (confirmPassword && newPassword !== confirmPassword) {
+    confirmPasswordError.textContent = resetPasswordTranslations[currentLang]?.passwords_not_match || 'Passwords do not match';
+    confirmPasswordError.style.display = 'block';
+  } else {
+    confirmPasswordError.style.display = 'none';
+  }
+}
+
+async function performPasswordReset() {
+  const newPassword = document.getElementById('newPassword').value;
+  const resetBtn = document.getElementById('resetPasswordBtn');
+  
+  setResetButtonLoading(true);
+  showLoadingSpinner(resetPasswordTranslations[currentLang]?.resetting_password || 'Resetting Password...');
+  
+  try {
+    await waitForFirebase();
+    
+    await firebase.auth().confirmPasswordReset(resetCode, newPassword);
+    
+    console.log('✅ Password reset successful for:', userEmail);
+    
+    hideLoadingSpinner();
+    setResetButtonLoading(false);
+    showSuccess(resetPasswordTranslations[currentLang]?.password_reset_success || 'Your password has been reset successfully!');
+    
+    const resetForm = document.getElementById('resetPasswordForm');
+    const successMessage = document.getElementById('successMessage');
+    
+    if (resetForm && successMessage) {
+      resetForm.style.display = 'none';
+      successMessage.style.display = 'block';
+    }
+    
+  } catch (error) {
+    console.error('❌ Password reset failed:', error.code, error.message);
+    
+    let errorMessage = resetPasswordTranslations[currentLang]?.password_reset_error || 'Failed to reset password';
+    
+    if (error.code === 'auth/expired-action-code') {
+      errorMessage = currentLang === 'th' 
+        ? 'ลิงก์รีเซ็ตรหัสผ่านหมดอายุแล้ว กรุณาขอลิงก์ใหม่' 
+        : 'Password reset link has expired. Please request a new one.';
+      showInvalidLink();
+    } else if (error.code === 'auth/invalid-action-code') {
+      errorMessage = currentLang === 'th' 
+        ? 'ลิงก์รีเซ็ตรหัสผ่านไม่ถูกต้อง' 
+        : 'Invalid password reset link.';
+      showInvalidLink();
+    } else if (error.code === 'auth/weak-password') {
+      errorMessage = currentLang === 'th' 
+        ? 'รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร' 
+        : 'Password should be at least 6 characters.';
+    } else if (error.code === 'auth/user-disabled') {
+      errorMessage = currentLang === 'th' 
+        ? 'บัญชีผู้ใช้นี้ถูกปิดใช้งาน' 
+        : 'This user account has been disabled.';
+    }
+    
+    hideLoadingSpinner();
+    setResetButtonLoading(false);
+    showError(errorMessage);
+  }
+}
+
+function resetErrorMessages() {
+  const errorMessages = document.querySelectorAll('.field-error');
+  errorMessages.forEach(msg => {
+    msg.style.display = 'none';
+  });
+}
+
+function showError(message) {
+  const errorMessage = document.getElementById('errorMessage');
+  const errorText = document.getElementById('error-text');
+  
+  if (errorMessage && errorText) {
+    errorMessage.style.display = 'block';
+    errorText.textContent = message;
+  }
+}
+
+function hideError() {
+  const errorMessage = document.getElementById('errorMessage');
+  if (errorMessage) {
+    errorMessage.style.display = 'none';
+  }
+}
+
+function showSuccess(message) {
+  const successMessage = document.getElementById('successMessage');
+  const successText = document.getElementById('success-text');
+  
+  if (successMessage && successText) {
+    successMessage.style.display = 'block';
+    successText.textContent = message;
+  }
+}
+
+function hideSuccess() {
+  const successMessage = document.getElementById('successMessage');
+  if (successMessage) {
+    successMessage.style.display = 'none';
+  }
+}
+
+function setResetButtonLoading(loading) {
+  const resetBtn = document.getElementById('resetPasswordBtn');
+  if (resetBtn) {
+    if (loading) {
+      resetBtn.disabled = true;
+      resetBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>' + 
+                          (resetPasswordTranslations[currentLang]?.resetting_password || 'Resetting...');
     } else {
-      button.innerHTML = '<i class="fas fa-eye"></i>';
-      console.log('Replaced HTML with eye icon');
+      resetBtn.disabled = false;
+      resetBtn.innerHTML = '<i class="fas fa-save me-2"></i>' + 
+                          (resetPasswordTranslations[currentLang]?.reset_password_btn || 'Reset Password');
     }
-  }
-  
-  // Focus back on the input for better UX
-  setTimeout(() => {
-    input.focus();
-  }, 10);
-}
-
-// Set up event listeners for password toggle buttons
-function setupPasswordToggleListeners() {
-  console.log('Setting up password toggle listeners...');
-  
-  // New password toggle
-  const toggleNewPasswordBtn = document.getElementById('toggleNewPassword');
-  if (toggleNewPasswordBtn) {
-    console.log('Found new password toggle button');
-    // Remove any existing event listeners by cloning
-    const newClone = toggleNewPasswordBtn.cloneNode(true);
-    toggleNewPasswordBtn.parentNode.replaceChild(newClone, toggleNewPasswordBtn);
-    
-    // Get the new reference
-    const newButton = document.getElementById('toggleNewPassword');
-    newButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      console.log('New password toggle clicked');
-      togglePasswordVisibility('newPassword', this);
-    });
-    console.log('Added event listener to new password toggle');
-  } else {
-    console.error('Could not find toggleNewPassword button');
-  }
-  
-  // Confirm password toggle
-  const toggleConfirmPasswordBtn = document.getElementById('toggleConfirmPassword');
-  if (toggleConfirmPasswordBtn) {
-    console.log('Found confirm password toggle button');
-    // Remove any existing event listeners by cloning
-    const confirmClone = toggleConfirmPasswordBtn.cloneNode(true);
-    toggleConfirmPasswordBtn.parentNode.replaceChild(confirmClone, toggleConfirmPasswordBtn);
-    
-    // Get the new reference
-    const confirmButton = document.getElementById('toggleConfirmPassword');
-    confirmButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      console.log('Confirm password toggle clicked');
-      togglePasswordVisibility('confirmPassword', this);
-    });
-    console.log('Added event listener to confirm password toggle');
-  } else {
-    console.error('Could not find toggleConfirmPassword button');
   }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, initializing password toggles...');
+function showLoadingSpinner(customMessage) {
+  const spinner = document.getElementById('loadingSpinner');
+  const spinnerText = spinner ? spinner.querySelector('h5') : null;
   
-  // Set up password toggle listeners
-  setupPasswordToggleListeners();
-  
-  // Test that buttons are clickable
-  const newToggle = document.getElementById('toggleNewPassword');
-  const confirmToggle = document.getElementById('toggleConfirmPassword');
-  
-  if (newToggle) {
-    console.log('New password toggle button properties:', {
-      id: newToggle.id,
-      className: newToggle.className,
-      innerHTML: newToggle.innerHTML,
-      hasClickListener: newToggle.hasAttribute('data-listener')
-    });
+  if (spinner) {
+    spinner.style.display = 'flex';
   }
   
-  if (confirmToggle) {
-    console.log('Confirm password toggle button properties:', {
-      id: confirmToggle.id,
-      className: confirmToggle.className,
-      innerHTML: confirmToggle.innerHTML,
-      hasClickListener: confirmToggle.hasAttribute('data-listener')
-    });
+  if (spinnerText && customMessage) {
+    spinnerText.textContent = customMessage;
   }
-  
-  // Add some CSS to make it clear the buttons are clickable
-  const style = document.createElement('style');
-  style.textContent = `
-    .password-toggle {
-      cursor: pointer !important;
-      transition: color 0.2s ease !important;
-    }
-    .password-toggle:hover {
-      color: #0d6efd !important;
-      transform: scale(1.1) !important;
-    }
-    .password-toggle:active {
-      transform: scale(0.95) !important;
-    }
-  `;
-  document.head.appendChild(style);
-});
+}
 
-    function checkResetCode() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const mode = urlParams.get('mode');
-      const oobCode = urlParams.get('oobCode');
+function hideLoadingSpinner() {
+  const spinner = document.getElementById('loadingSpinner');
+  if (spinner) {
+    spinner.style.display = 'none';
+  }
+}
+
+function waitForFirebase() {
+  return new Promise((resolve) => {
+    let attempts = 0;
+    const maxAttempts = 50;
+    
+    const checkFirebase = () => {
+      attempts++;
       
-      if (mode === 'resetPassword' && oobCode) {
-        console.log('🔑 Reset code found in URL');
-        resetCode = oobCode;
-        verifyResetCode();
+      if (window.firebaseDb && typeof window.firebaseDb.collection === 'function') {
+        console.log('✅ Firebase is ready');
+        resolve();
+      } else if (attempts >= maxAttempts) {
+        console.log('⚠️ Firebase timeout, continuing anyway...');
+        resolve();
       } else {
-        showInvalidLink();
+        setTimeout(checkFirebase, 100);
       }
-    }
-
-    async function verifyResetCode() {
-      showLoadingSpinner(resetPasswordTranslations[currentLang]?.verifying_link || 'Verifying reset link...');
-      
-      try {
-        await waitForFirebase();
-        
-        const email = await firebase.auth().verifyPasswordResetCode(resetCode);
-        userEmail = email;
-        
-        console.log('✅ Reset code verified for email:', email);
-        
-        const emailDisplay = document.getElementById('emailDisplay');
-        if (emailDisplay) {
-          emailDisplay.textContent = email;
-          emailDisplay.style.fontWeight = '500';
-        }
-        
-        const instructionText = document.getElementById('resetInstructionText');
-        if (instructionText && resetPasswordTranslations[currentLang]?.link_verified) {
-          instructionText.textContent = resetPasswordTranslations[currentLang].link_verified;
-        }
-        
-        hideLoadingSpinner();
-        
-      } catch (error) {
-        console.error('❌ Reset code verification failed:', error);
-        hideLoadingSpinner();
-        showInvalidLink();
-      }
-    }
-
-    function showInvalidLink() {
-      const resetPasswordCard = document.getElementById('resetPasswordCard');
-      const invalidLinkCard = document.getElementById('invalidLinkCard');
-      
-      if (resetPasswordCard && invalidLinkCard) {
-        resetPasswordCard.style.display = 'none';
-        invalidLinkCard.style.display = 'block';
-      }
-    }
-
-    async function handleResetPassword(e) {
-      e.preventDefault();
-      
-      resetErrorMessages();
-      hideError();
-      hideSuccess();
-      
-      if (!validateResetForm()) {
-        return;
-      }
-      
-      await performPasswordReset();
-    }
-
-    function validateResetForm() {
-      let isValid = true;
-      
-      const newPassword = document.getElementById('newPassword').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      const newPasswordError = document.getElementById('newPassword-error');
-      const confirmPasswordError = document.getElementById('confirmPassword-error');
-      
-      if (!newPassword) {
-        newPasswordError.textContent = resetPasswordTranslations[currentLang]?.password_requirements || 'Password is required';
-        newPasswordError.style.display = 'block';
-        isValid = false;
-      } else if (newPassword.length < 8) {
-        newPasswordError.textContent = resetPasswordTranslations[currentLang]?.password_too_short || 'Password must be at least 8 characters';
-        newPasswordError.style.display = 'block';
-        isValid = false;
-      } else if (!isPasswordStrong(newPassword)) {
-        newPasswordError.textContent = resetPasswordTranslations[currentLang]?.password_requirements || 'Password does not meet requirements';
-        newPasswordError.style.display = 'block';
-        isValid = false;
-      }
-      
-      if (!confirmPassword) {
-        confirmPasswordError.textContent = resetPasswordTranslations[currentLang]?.passwords_not_match || 'Please confirm your password';
-        confirmPasswordError.style.display = 'block';
-        isValid = false;
-      } else if (newPassword !== confirmPassword) {
-        confirmPasswordError.textContent = resetPasswordTranslations[currentLang]?.passwords_not_match || 'Passwords do not match';
-        confirmPasswordError.style.display = 'block';
-        isValid = false;
-      }
-      
-      return isValid;
-    }
-
-    function isPasswordStrong(password) {
-      if (password.length < 8) return false;
-      if (!/[a-z]/.test(password)) return false;
-      if (!/[A-Z]/.test(password)) return false;
-      if (!/\d/.test(password)) return false;
-      if (!/[!@#$%^&*]/.test(password)) return false;
-      return true;
-    }
-
-    function validatePasswordRealtime() {
-      const password = document.getElementById('newPassword').value;
-      const strengthBar = document.getElementById('passwordStrengthBar');
-      const strengthLabel = document.getElementById('passwordStrengthLabel');
-      
-      const requirements = {
-        length: document.getElementById('reqLength'),
-        lowercase: document.getElementById('reqLowercase'),
-        uppercase: document.getElementById('reqUppercase'),
-        number: document.getElementById('reqNumber'),
-        special: document.getElementById('reqSpecial')
-      };
-      
-      const hasLength = password.length >= 8;
-      const hasLowercase = /[a-z]/.test(password);
-      const hasUppercase = /[A-Z]/.test(password);
-      const hasNumber = /\d/.test(password);
-      const hasSpecial = /[!@#$%^&*]/.test(password);
-      
-      updateRequirement(requirements.length, hasLength);
-      updateRequirement(requirements.lowercase, hasLowercase);
-      updateRequirement(requirements.uppercase, hasUppercase);
-      updateRequirement(requirements.number, hasNumber);
-      updateRequirement(requirements.special, hasSpecial);
-      
-      let strength = 0;
-      let strengthClass = '';
-      let strengthText = '';
-      
-      if (hasLength) strength++;
-      if (hasLowercase) strength++;
-      if (hasUppercase) strength++;
-      if (hasNumber) strength++;
-      if (hasSpecial) strength++;
-      
-      if (strength === 0) {
-        strengthClass = '';
-        strengthText = '';
-      } else if (strength <= 2) {
-        strengthClass = 'strength-weak';
-        strengthText = resetPasswordTranslations[currentLang]?.weak_password || 'Weak';
-      } else if (strength === 3) {
-        strengthClass = 'strength-fair';
-        strengthText = resetPasswordTranslations[currentLang]?.fair_password || 'Fair';
-      } else if (strength === 4) {
-        strengthClass = 'strength-good';
-        strengthText = resetPasswordTranslations[currentLang]?.good_password || 'Good';
-      } else {
-        strengthClass = 'strength-strong';
-        strengthText = resetPasswordTranslations[currentLang]?.strong_password || 'Strong';
-      }
-      
-      if (strengthBar) {
-        strengthBar.className = 'password-strength-bar ' + strengthClass;
-      }
-      
-      if (strengthLabel) {
-        strengthLabel.textContent = strengthText;
-        strengthLabel.className = 'strength-label ' + strengthClass + '-label';
-      }
-    }
-
-    function updateRequirement(element, isValid) {
-      if (element) {
-        const icon = element.querySelector('i');
-        if (icon) {
-          icon.className = isValid ? 'fas fa-check-circle' : 'far fa-circle';
-        }
-        element.className = isValid ? 'requirement valid' : 'requirement invalid';
-      }
-    }
-
-    function validatePasswordMatch() {
-      const newPassword = document.getElementById('newPassword').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      const confirmPasswordError = document.getElementById('confirmPassword-error');
-      
-      if (confirmPassword && newPassword !== confirmPassword) {
-        confirmPasswordError.textContent = resetPasswordTranslations[currentLang]?.passwords_not_match || 'Passwords do not match';
-        confirmPasswordError.style.display = 'block';
-      } else {
-        confirmPasswordError.style.display = 'none';
-      }
-    }
-
-    async function performPasswordReset() {
-      const newPassword = document.getElementById('newPassword').value;
-      const resetBtn = document.getElementById('resetPasswordBtn');
-      
-      setResetButtonLoading(true);
-      showLoadingSpinner(resetPasswordTranslations[currentLang]?.resetting_password || 'Resetting Password...');
-      
-      try {
-        await waitForFirebase();
-        
-        await firebase.auth().confirmPasswordReset(resetCode, newPassword);
-        
-        console.log('✅ Password reset successful for:', userEmail);
-        
-        hideLoadingSpinner();
-        setResetButtonLoading(false);
-        showSuccess(resetPasswordTranslations[currentLang]?.password_reset_success || 'Your password has been reset successfully!');
-        
-        const resetForm = document.getElementById('resetPasswordForm');
-        const successMessage = document.getElementById('successMessage');
-        
-        if (resetForm && successMessage) {
-          resetForm.style.display = 'none';
-          successMessage.style.display = 'block';
-        }
-        
-      } catch (error) {
-        console.error('❌ Password reset failed:', error.code, error.message);
-        
-        let errorMessage = resetPasswordTranslations[currentLang]?.password_reset_error || 'Failed to reset password';
-        
-        if (error.code === 'auth/expired-action-code') {
-          errorMessage = currentLang === 'th' 
-            ? 'ลิงก์รีเซ็ตรหัสผ่านหมดอายุแล้ว กรุณาขอลิงก์ใหม่' 
-            : 'Password reset link has expired. Please request a new one.';
-          showInvalidLink();
-        } else if (error.code === 'auth/invalid-action-code') {
-          errorMessage = currentLang === 'th' 
-            ? 'ลิงก์รีเซ็ตรหัสผ่านไม่ถูกต้อง' 
-            : 'Invalid password reset link.';
-          showInvalidLink();
-        } else if (error.code === 'auth/weak-password') {
-          errorMessage = currentLang === 'th' 
-            ? 'รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร' 
-            : 'Password should be at least 6 characters.';
-        } else if (error.code === 'auth/user-disabled') {
-          errorMessage = currentLang === 'th' 
-            ? 'บัญชีผู้ใช้นี้ถูกปิดใช้งาน' 
-            : 'This user account has been disabled.';
-        }
-        
-        hideLoadingSpinner();
-        setResetButtonLoading(false);
-        showError(errorMessage);
-      }
-    }
-
-    function resetErrorMessages() {
-      const errorMessages = document.querySelectorAll('.field-error');
-      errorMessages.forEach(msg => {
-        msg.style.display = 'none';
-      });
-    }
-
-    function showError(message) {
-      const errorMessage = document.getElementById('errorMessage');
-      const errorText = document.getElementById('error-text');
-      
-      if (errorMessage && errorText) {
-        errorMessage.style.display = 'block';
-        errorText.textContent = message;
-      }
-    }
-
-    function hideError() {
-      const errorMessage = document.getElementById('errorMessage');
-      if (errorMessage) {
-        errorMessage.style.display = 'none';
-      }
-    }
-
-    function showSuccess(message) {
-      const successMessage = document.getElementById('successMessage');
-      const successText = document.getElementById('success-text');
-      
-      if (successMessage && successText) {
-        successMessage.style.display = 'block';
-        successText.textContent = message;
-      }
-    }
-
-    function hideSuccess() {
-      const successMessage = document.getElementById('successMessage');
-      if (successMessage) {
-        successMessage.style.display = 'none';
-      }
-    }
-
-    function setResetButtonLoading(loading) {
-      const resetBtn = document.getElementById('resetPasswordBtn');
-      if (resetBtn) {
-        if (loading) {
-          resetBtn.disabled = true;
-          resetBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>' + 
-                              (resetPasswordTranslations[currentLang]?.resetting_password || 'Resetting...');
-        } else {
-          resetBtn.disabled = false;
-          resetBtn.innerHTML = '<i class="fas fa-save me-2"></i>' + 
-                              (resetPasswordTranslations[currentLang]?.reset_password_btn || 'Reset Password');
-        }
-      }
-    }
-
-    function showLoadingSpinner(customMessage) {
-      const spinner = document.getElementById('loadingSpinner');
-      const spinnerText = spinner ? spinner.querySelector('h5') : null;
-      
-      if (spinner) {
-        spinner.style.display = 'flex';
-      }
-      
-      if (spinnerText && customMessage) {
-        spinnerText.textContent = customMessage;
-      }
-    }
-
-    function hideLoadingSpinner() {
-      const spinner = document.getElementById('loadingSpinner');
-      if (spinner) {
-        spinner.style.display = 'none';
-      }
-    }
-
-    function waitForFirebase() {
-      return new Promise((resolve) => {
-        let attempts = 0;
-        const maxAttempts = 50;
-        
-        const checkFirebase = () => {
-          attempts++;
-          
-          if (window.firebaseDb && typeof window.firebaseDb.collection === 'function') {
-            console.log('✅ Firebase is ready');
-            resolve();
-          } else if (attempts >= maxAttempts) {
-            console.log('⚠️ Firebase timeout, continuing anyway...');
-            resolve();
-          } else {
-            setTimeout(checkFirebase, 100);
-          }
-        };
-        
-        checkFirebase();
-      });
-    }
-  </script>
-  <script type="module">
-    import { getAuth, confirmPasswordReset } 
-    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    const auth = getAuth();
-
-    // Get the oobCode from the URL
-    const params = new URLSearchParams(window.location.search);
-    const oobCode = params.get("oobCode");
-
-    const passInput = document.getElementById("newPass");
-    const msg = document.getElementById("msg");
-    const btn = document.getElementById("resetBtn");
-
-    if (!oobCode) {
-        msg.textContent = "Invalid or missing reset code. Please use the link from your email.";
-    }
-
-    btn.addEventListener("click", async () => {
-        const newPassword = passInput.value;
-
-        if (!newPassword || newPassword.length < 6) {
-            msg.textContent = "Password must be at least 6 characters.";
-            return;
-        }
-
-        try {
-            await confirmPasswordReset(auth, oobCode, newPassword);
-            msg.style.color = "green";
-            msg.textContent = "Password updated successfully! Redirecting to login...";
-
-            // Optional redirect
-            setTimeout(() => {
-                window.location.href = "login.html";
-            }, 2000);
-
-        } catch (error) {
-            msg.style.color = "red";
-            msg.textContent = "Error: " + error.message;
-        }
-    });
+    };
+    
+    checkFirebase();
+  });
+}
