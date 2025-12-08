@@ -824,7 +824,7 @@ const resetPasswordTranslations = {
     "link_verified": "සබැඳිය සත්‍යාපනය විය. දැන් ඔබට ඔබගේ මුරපදය යළි සකස් කළ හැකිය.",
     "weak_password": "දුර්වල මුරපදය",
     "fair_password": "මධ්‍යස්ථ මුරපදය",
-    "good_password": "හොඳ මුරපదය",
+    "good_password": "හොඳ මුරපදය",
     "strong_password": "ශක්තිමත් මුරපදය"
   }
 };
@@ -1383,7 +1383,7 @@ function waitForFirebase() {
     const checkFirebase = () => {
       attempts++;
       
-      if (window.firebaseDb && typeof window.firebaseDb.collection === 'function') {
+      if (typeof firebase !== 'undefined' && firebase.auth) {
         console.log('✅ Firebase is ready');
         resolve();
       } else if (attempts >= maxAttempts) {
