@@ -1024,16 +1024,133 @@ const resetPasswordTranslations = {
       }
     }
 
-    function togglePasswordVisibility(inputId, button) {
-      const input = document.getElementById(inputId);
-      if (input.type === 'password') {
-        input.type = 'text';
-        button.innerHTML = '<i class="fas fa-eye-slash"></i>';
-      } else {
-        input.type = 'password';
-        button.innerHTML = '<i class="fas fa-eye"></i>';
-      }
+// Password visibility toggle function
+function togglePasswordVisibility(inputId, button) {
+  const input = document.getElementById(inputId);
+  const icon = button.querySelector('i');
+  
+  console.log('Toggling password visibility for:', inputId);
+  console.log('Current input type:', input.type);
+  console.log('Button element:', button);
+  console.log('Icon element:', icon);
+  
+  if (input.type === 'password') {
+    input.type = 'text';
+    if (icon) {
+      icon.className = 'fas fa-eye-slash';
+      console.log('Changed to eye-slash icon');
+    } else {
+      button.innerHTML = '<i class="fas fa-eye-slash"></i>';
+      console.log('Replaced HTML with eye-slash icon');
     }
+  } else {
+    input.type = 'password';
+    if (icon) {
+      icon.className = 'fas fa-eye';
+      console.log('Changed to eye icon');
+    } else {
+      button.innerHTML = '<i class="fas fa-eye"></i>';
+      console.log('Replaced HTML with eye icon');
+    }
+  }
+  
+  // Focus back on the input for better UX
+  setTimeout(() => {
+    input.focus();
+  }, 10);
+}
+
+// Set up event listeners for password toggle buttons
+function setupPasswordToggleListeners() {
+  console.log('Setting up password toggle listeners...');
+  
+  // New password toggle
+  const toggleNewPasswordBtn = document.getElementById('toggleNewPassword');
+  if (toggleNewPasswordBtn) {
+    console.log('Found new password toggle button');
+    // Remove any existing event listeners by cloning
+    const newClone = toggleNewPasswordBtn.cloneNode(true);
+    toggleNewPasswordBtn.parentNode.replaceChild(newClone, toggleNewPasswordBtn);
+    
+    // Get the new reference
+    const newButton = document.getElementById('toggleNewPassword');
+    newButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('New password toggle clicked');
+      togglePasswordVisibility('newPassword', this);
+    });
+    console.log('Added event listener to new password toggle');
+  } else {
+    console.error('Could not find toggleNewPassword button');
+  }
+  
+  // Confirm password toggle
+  const toggleConfirmPasswordBtn = document.getElementById('toggleConfirmPassword');
+  if (toggleConfirmPasswordBtn) {
+    console.log('Found confirm password toggle button');
+    // Remove any existing event listeners by cloning
+    const confirmClone = toggleConfirmPasswordBtn.cloneNode(true);
+    toggleConfirmPasswordBtn.parentNode.replaceChild(confirmClone, toggleConfirmPasswordBtn);
+    
+    // Get the new reference
+    const confirmButton = document.getElementById('toggleConfirmPassword');
+    confirmButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('Confirm password toggle clicked');
+      togglePasswordVisibility('confirmPassword', this);
+    });
+    console.log('Added event listener to confirm password toggle');
+  } else {
+    console.error('Could not find toggleConfirmPassword button');
+  }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, initializing password toggles...');
+  
+  // Set up password toggle listeners
+  setupPasswordToggleListeners();
+  
+  // Test that buttons are clickable
+  const newToggle = document.getElementById('toggleNewPassword');
+  const confirmToggle = document.getElementById('toggleConfirmPassword');
+  
+  if (newToggle) {
+    console.log('New password toggle button properties:', {
+      id: newToggle.id,
+      className: newToggle.className,
+      innerHTML: newToggle.innerHTML,
+      hasClickListener: newToggle.hasAttribute('data-listener')
+    });
+  }
+  
+  if (confirmToggle) {
+    console.log('Confirm password toggle button properties:', {
+      id: confirmToggle.id,
+      className: confirmToggle.className,
+      innerHTML: confirmToggle.innerHTML,
+      hasClickListener: confirmToggle.hasAttribute('data-listener')
+    });
+  }
+  
+  // Add some CSS to make it clear the buttons are clickable
+  const style = document.createElement('style');
+  style.textContent = `
+    .password-toggle {
+      cursor: pointer !important;
+      transition: color 0.2s ease !important;
+    }
+    .password-toggle:hover {
+      color: #0d6efd !important;
+      transform: scale(1.1) !important;
+    }
+    .password-toggle:active {
+      transform: scale(0.95) !important;
+    }
+  `;
+  document.head.appendChild(style);
+});
 
     function checkResetCode() {
       const urlParams = new URLSearchParams(window.location.search);
