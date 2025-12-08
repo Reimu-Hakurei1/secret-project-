@@ -553,7 +553,7 @@ const loginTranslations = {
     "forgot_password_note": "စကားဝှက်ပြန်လည်သတ်မှတ်ရန် ညွှန်ကြားချက်များပါသော အီးမေးလ်ကို သင်ရရှိပါမည်။ မမြင်ရပါက စပန်ဖိုင်လ်ဒါကို စစ်ဆေးပါ။",
     "forgot_password_success_title": "အီးမေးလ်ပို့ပြီးပါပြီ!",
     "forgot_password_success_message": "စကားဝှက်ပြန်လည်သတ်မှတ်ရန် လင့်ခ်ကို {email} သို့ ပို့ပြီးပါပြီ",
-    "forgot_password_success_note": "စကားဝှက်ပြန်လည်သတ်မှတ်ရန် လင့်ခ်အတွက် ကျေးဇူးပြု၍ သင့်အီးမေးလ်အတွင်းသေတ္တာ (နှင့် စပန်ဖိုင်လ်ဒါ) ကို စစ်ဆေးပါ။",
+    "forgot_password_success_note": "စကားဝှက်ပြန်လည်သတ်�မှတ်ရန် လင့်ခ်အတွက် ကျေးဇူးပြု၍ သင့်အီးမေးလ်အတွင်းသေတ္တာ (နှင့် စပန်ဖိုင်လ်ဒါ) ကို စစ်ဆေးပါ။",
     "send_reset_link": "ပြန်လည်သတ်မှတ်ရန် လင့်ခ်ပို့ပါ",
     "reset_link_sending": "ပို့နေသည်...",
     "cancel": "မလုပ်တော့ပါ",
@@ -886,6 +886,9 @@ function setupEventListeners() {
   if (forgotPasswordLink) {
     forgotPasswordLink.addEventListener('click', function(e) {
       e.preventDefault();
+      if (forgotPasswordModal) {
+        forgotPasswordModal.show();
+      }
     });
   }
   
@@ -916,6 +919,26 @@ function setupEventListeners() {
       } else {
         passwordInput.type = 'password';
         icon.className = 'fas fa-eye';
+      }
+    });
+  }
+  
+  // Fix for modal close button
+  const modalCloseBtn = document.querySelector('#forgotPasswordModal .btn-close');
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', function() {
+      if (forgotPasswordModal) {
+        forgotPasswordModal.hide();
+      }
+    });
+  }
+  
+  // Fix for modal cancel button
+  const modalCancelBtn = document.getElementById('cancelResetBtn');
+  if (modalCancelBtn) {
+    modalCancelBtn.addEventListener('click', function() {
+      if (forgotPasswordModal) {
+        forgotPasswordModal.hide();
       }
     });
   }
@@ -963,7 +986,7 @@ function validateLoginForm() {
 
 async function performLogin() {
   const loginBtn = document.getElementById('loginBtn');
-  const email = document.getElementById('loginEmail').value;
+  const email = document.getElementById('loginEmail').value.toLowerCase().trim();
   const password = document.getElementById('loginPassword').value;
   
   // Show loading state
@@ -983,30 +1006,29 @@ async function performLogin() {
     // Hide loading spinner
     hideLoadingSpinner();
     
+    // Store user info in localStorage
+    localStorage.setItem('userEmail', user.email);
+    
     // Redirect to dashboard
     window.location.href = 'index.html';
     
   } catch (error) {
-    console.error('❌ Login failed:', error);
+    console.error('❌ Login failed:', error.code, error.message);
     
     let errorMessage = loginTranslations[currentLang]?.email_error || 'Invalid email or password';
     
     if (error.code === 'auth/user-not-found') {
-      errorMessage = currentLang === 'th' 
-        ? 'ไม่พบผู้ใช้งานนี้' 
-        : 'User not found';
+      errorMessage = loginTranslations[currentLang]?.email_error || 'User not found';
     } else if (error.code === 'auth/wrong-password') {
-      errorMessage = currentLang === 'th' 
-        ? 'รหัสผ่านไม่ถูกต้อง' 
-        : 'Wrong password';
+      errorMessage = loginTranslations[currentLang]?.email_error || 'Wrong password';
     } else if (error.code === 'auth/invalid-email') {
-      errorMessage = currentLang === 'th' 
-        ? 'รูปแบบอีเมลไม่ถูกต้อง' 
-        : 'Invalid email format';
+      errorMessage = loginTranslations[currentLang]?.email_error || 'Invalid email format';
     } else if (error.code === 'auth/too-many-requests') {
-      errorMessage = currentLang === 'th' 
-        ? 'พยายามเข้าสู่ระบบหลายครั้งเกินไป กรุณารอสักครู่' 
-        : 'Too many login attempts. Please try again later.';
+      errorMessage = 'Too many login attempts. Please try again later.';
+    } else if (error.code === 'auth/user-disabled') {
+      errorMessage = 'This account has been disabled. Please contact support.';
+    } else if (error.code === 'auth/network-request-failed') {
+      errorMessage = 'Network error. Please check your connection.';
     }
     
     // Hide loading spinner and show error
@@ -1040,13 +1062,18 @@ async function handleForgotPassword() {
     return;
   }
   
+  // Check if email ends with @students.stamford.edu
+  if (!resetEmail.endsWith('@students.stamford.edu')) {
+    resetEmailError.textContent = 'Only @students.stamford.edu emails are allowed for password reset';
+    resetEmailError.style.display = 'block';
+    return;
+  }
+  
   // Check cooldown for this email
   const now = Date.now();
   if (lastResetEmailSent[resetEmail] && (now - lastResetEmailSent[resetEmail] < RESET_COOLDOWN_MS)) {
     const remainingSeconds = Math.ceil((RESET_COOLDOWN_MS - (now - lastResetEmailSent[resetEmail])) / 1000);
-    resetEmailError.textContent = currentLang === 'th' 
-      ? `กรุณารอ ${remainingSeconds} วินาทีก่อนส่งอีเมลอีกครั้ง`
-      : `Please wait ${remainingSeconds} seconds before sending another email`;
+    resetEmailError.textContent = `Please wait ${remainingSeconds} seconds before sending another email`;
     resetEmailError.style.display = 'block';
     return;
   }
@@ -1061,75 +1088,123 @@ async function handleForgotPassword() {
     
     console.log('📧 Sending password reset email to:', resetEmail);
     
-    const actionCodeSettings = {
-      url: window.location.origin + '/reset-password.html',
-      handleCodeInApp: true
-    };
+    // IMPORTANT FIX: First check if user exists in Firestore
+    let userExistsInFirestore = false;
+    let userExistsInAuth = false;
     
-    await firebase.auth().sendPasswordResetEmail(resetEmail, actionCodeSettings);
+    // Try to check in Firestore first (this is likely where your users are stored)
+    if (window.firebaseDb) {
+      try {
+        const usersRef = firebaseDb.collection('users');
+        const querySnapshot = await usersRef.where('email', '==', resetEmail).get();
+        userExistsInFirestore = !querySnapshot.empty;
+        console.log('Firestore check - User exists:', userExistsInFirestore);
+      } catch (firestoreError) {
+        console.log('Firestore check failed:', firestoreError);
+        // Continue anyway
+      }
+    }
     
-    console.log('✅ Password reset email sent to:', resetEmail);
-    
-    // Record this email was sent and set cooldown
-    lastResetEmailSent[resetEmail] = now;
-    
-    // Show success message
-    showForgotPasswordSuccess(resetEmail);
+    // Try to check in Auth as well
+    try {
+      // Try to send the reset email directly
+      // Firebase will throw an error if user doesn't exist
+      const actionCodeSettings = {
+        url: window.location.origin + '/reset-password.html',
+        handleCodeInApp: true
+      };
+      
+      await firebase.auth().sendPasswordResetEmail(resetEmail, actionCodeSettings);
+      userExistsInAuth = true;
+      console.log('✅ Password reset email sent to:', resetEmail);
+      
+      // Record this email was sent and set cooldown
+      lastResetEmailSent[resetEmail] = now;
+      
+      // Show success message
+      showForgotPasswordSuccess(resetEmail);
+      return; // Exit early on success
+      
+    } catch (authError) {
+      console.error('Auth check failed:', authError.code, authError.message);
+      
+      // If user exists in Firestore but not in Auth, we need to create the auth account
+      if (userExistsInFirestore && authError.code === 'auth/user-not-found') {
+        console.log('User exists in Firestore but not in Auth. Creating auth account...');
+        
+        // Generate a temporary password
+        const tempPassword = generateTempPassword();
+        
+        try {
+          // Create the user in Firebase Auth
+          const userCredential = await firebase.auth().createUserWithEmailAndPassword(resetEmail, tempPassword);
+          console.log('✅ Auth account created for:', resetEmail);
+          
+          // Send password reset email to the newly created account
+          const actionCodeSettings = {
+            url: window.location.origin + '/reset-password.html',
+            handleCodeInApp: true
+          };
+          
+          await firebase.auth().sendPasswordResetEmail(resetEmail, actionCodeSettings);
+          console.log('✅ Password reset email sent to newly created account:', resetEmail);
+          
+          // Record this email was sent and set cooldown
+          lastResetEmailSent[resetEmail] = now;
+          
+          // Show success message
+          showForgotPasswordSuccess(resetEmail);
+          return;
+          
+        } catch (createError) {
+          console.error('❌ Failed to create auth account:', createError);
+          // Continue to show error message
+        }
+      }
+      
+      // Show appropriate error message
+      let errorMessage = loginTranslations[currentLang]?.reset_email_error || 'Failed to send reset email';
+      
+      if (authError.code === 'auth/user-not-found') {
+        errorMessage = 'No account found with this email address. Please register first.';
+      } else if (authError.code === 'auth/invalid-email') {
+        errorMessage = 'Invalid email format';
+      } else if (authError.code === 'auth/too-many-requests') {
+        errorMessage = 'Too many requests. Please wait 1-2 minutes.';
+      } else if (authError.code === 'auth/network-request-failed') {
+        errorMessage = 'Network error. Please check your connection.';
+      } else if (authError.code === 'auth/operation-not-allowed') {
+        errorMessage = 'Password reset is not enabled. Please contact support.';
+      } else {
+        errorMessage = authError.message || 'Failed to send reset email';
+      }
+      
+      // Show error
+      resetEmailError.textContent = errorMessage;
+      resetEmailError.style.display = 'block';
+    }
     
   } catch (error) {
-    console.error('❌ Password reset error:', error.code, error.message);
+    console.error('❌ General error in password reset:', error);
     
-    let errorMessage = loginTranslations[currentLang]?.reset_email_error || 'Failed to send reset email';
-    let showRegisterLink = false;
-    
-    if (error.code === 'auth/user-not-found') {
-      errorMessage = currentLang === 'th' 
-        ? 'ไม่พบผู้ใช้งานที่ใช้อีเมลนี้' 
-        : 'No account found with this email address';
-      showRegisterLink = true;
-    } else if (error.code === 'auth/invalid-email') {
-      errorMessage = currentLang === 'th' 
-        ? 'รูปแบบอีเมลไม่ถูกต้อง' 
-        : 'Invalid email format';
-    } else if (error.code === 'auth/too-many-requests') {
-      errorMessage = currentLang === 'th' 
-        ? 'ระบบได้รับคำขอมากเกินไป กรุณารอ 1-2 นาที' 
-        : 'Too many requests. Please wait 1-2 minutes.';
-    } else if (error.code === 'auth/network-request-failed') {
-      errorMessage = currentLang === 'th' 
-        ? 'เกิดข้อผิดพลาดในการเชื่อมต่อเครือข่าย' 
-        : 'Network error. Please check your connection.';
-    } else {
-      errorMessage = error.message || 'Failed to send reset email';
-    }
-    
-    // Show error
-    resetEmailError.textContent = errorMessage;
+    // Show generic error
+    resetEmailError.textContent = 'An error occurred. Please try again or contact support.';
     resetEmailError.style.display = 'block';
-    
-    // Re-enable button on error
+  } finally {
+    // Re-enable button
     sendResetLinkBtn.disabled = false;
     setResetButtonLoading(false);
-    
-    // If user not found, show registration link
-    if (showRegisterLink) {
-      setTimeout(() => {
-        if (resetEmailError && !resetEmailError.nextElementSibling?.classList?.contains('register-suggestion')) {
-          const suggestion = document.createElement('div');
-          suggestion.className = 'mt-2 register-suggestion';
-          suggestion.innerHTML = `
-            <small>
-              <a href="register-curriculum.html" class="text-primary text-decoration-none">
-                <i class="fas fa-user-plus me-1"></i>
-                ${currentLang === 'th' ? 'คลิกที่นี่เพื่อลงทะเบียนด้วยอีเมลนี้' : 'Click here to register with this email'}
-              </a>
-            </small>
-          `;
-          resetEmailError.parentNode.insertBefore(suggestion, resetEmailError.nextSibling);
-        }
-      }, 100);
-    }
   }
+}
+
+function generateTempPassword() {
+  // Generate a random temporary password
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+  let password = '';
+  for (let i = 0; i < 12; i++) {
+    password += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return password;
 }
 
 function showForgotPasswordSuccess(email) {
@@ -1147,9 +1222,12 @@ function showForgotPasswordSuccess(email) {
     const successMessage = loginTranslations[currentLang]?.forgot_password_success_message || 'Password reset link has been sent to {email}';
     successMessageText.textContent = successMessage.replace('{email}', email);
     
-    // Update button to "Close" and disable it
-    sendResetLinkBtn.disabled = true;
+    // Update button to "Close" and enable it
+    sendResetLinkBtn.disabled = false;
     sendResetLinkBtn.innerHTML = '<span data-i18n="cancel">Close</span>';
+    
+    // Update all text to ensure translations
+    updateAllText();
     
     // Change button action to close modal only
     sendResetLinkBtn.onclick = function() {
@@ -1157,11 +1235,6 @@ function showForgotPasswordSuccess(email) {
         forgotPasswordModal.hide();
       }
     };
-    
-    // Re-enable button after 2 seconds for closing
-    setTimeout(() => {
-      sendResetLinkBtn.disabled = false;
-    }, 2000);
     
     // Auto-close modal after 8 seconds
     const autoCloseTimer = setTimeout(() => {
@@ -1198,15 +1271,14 @@ function resetForgotPasswordForm() {
     resetEmailError.style.display = 'none';
   }
   
-  // Remove register suggestion
-  const suggestion = document.querySelector('.register-suggestion');
-  if (suggestion) suggestion.remove();
-  
   // Reset button state
   if (sendResetLinkBtn) {
     sendResetLinkBtn.disabled = false;
     sendResetLinkBtn.innerHTML = '<span data-i18n="send_reset_link">Send Reset Link</span>';
     sendResetLinkBtn.onclick = handleForgotPassword;
+    
+    // Update text to ensure translations
+    updateAllText();
   }
 }
 
@@ -1299,7 +1371,7 @@ function waitForFirebase() {
     const checkFirebase = () => {
       attempts++;
       
-      if (window.firebaseDb && typeof window.firebaseDb.collection === 'function') {
+      if (typeof firebase !== 'undefined' && firebase.auth) {
         console.log('✅ Firebase is ready');
         resolve();
       } else if (attempts >= maxAttempts) {
@@ -1323,10 +1395,84 @@ function checkPasswordResetLink() {
   
   if (mode === 'resetPassword' && oobCode) {
     console.log('🔑 Password reset link detected');
-    // Redirect to password reset page or handle here
+    // Store the reset code in localStorage for the reset page to use
+    localStorage.setItem('resetCode', oobCode);
+    // Redirect to password reset page
     window.location.href = 'reset-password.html?mode=' + mode + '&oobCode=' + oobCode;
   }
 }
 
 // Call this on page load
 checkPasswordResetLink();
+
+// Add this function to test Firebase connectivity
+async function testFirebaseConnection() {
+  try {
+    await waitForFirebase();
+    console.log('✅ Firebase connection test successful');
+    return true;
+  } catch (error) {
+    console.error('❌ Firebase connection test failed:', error);
+    return false;
+  }
+}
+
+// Initialize Firebase connection test on page load
+window.addEventListener('load', async () => {
+  const isConnected = await testFirebaseConnection();
+  if (!isConnected) {
+    console.warn('⚠️ Firebase may not be properly initialized');
+  }
+});
+
+// Add debug utilities
+window.debugLogin = {
+  testFirebase: testFirebaseConnection,
+  getCurrentLang: () => currentLang,
+  getTranslations: () => loginTranslations[currentLang],
+  checkUserInFirestore: async (email) => {
+    try {
+      await waitForFirebase();
+      if (!window.firebaseDb) {
+        console.error('Firestore not available');
+        return false;
+      }
+      const usersRef = firebaseDb.collection('users');
+      const querySnapshot = await usersRef.where('email', '==', email.toLowerCase().trim()).get();
+      const exists = !querySnapshot.empty;
+      console.log('User exists in Firestore:', exists);
+      if (exists) {
+        querySnapshot.forEach(doc => {
+          console.log('User data:', doc.data());
+        });
+      }
+      return exists;
+    } catch (error) {
+      console.error('Error checking user in Firestore:', error);
+      return false;
+    }
+  },
+  checkUserInAuth: async (email) => {
+    try {
+      await waitForFirebase();
+      // Try to send a password reset email - if it succeeds, user exists
+      await firebase.auth().sendPasswordResetEmail(email);
+      console.log('User exists in Auth');
+      return true;
+    } catch (error) {
+      console.log('User does not exist in Auth or error:', error.code);
+      return false;
+    }
+  },
+  createAuthUser: async (email, password) => {
+    try {
+      await waitForFirebase();
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      console.log('✅ Auth user created:', userCredential.user.email);
+      return { success: true, user: userCredential.user };
+    } catch (error) {
+      console.error('❌ Failed to create auth user:', error);
+      return { success: false, error: error.message };
+    }
+  }
+};
